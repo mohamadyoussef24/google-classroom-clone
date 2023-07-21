@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: roboto, "Noto Sans Myanmar UI", arial;
+}
+
+.google_logo {
+    width: 15%;
+    height: 20%;
+}
+
+body {
+    margin-left: 30%;
+    margin-top:10%;
+}
+
+.container {
+    border: 1px solid silver;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    /* height: 60%; */
+
+}
+
+.signin_title{
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.email_input {
+    width: 85%;
+    padding: 1rem;
+}
+
+/* .email_input:focus{
+    
+} */
