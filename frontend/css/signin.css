@@ -29,8 +29,11 @@ body {
     row-gap: 1rem;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    /* height: 60%; */
+    width: 35%;
+    height: 60%;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    
 
 }
 
@@ -40,10 +43,41 @@ body {
 }
 
 .email_input {
-    width: 60%;
+    width: 80%;
     padding: 1rem;
+    margin-bottom: 10px;
 }
-
+.forgot_email{
+    text-decoration: none;
+}
+.learn_more{
+    text-decoration: none;
+    margin-top: 8px;
+}
+.create_account{
+    text-decoration: none;
+}
+.button{
+    padding: 10px 20px;
+    text-transform: none;
+    background-color: #6200ee;
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.first_input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    padding: 20px;
+}
+.row_direction{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
+}
 /* .email_input:focus{
     
 } */
