@@ -11,8 +11,14 @@
 }
 
 body {
-    margin-left: 30%;
-    margin-top:10%;
+    position: relative;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*margin-left: 30%;
+    margin-top:10%;*/
 }
 
 .container {
@@ -34,7 +40,7 @@ body {
 }
 
 .email_input {
-    width: 85%;
+    width: 60%;
     padding: 1rem;
 }
 
