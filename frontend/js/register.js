@@ -20,12 +20,25 @@ const register = () => {
     fetch(base_url + 'register.php' ,{
         method: "POST",
         body: user_info
-    })}catch (error) {
+    }).then((res) => res.json())
+    .then((res) => displayResult(res))
+
+    }catch (error) {
         console.log(error)
     }
-    console.log('success')
+
+
 }
 
+
+const displayResult = (res) =>{
+    const result = res.status
+
+    if(result == 'success') {
+
+        window.location.replace('../views/classroom_view.html')
+    }
+}
 
 submit.addEventListener("click", function(e){
     e.preventDefault();
