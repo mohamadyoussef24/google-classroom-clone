@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.google_logo {
+    width: 15%;
+    height: 20%;
+}
+
+body {
+    margin-left: 30%;
+    margin-top:20%;
+}
+
+.container {
+    border: 1px solid silver;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    /* height: 60%; */
+}
