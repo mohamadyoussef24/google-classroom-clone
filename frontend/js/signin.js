@@ -1,11 +1,13 @@
 const nextButton = document.getElementById("next");
 const infoDiv = document.querySelector(".info");
+
 const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
 const isEmailValid = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
+
 const signin = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
