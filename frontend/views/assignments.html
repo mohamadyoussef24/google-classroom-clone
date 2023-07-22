@@ -29,7 +29,7 @@
                 <div>Assignment</div>
             </div>
             <div class="nav-right flex">
-                <button class="nav-assign bg-blue btn">Assign</button>
+                <button class="nav-assign bg-blue btn" id="create_assignment">Assign</button>
                 <div class="nav-arrow bg-blue btn flex center"><svg focusable="false" width="24" height="24"
                         viewBox="0 0 24 24" class=" NMm5M svg-white">
                         <path d="M7 10l5 5 5-5H7z"></path>
@@ -48,8 +48,8 @@
                     <textarea name="title" id="title" class="textarea width100 bg-grey"></textarea>
                 </div>
                 <div class="input-div bg-grey flex1">
-                    <label for="title">Instructions (optional)</label>
-                    <textarea name="title" id="title" class="textarea width100 bg-grey"></textarea>
+                    <label for="instructions">Instructions (optional)</label>
+                    <textarea name="instructions" id="instructions" class="textarea width100 bg-grey"></textarea>
                 </div>
             </div>
             <!-- assignment attachments -->
@@ -133,12 +133,13 @@
             <div class="flex">
                 <div class="nav-right flex">
                     <div class="assignment-option nav-assign bg-grey btn flex center">No Due Date</div>
-                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                    <div class="nav-arrow bg-grey btn flex center" id="arrow5"><svg focusable="false" width="24" height="24"
                             viewBox="0 0 24 24" class="svg-grey NMm5M">
                             <path d="M7 10l5 5 5-5H7z"></path>
                         </svg></div>
                 </div>
             </div>
+            <input type="datetime-local" name="due" id="due" class="hidden">
             <!-- <p>Topic</p>
             <div class="flex">
                 <div class="nav-right flex">

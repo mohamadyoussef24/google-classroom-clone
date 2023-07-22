@@ -43,6 +43,7 @@ body {
 
 .nav-assign {
     border-radius: 4px 0px 0px 4px;
+    cursor: pointer;
 }
 
 .nav-arrow {
