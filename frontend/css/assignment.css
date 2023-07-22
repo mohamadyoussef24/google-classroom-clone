@@ -48,6 +48,7 @@ body {
 .nav-arrow {
     width: 20px;
     border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
 }
 
 /* content */
@@ -107,4 +108,15 @@ body {
     height: 32px;
     background-color: #e8f0fe;
     border: none;
+}
+
+.dropdown {
+    z-index: 10;
+    width: 100px;
+    border-color: #e8f0fe;
+    list-style-type: none;
+}
+
+.hidden {
+    display: none;
 }
