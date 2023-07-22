@@ -44,7 +44,7 @@ checkCode = ()=>{
 
     if (reset_code == code.toString()) {
         console.log('success')
-        window.location.replace("../views/reseting_password.html")
+        window.location.replace("../views/resetting_password.html")
     }else {
         console.log('wrong')
     }
