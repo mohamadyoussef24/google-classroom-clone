@@ -1,24 +1,23 @@
 <?php
 include('connection.php');
+
 $email = $_POST['email'];
 
-if (isset($_POST["email"]) && $_POST["email"] != "") {
-    $email = $_POST["email"];
-    $new_password = $_POST['password'];
-    $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
-    $query = $mysqli->prepare('insert into users(password) values(?)');
-    $query->bind_param('s',$hashed_password);
-    $query->execute();
+$query = $mysqli->prepare('select id,email,password,first_name,last_name,recovery_email,profile_pic
+from users 
+where email=?');
+$query->bind_param('s', $email);
+$query->execute();
 
-$response['status'] = "password changed";
+$query->store_result();
+$query->bind_result($id, $email, $hashed_password, $first_name, $last_name, $recovery_email, $profile_pic);
+$query->fetch();
+$num_rows = $query->num_rows();
 
-
+if ($num_rows == 0) {
+    $response['status'] = "user not found";
 } else {
-
-    $response = [];
-    $response["success"] = false;
-   
-   
+    $response['status'] = "user found";
 }
 
 echo json_encode($response);

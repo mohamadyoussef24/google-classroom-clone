@@ -3,22 +3,23 @@ const proceed =document.getElementById("proceed");
 const site_email = "noreply.classroom.noreply@gmail.com";
 let code ;
 
+const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
 submit.addEventListener("click", function(event){
     event.preventDefault()
-
-    sendEmail()});
+    checkEmail()
+});
 
 sendEmail = () => {
-        const recovery_email = document.getElementById('recovery_email1').value
+        const email = document.getElementById('email').value
         code = Math.random() * 1000000 | 0
         
-    console.log(recovery_email)
+    console.log(email)
     emailjs.init("ua6aWzLhhQq3fLfQO");
 
 
     var templateParams = {
-    to_name:  recovery_email,
+    to_name:  email,
     from_name: site_email ,
     data: code
     };
@@ -50,3 +51,31 @@ checkCode = ()=>{
     }
 }
 
+
+
+checkEmail = () => {
+
+    const email = document.getElementById('email').value
+
+    try{
+        const existing_user = new FormData()
+        existing_user.append("email", email)
+
+        fetch(base_url + "forgot_password,php",{
+            method: "POST",
+            body: existing_user
+        })
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data.status)
+
+        if (data.status  == "user found") {
+            sendEmail()
+        }else{
+            console.log('email does not exist')
+        }
+    })
+    }catch (err) {
+        console.log("Error:", err);
+      }
+}

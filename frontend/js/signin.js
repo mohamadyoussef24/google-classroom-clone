@@ -19,10 +19,10 @@ const signin = () => {
       method: "POST",
       body: user_info,
     })
-      .then((res) => res.json()) // Parse the response as JSON
+      .then((res) => res.json()) 
       .then((data) => {
         console.log("Server Response:", data);
-        if (data.status === 'logged in') { // Check for "logged in" status
+        if (data.status === 'logged in') { 
           const user_id = data.user_id;
           localStorage.setItem("user_id", user_id);
           window.location.replace("../views/classroom_view.html");
