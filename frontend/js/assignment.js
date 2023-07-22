@@ -1,12 +1,12 @@
-
+// function to show dropdowns on assignment creation page
 async function showDropdowns() {
 
-    // populating class list with class names
     let arrow2 = document.getElementById("arrow2")
     let class_ul = document.getElementById("class-ul")
     let arrow5 = document.getElementById("arrow5")
     let date = document.getElementById("due")
 
+    // populating class list with class names
     let class_array = ['tech', 'softskilss', 'uix']
     class_array.forEach((post) => {
         let listItem = document.createElement("li")
@@ -17,7 +17,7 @@ async function showDropdowns() {
         class_ul.appendChild(listItem)
     })
 
-    // show dropdowns
+    // add event listeners
     arrow2.addEventListener('click', function () {
         class_ul.classList.toggle("hidden")
     })
@@ -28,6 +28,7 @@ async function showDropdowns() {
 
 }
 
+//function to get checked checkbox
 function getChecked() {
     let checkboxes = document.getElementsByName("class_name");
     let checkedValue = "";
@@ -38,7 +39,7 @@ function getChecked() {
     } return checkedValue;
 }
 
-
+// function to create assignment
 function createAssignment() {
     let assign_btn = document.getElementById("create_assignment");
     assign_btn.addEventListener('click', async function (e) {
