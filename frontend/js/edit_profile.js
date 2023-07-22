@@ -10,24 +10,25 @@ const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 const submit = document.getElementById('submit')
 
 
-
+let flag ;
 
 
 const profile_pic = document.getElementById("profile_pic").value
+
 
 
 window.onload = function(){
 
     try {
         const email = window.localStorage.getItem("email")
-        let flag = "onload";
+        flag = "onload";
         const existing_info = new FormData()
         existing_info.append("email", email)
         existing_info.append("flag", flag)
     
         fetch(base_url + 'edit_profile.php', {
           method: "POST",
-          body: existing_info,
+          body: existing_info
         })
           .then((res) => res.json()) 
           .then((data) => {
@@ -63,7 +64,7 @@ const modifyInfo = () => {
 
     try {
         const email = window.localStorage.getItem("email")
-        let flag = "";
+        flag = "not onload";
         const first_name = document.getElementById('first_name').value
         const last_name = document.getElementById("last_name").value
         const modified_info = new FormData()
@@ -75,15 +76,15 @@ const modifyInfo = () => {
     
         fetch(base_url + 'edit_profile.php', {
           method: "POST",
-          body:  modified_info,
+          body:  modified_info
         })
           .then((res) => res.json()) 
           .then((data) => {
-            if (data.status === 'update info') { 
+            if (data.status == 'update info') { 
 
                 const first_name_new= data.first_name
                 const last_name_new = data.last_name
-
+                
                 const first_name1 = document.getElementById("first_name")
                 const last_name1 = document.getElementById("last_name")
 
@@ -94,7 +95,7 @@ const modifyInfo = () => {
 
             //   window.location.replace("../views/classroom_view.html");
             } else {
-              console.log("Login failed:", data.status);
+              console.log("Failed:", data.status);
             }
           })
           .catch((err) => {
@@ -103,10 +104,7 @@ const modifyInfo = () => {
       } catch (err) {
         console.log("Error:", err);
       }
-
 }
-
-
 
 
 submit.addEventListener("click", modifyInfo)
