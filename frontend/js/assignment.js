@@ -48,13 +48,16 @@ function createAssignment() {
         let instructions = document.getElementById("instructions").value;
         let class_name = getChecked();
         let due = document.getElementById("due").value;
-        // console.log(title,instructions,class_name,date)
+
+        localStorage.setItem('user_id', 3)
+        let id = localStorage.getItem('user_id')
 
         let formdata = new FormData();
         formdata.append("title", title);
         formdata.append("instructions", instructions);
         formdata.append("class", class_name);
         formdata.append("due", due);
+        formdata.append("id", id)
 
         let requestOptions = {
             method: 'POST',
@@ -63,7 +66,7 @@ function createAssignment() {
         };
 
         try {
-            const response = await fetch("http://localhost/google-classroom-backend/create_assignment.php", requestOptions)
+            const response = await fetch('http://localhost/google-classroom-backend/create_assignment.php', requestOptions)
             const json = await response.json()
             console.log(json)
         } catch (e) {
