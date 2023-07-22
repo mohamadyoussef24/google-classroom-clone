@@ -21,14 +21,16 @@ body {
     height: 4rem;
 }
 
-.nav-right {
+.nav-left {
     justify-content: space-between;
     align-items: center;
-    /* padding-right: 20px; */
+    padding-left: 20px;
+    gap: 10px;
 }
 
-.nav-left {
+.nav-right {
     gap: 1px;
+    padding-right: 20px;
 }
 
 .btn {
@@ -98,5 +100,11 @@ body {
 
 .assignment-option {
     color: #5f6368;
-    /* height: 48px; */
+}
+
+.small {
+    width: 32px;
+    height: 32px;
+    background-color: #e8f0fe;
+    border: none;
 }
