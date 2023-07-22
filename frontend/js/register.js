@@ -24,6 +24,8 @@ const register = () => {
             if(res.status === 'success') {
                 const user_id = res.user_id
                 localStorage.setItem("user_id", user_id);
+                localStorage.setItem("email", email);
+
                 window.location.replace("../views/classroom_view.html")
             }
         });

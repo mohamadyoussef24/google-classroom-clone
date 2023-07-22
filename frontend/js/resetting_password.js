@@ -28,7 +28,7 @@ password_matching = () => {
         console.log('passwords do not match')
     }
 
-    } catch (error) {
+    } catch (error) {s
         console.log(error)
     }
 
