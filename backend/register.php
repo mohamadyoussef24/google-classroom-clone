@@ -30,8 +30,20 @@ if ($email_exists == 0) {
     $query->execute();
 
     $response['status'] = "success";
+
+    $query = $mysqli->prepare('select id
+    from users 
+    where email=?');
+    $query->bind_param('s', $email);
+    $query->execute();
+    $query->bind_result($id);
+    $query->fetch();
+
+    $response['user_id'] = $id;
 } else {
     $response['status'] = "failed";
 }
+
+
 
 echo json_encode($response);

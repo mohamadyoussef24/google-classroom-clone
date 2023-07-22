@@ -1,5 +1,6 @@
 const submit = document.getElementById("submit")
 
+
 const base_url = "http://localhost/Assignments/google-classroom-clone/backend/"
 
 const register = () => {
@@ -9,38 +10,33 @@ const register = () => {
     const password = document.getElementById("password").value
     const recovery_email = document.getElementById("recovery_email").value
 
-     try {
-    const user_info = new FormData();
-    user_info.append("first_name", first_name)
-    user_info.append("last_name", last_name)
-    user_info.append("email",email)
-    user_info.append("password", password)
-    user_info.append("recovery_email", recovery_email)
+    try {
+        const user_info = new FormData();
+        user_info.append("first_name", first_name)
+        user_info.append("last_name", last_name)
+        user_info.append("email",email)
+        user_info.append("password", password)
+        user_info.append("recovery_email", recovery_email)
 
-    fetch(base_url + 'register.php' ,{
-        method: "POST",
-        body: user_info
-    }).then((res) => res.json())
-    .then((res) => displayResult(res))
+        fetch(base_url + 'register.php' ,{
+            method: "POST",
+            body: user_info
+        }).then((res) => res.json())
+        .then((res) => {
+            if(res.status === 'success') {
+                const user_id = res.user_id
+                localStorage.setItem("user_id", user_id);
+                window.location.replace("../views/classroom_view.html")
+            }
+        });
 
-    }catch (error) {
+    } catch (error) {
         console.log(error)
     }
-
-
 }
 
-
-const displayResult = (res) =>{
-    const result = res.status
-
-    if(result == 'success') {
-
-        window.location.replace('../views/classroom_view.html')
-    }
-}
 
 submit.addEventListener("click", function(e){
     e.preventDefault();
-    register()
+    register();
 })
