@@ -42,9 +42,11 @@ proceed.addEventListener('click', function(event){
 
 checkCode = ()=>{
     const reset_code = document.getElementById('reset_code').value
+    const email = document.getElementById('email').value
 
     if (reset_code == code.toString()) {
         console.log('success')
+        localStorage.setItem("email", email)
         window.location.replace("../views/resetting_password.html")
     }else {
         console.log('wrong')
@@ -61,7 +63,7 @@ checkEmail = () => {
         const existing_user = new FormData()
         existing_user.append("email", email)
 
-        fetch(base_url + "forgot_password,php",{
+        fetch(base_url + "forgot_password.php",{
             method: "POST",
             body: existing_user
         })
@@ -70,6 +72,7 @@ checkEmail = () => {
         console.log(data.status)
 
         if (data.status  == "user found") {
+
             sendEmail()
         }else{
             console.log('email does not exist')
