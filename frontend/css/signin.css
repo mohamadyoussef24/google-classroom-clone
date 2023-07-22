@@ -137,6 +137,13 @@ body{
 .menu>.menu-items ul>li:hover{
     background: #d4dae0;
 }
+
+.menu-items {
+    display: none; /
+}
+.menu-items.show {
+    display: block; 
+}
 /* menu ends */
 
 .logo{
@@ -431,3 +438,4 @@ a {
     text-decoration: none;
     color: rgba(0, 140, 255, 0.699);
 }
+

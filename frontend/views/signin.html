@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Google Classroom</title>
-    <link rel="stylesheet" href="../css/signin.css">
-  </head>
-  <body>
-
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Google Classroom</title>
+<link rel="stylesheet" href="../css/signin.css">
+</head>
+<body>
 <div class="main">
-  <div class="menu">
-    <div class="menu-icon">
+  <div class="menu" id="menu">
+    <div class="menu-icon"  onclick="toggleMenu()">
         <img src="../css/img/menu.svg" alt="">
     </div>
-    <div class="menu-items">
+    <div class="menu-items" >
         <ul>
             <li id="about">About</li>
             <li id="overlay-btn">Overlay</li>
@@ -32,30 +31,29 @@
     <div class="h_sub">with your Google Account</div>
   </h1>
 
-    <div class="slide-content">
-
-      <div class="content1">
-        <form action="">
-          <div class="input-group">
-              <label class="field-label email-label" for="email" name="email">Email or phone</label>
-              <input type="text" class="field email-field" id="email" placeholder="">   
-          </div>
-          <div class="input-group">
-            <label class="field-label password-label" for="password">Password</label>
-            <input type="password" class="field password-field" id="password" placeholder="">
-          </div>
-          <span class="forgot"><a href="register.html">Forgot email?</a></span>
-          <div class="info">
-              Not your computer? Use Guest mode to sign in privately.
-          </div>
-          <div class="create-next">
-              <span><a href="register.html">Create account</a></span>
-              <button class="btn" id="next" type="submit" name="email_submit" >Next</button>
-          </div>
-        </form>
-      </div>
+  <div class="slide-content">
+    <div class="content1">
+      <form action="">
+        <div class="input-group">
+            <label class="field-label email-label" for="email" name="email">Email or phone</label>
+            <input type="text" class="field email-field" id="email" placeholder="">   
+        </div>
+        <div class="input-group">
+          <label class="field-label password-label" for="password">Password</label>
+          <input type="password" class="field password-field" id="password" placeholder="">
+        </div>
+        <span class="forgot"><a href="register.html">Forgot email?</a></span>
+        <div class="info">
+            Not your computer? Use Guest mode to sign in privately.
+        </div>
+        <div class="create-next">
+            <span><a href="register.html">Create account</a></span>
+            <button class="btn" id="next" type="submit" name="email_submit" >Next</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 <script src="../js/signin.js"></script>
-  </body>
+</body>
 </html>
