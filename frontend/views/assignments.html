@@ -28,9 +28,9 @@
                 <div>Assignment</div>
             </div>
             <div class="nav-left flex">
-                <button class="bg-blue btn">Assign</button>
-                <div class="bg-blue btn flex center"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
-                        class=" NMm5M svg-white">
+                <button class="nav-assign bg-blue btn">Assign</button>
+                <div class="nav-arrow bg-blue btn flex center"><svg focusable="false" width="24" height="24"
+                        viewBox="0 0 24 24" class=" NMm5M svg-white">
                         <path d="M7 10l5 5 5-5H7z"></path>
                     </svg></div>
             </div>
@@ -41,65 +41,96 @@
     <div class="content flex">
         <div class="assignment-details flex column">
             <!-- assignment text -->
-            <div class="card flex1">
-                <div class="">Title</div>
-                <div class="">Instructions (optional)</div>
+            <div class="assignment-text card flex column flex1 gap10">
+                <div class="input-div bg-grey">
+                    <label for="title">Title</label>
+                    <textarea name="title" id="title" class="textarea width100 bg-grey"></textarea>
+                </div>
+                <div class="input-div bg-grey flex1">
+                    <label for="title">Instructions (optional)</label>
+                    <textarea name="title" id="title" class="textarea width100 bg-grey"></textarea>
+                </div>
             </div>
             <!-- assignment attachments -->
-            <div class="flex flex1 column card">Attach
-                <div class="flex">
-                    <div class="b-circle"><img src="/assets/svgs/youtube.svg" alt="youtube-icon" class="icon"></div>
-                    <div class="b-circle"><svg width="36" height="36" viewBox="0 0 36 36">
+            <div class="assignment-attach flex flex1 column card">
+                <div>Attach</div>
+                <div class="flex attach-icons">
+                    <div class="b-circle flex center"><img src="/assets/svgs/g-drive.svg" alt="g-drive-icon" class="icon"></div>
+                    <div class="b-circle flex center"><img src="/assets/svgs/youtube.svg" alt="youtube-icon" class="icon"></div>
+                    <div class="b-circle flex center"><svg width="36" height="36" viewBox="0 0 36 36">
                             <path fill="#34A853" d="M16 16v14h4V20z"></path>
                             <path fill="#4285F4" d="M30 16H20l-4 4h14z"></path>
                             <path fill="#FBBC05" d="M6 16v4h10l4-4z"></path>
                             <path fill="#EA4335" d="M20 16V6h-4v14z"></path>
                             <path fill="none" d="M0 0h36v36H0z"></path>
                         </svg></div>
-                    <div class="b-circle"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
+                    <div class="b-circle flex center"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
                             class=" NMm5M svg-blue">
                             <path
                                 d="M4 15h2v3h12v-3h2v3c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2m4.41-7.59L11 7.83V16h2V7.83l2.59 2.59L17 9l-5-5-5 5 1.41 1.41z">
                             </path>
                         </svg></div>
-                    <div class="b-circle"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
+                    <div class="b-circle flex center"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
                             class=" NMm5M svg-blue">
                             <path
                                 d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2z">
                             </path>
                             <path d="M8 11h8v2H8z"></path>
                         </svg></div>
-                    <div class="b-circle"><img src="/assets/svgs/g-drive.svg" alt="g-drive-icon" class="icon"></div>
                 </div>
             </div>
         </div>
         <!-- assignment options -->
-        <div class="assignment-options column card">For
-            <div class="flex">
-                <div>class name</div>
-                <div>students</div>
+        <div class="assignment-options column card">
+            <p>For</p>
+            <div class="flex gap10">
+                <div class="nav-left flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">Class name</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+                <div class="nav-left flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">All Students</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
             </div>
-            <div>Points</div>
-            <div>Due</div>
-            <div>Topic</div>
+            <p>Points</p>
+            <div class="flex">
+                <div class="nav-left flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">100</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+            </div>
+            <p>Due</p>
+            <div class="flex">
+                <div class="nav-left flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">No Due Date</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+            </div>
+            <p>Topic</p>
+            <div class="flex">
+                <div class="nav-left flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">Topic</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- <div class="container flex column width50">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
-        <label for="instructions">Instructions</label>
-        <input type="text" id="instructions" name="instructions">
-        <label for="class">Class</label>
-        <input type="text" id="class" name="class">
-        <label for="students">Students</label>
-        <input type="text" id="students" name="students">
-        <label for="points">Points</label>
-        <input type="text" id="points" name="points">
-        <label for="due">Due</label>
-        <input type="text" id="due" name="due">
-        <label for="topic">Topic</label>
-        <input type="text" id="topic" name="topic">
-    </div> -->
     <script src="/frontend/js/assignment.js"></script>
 </body>
 

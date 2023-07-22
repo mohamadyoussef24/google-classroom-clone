@@ -8,7 +8,7 @@ html {
 
 body {
     margin: 0;
-    height: 100vh;
+    height: 98vh;
 }
 
 /* navbar */
@@ -24,17 +24,79 @@ body {
 .nav-right {
     justify-content: space-between;
     align-items: center;
+    /* padding-right: 20px; */
+}
+
+.nav-left {
+    gap: 1px;
+}
+
+.btn {
+    height: 32px;
+    width: 96px;
+    border: none;
+    color: #fff;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+}
+
+.nav-assign {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.nav-arrow {
+    width: 20px;
+    border-radius: 0px 4px 4px 0px;
 }
 
 /* content */
 .content {
     height: 90%;
+    gap: 10px;
 }
 
 .assignment-details {
-    width: 60%;
+    width: 75%;
+    padding: 20px;
+    gap: 20px;
 }
 
 .assignment-options {
-    width: 40%;
+    width: 25%;
+    border-radius: 0px;
+    border-top: none;
+    font-size: 12px;
+}
+
+.assignment-text {
+    justify-content: space-around;
+}
+
+.input-div {
+    border-bottom: 1px solid #5f6368;
+}
+
+.textarea {
+    border: none;
+    overflow: hidden;
+    height: 60%;
+}
+
+.textarea:focus {
+    outline: none;
+}
+
+/* attachments */
+.assignment-attach {
+    justify-content: space-between;
+}
+
+.attach-icons {
+    align-self: center;
+    width: 60%;
+    justify-content: space-around;
+}
+
+.assignment-option {
+    color: #5f6368;
+    /* height: 48px; */
 }
