@@ -23,7 +23,7 @@ if ($num_rows == 0) {
         $response['user_id'] = $id;
         $response['email'] = $email;
         $response['first_name'] = $first_name;
-        $response['last_name'] = $first_name;
+        $response['last_name'] = $last_name;
     } else {
         $response['status'] = "wrong password";
     }
