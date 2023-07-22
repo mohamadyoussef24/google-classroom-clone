@@ -7,20 +7,55 @@
     <link rel="stylesheet" href="../css/signin.css">
   </head>
   <body>
-    <section class="container">
-    <img src="/assets/images/google_logo.png" alt="google logo" class="google_logo">
-    <p class="signin_title">Sign In</p>
-    <p>Use your Google Account</p>
-    <div class="first_input">
-    <input type="text" placeholder="Email or Phone" class="email_input"></input>
-    <a href="#" class="forgot_email">forgot email?</a><br><br>
-    <p>Not your computer? Use Guest mode to sign in privately.</p>
-    <a href="#" class="learn_more">Learn more</a><br><br>
-    <div class="row_direction">
-    <a href="#" class="create_account" id="create_acc">Create account</a>
-    <a href="#" class="button" id="btn_next">Next</a>
+
+<div class="main">
+  <div class="menu">
+    <div class="menu-icon">
+        <img src="../css/img/menu.svg" alt="">
     </div>
+    <div class="menu-items">
+        <ul>
+            <li id="about">About</li>
+            <li id="overlay-btn">Overlay</li>
+            <li>Instagram</li>
+            <li>Contact</li>
+            <li>etc...</li>
+        </ul>
     </div>
-</section>
+  </div>
+
+  <div class="logo">
+    <img src="../css/img/logo.png" alt="logo" class="logo-img">
+  </div>
+  <h1 class="heading">
+    <div class="h_main">Sign in</div>
+    <div class="h_sub">with your Google Account</div>
+  </h1>
+
+    <div class="slide-content">
+
+      <div class="content1">
+        <form action="">
+          <div class="input-group">
+              <label class="field-label email-label" for="email" name="email">Email or phone</label>
+              <input type="text" class="field email-field" id="email" placeholder="">   
+          </div>
+          <div class="input-group">
+            <label class="field-label password-label" for="password">Password</label>
+            <input type="password" class="field password-field" id="password" placeholder="">
+          </div>
+          <span class="forgot"><a href="register.html">Forgot email?</a></span>
+          <div class="info">
+              Not your computer? Use Guest mode to sign in privately.
+          </div>
+          <div class="create-next">
+              <span><a href="register.html">Create account</a></span>
+              <button class="btn" id="next" type="submit" name="email_submit" >Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+<script src="../js/signin.js"></script>
   </body>
 </html>

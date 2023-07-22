@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <title>Google Classroom</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="logo">
+        <img src="../css/img/logo.png" alt="logo" class="logo-img" />
+      </div>
+      <h1 class="heading">
+        <div class="h_main">Register</div>
+        <div class="h_sub">to a new Google Account</div>
+      </h1>
+
+      <div class="slide-content">
+        <div class="content1">
+          <form id="register_form">
+            <div>
+              <input type="text" id="first_name" placeholder="First Name" />
+              <input type="text" id="last_name" placeholder="Last Name" />
+            </div>
+            <div>
+              <input type="text" id="email" placeholder="email" /><br />
+
+              <span>you can use letters,numbers&periods</span> <br />
+              <span>Use my current email adress instead </span>
+            </div>
+
+            <br />
+            <div>
+              <input type="text" id="password" placeholder="Password" />
+              <input
+                type="text"
+                id="recovery_email"
+                placeholder="Recovery_email"
+              />
+              <br />
+              <span
+                >Use 8 or more characters with mix of letters ,numbers &
+                symbols</span
+              >
+            </div>
+            <br />
+            <div>
+              <span><a href="signin.html">Signin instead</a></span>
+              <button type="submit" id="submit">Register</button>
+            </div>
+            <!-- <div class="input-group">
+              <label class="field-label email-label" for="email" name="email">Email or phone</label>
+              <input type="text" class="field email-field" id="email" placeholder="">   
+          </div>
+          <div class="input-group">
+            <label class="field-label password-label" for="password">Password</label>
+            <input type="password" class="field password-field" id="password" placeholder="">
+          </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="../js/register.js"></script>
+  </body>
+</html>
