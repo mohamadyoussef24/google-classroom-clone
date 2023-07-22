@@ -1,0 +1,71 @@
+.flex {
+    display: flex;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.svg-blue {
+    fill: #1967d2;
+}
+
+.svg-grey {
+    fill: #5f6368;
+}
+
+.svg-white {
+    fill: #fff;
+}
+
+.bg-grey {
+    background-color: #f8f9fa;
+}
+
+.bg-blue {
+    background-color: rgb(66,133,244);
+}
+
+.card {
+    border: #dadce0 1px solid;
+    border-radius: 8px;
+    background-color: white;
+    padding: 24px;
+}
+
+.b-circle {
+    border-radius: 100%;
+    border: #ebedef 1px solid;
+    width: 48px;
+    height: 48px;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+}
+
+.btn {
+    height: 48px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+}
