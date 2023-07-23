@@ -108,3 +108,25 @@ const modifyInfo = () => {
 
 
 submit.addEventListener("click", modifyInfo)
+
+
+const save_picture = document.getElementById('save_picture')
+
+const  handleFile = ()=> {
+  const fileInput = document.getElementById("profile_pic");
+
+  
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0]; 
+
+    console.log("File name:", file.name);
+    console.log("File type:", file.type);
+    console.log("File size (in bytes):", file.size);
+
+  } else {
+    console.log("No file selected.");
+  }
+}
+
+
+save_picture.addEventListener('click', handleFile)
