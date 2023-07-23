@@ -5,14 +5,7 @@
 }
 
 
-.create-group-form{
-  font-family: 'Muli', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 65%;
-}
+
 
 .form-control {
   position: relative;
@@ -191,9 +184,21 @@ body.active .wrapper .section{
 #create_class_requirements{
 	display: none;
 	margin: 30px;
+	font-family: 'Muli', sans-serif;
+	
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 65%;
 }
 #join_class_requirements{
 	display: none;
+	font-family: 'Muli', sans-serif;
+	
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 65%;
 }
 .userimg{
 	width: 45px;
@@ -268,4 +273,8 @@ padding-right: 20px;
 margin-left: 20px;
 margin-top: 12px;
 
+}
+
+.cursorpointer{
+	cursor: pointer;
 }

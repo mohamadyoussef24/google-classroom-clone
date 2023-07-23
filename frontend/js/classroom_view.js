@@ -45,12 +45,12 @@ const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 // })
 
 
+
+const join_class = document.getElementById('join_class')
+const join_class_requirements = document.getElementById('join_class_requirements')
+
 const create_class = document.getElementById('create_class')
 const create_class_requirements = document.getElementById('create_class_requirements')
-
-
-
-
 
 const submit_class_info = document.getElementById('submit_class_info')
 
@@ -93,11 +93,13 @@ if (data.status  == "success") {
 submit_class_info.addEventListener('click', createClass)
 
 
-const join_class = document.getElementById('join_class')
+
 
 join_class.addEventListener('click', function(){
   if (join_class_requirements.style.display == "flex") {
+    if (create_class_requirements.style.display == "flex") {
     create_class_requirements.style.display = "none";
+  }
     join_class_requirements.style.display = "none";
   } else {
     join_class_requirements.style.display = "flex";
@@ -110,10 +112,12 @@ join_class.addEventListener('click', function(){
 
 ////user presses the buttons at the same time....
 
+
 create_class.addEventListener('click', function(){
   if (create_class_requirements.style.display == "flex") {
-    create_class_requirements.style.display = "none";
-    join_class_requirements.style.display = "none";
+    create_class_requirements.style.display = "none" ;
+    if (join_class_requirements.style.display == "flex") {
+    join_class_requirements.style.display = "none" ;}
   } else {
     create_class_requirements.style.display = "flex";
     join_class_requirements.style.display = "none";
@@ -124,12 +128,11 @@ create_class.addEventListener('click', function(){
 
 ////cancelling the form
 
-// let cancel_form = document.getElementById("cancel_form")
-// create_class.addEventListener('click', function(){
-//     create_class_requirements.style.display = "none";
-//     join_class_requirements.style.display = "none";
-  
-// })
+let cancel_form = document.getElementById("cancel_form")
+create_class.addEventListener('click', function(e){
+  e.preventDefault();
+
+})
 
 
 
