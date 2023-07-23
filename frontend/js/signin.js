@@ -1,12 +1,19 @@
 const nextButton = document.getElementById("next");
+const infoDiv = document.querySelector(".info");
 
 const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
+const isEmailValid = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 const signin = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
+  console.log("email:", email);
+  console.log("password:", password);
 
   try {
     const user_info = new FormData();
@@ -17,9 +24,10 @@ const signin = () => {
       method: "POST",
       body: user_info,
     })
-      .then((res) => res.json()) 
+      .then((res) => res.json()) // Parse the response as JSON
       .then((data) => {
-        if (data.status === 'logged in') { 
+        console.log("Server Response:", data);
+        if (data.status === 'logged in') { // Check for "logged in" status
           const user_id = data.user_id;
           const email = data.email;
 
@@ -27,21 +35,69 @@ const signin = () => {
           localStorage.setItem("user_id", user_id);
           window.location.replace("../views/classroom_view.html");
         } else {
-          console.log("Login failed:", data.status);
+          infoDiv.textContent = "Login failed: " + data.status;
         }
       })
       .catch((err) => {
-        console.log("Fetch error:", err);
-      });
+        infoDiv.textContent = "Fetch error: " + err; 
+            });
   } catch (err) {
-    console.log("Error:", err);
-  }
+    infoDiv.textContent = "Error: " + err;  }
 };
 
 nextButton.addEventListener("click", function (e) {
   e.preventDefault();
   signin();
 });
+
+
+
+
+
+
+
+// const nextButton = document.getElementById("next");
+
+// const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
+// const login = () => {
+//   const email = document.getElementById("email").value;
+
+//   try {
+//     const user_info = new FormData();
+//     user_info.append("email", email);
+
+//     fetch(base_url + 'signin.php', {
+//       method: "POST",
+//       body: user_info,
+//     })
+//       .then((res) => res.json())
+//       .then((res) => {
+//         if (res.status === 'success') {
+//           const user_id = res.user_id;
+//           localStorage.setItem("user_id", user_id);
+//           window.location.replace("../views/classroom_view.html");
+//         }
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// nextButton.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   login();
+// });
+
+
+
+
+
+
+
 
 
 
