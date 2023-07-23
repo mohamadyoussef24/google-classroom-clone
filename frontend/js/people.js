@@ -32,11 +32,20 @@ window.onload = async function () {
     };
 
     try {
-        const assignments = await fetch("http://localhost/google-classroom-backend/get_people.php", requestOptions)
+        const assignments = await fetch("http://localhost/google-classroom-backend/get_students.php", requestOptions)
         const json = await assignments.json()
         console.log(json)
         displayParticipants(json, "students")
-        // displayParticipants(array2, "teachers")
+    }
+    catch (e) {
+        console.log("failed to fetch", e)
+    }
+
+    try {
+        const assignments = await fetch("http://localhost/google-classroom-backend/get_teachers.php", requestOptions)
+        const json = await assignments.json()
+        console.log(json)
+        displayParticipants(json, "teachers")
     }
     catch (e) {
         console.log("failed to fetch", e)
