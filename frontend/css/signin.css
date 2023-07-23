@@ -10,8 +10,6 @@ body{
     font-family: 'Open Sans', sans-serif;
     background:#e0e3e9;
     color:rgb(58, 71, 83);
-    margin-left: 30%;
-    margin-top:10%;
 }
 *,*:before,*:after{
     margin:0;
@@ -81,47 +79,6 @@ body{
 .menu>.menu-icon>img{
     height:48%;
 }
-/* .menu.active>.menu-icon{
-    background:rgb(168, 180, 190);
-}
-.about-wrapper.active .menu.active>.menu-icon{
-    background:rgb(0, 140, 255);
-}
-.menu>.menu-icon:hover{
-    background:rgb(168, 180, 190);
-}
-
-.menu>.menu-items{
-    position:absolute;
-    top:35px;
-    right:-10px;
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.38);
-    padding:10px 0;
-    background:#fff;
-    border-radius: 4px;
-    transform:scale(.7);
-    opacity:0;
-    transform-origin:top right;
-    transition:.15s;
-}
-.menu.active>.menu-items{
-    right:5px;
-    opacity:1;
-    transform:scale(1);
-}
-.menu>.menu-items ul{
-    list-style-type: none;
-}
-.menu>.menu-items ul>li{
-    padding:5px 22px 5px 20px;
-    font-size:14px;
-    font-weight:600;
-    color:rgb(49, 68, 75);
-}
-.menu>.menu-items ul>li:hover{
-    background: #d4dae0;
-}
-*/
 .menu-items {
     display: none; 
 }
