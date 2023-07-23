@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>classRoom View</title>
+    <title>classroom View</title>
   </head>
   <body class="active">
     <div class="wrapper">
@@ -34,8 +34,8 @@
           <div class="dropdown">
             <span onclick="myFunction()" class="dropbtn">+</span>
             <div id="myDropdown" class="dropdown-content">
-              <a href="#join" id="join_class">Join class</a>
-              <a href="#create" id="create_class">Create class</a>
+              <a  id="join_class">Join class</a>
+              <a  id="create_class">Create class</a>
             </div>
           </div>
           <a href="#"
@@ -115,7 +115,7 @@
       <label for="room">Room</label>
     </div>
     <div class=" button-container">
-      <button id="cancel_form">Cancel</button>
+      <button   id="cancel_form" value="Cancel" formnovalidate>Cancel</button>
       <button id="submit_class_info">Create</button>    
     </div>
   </form>
@@ -131,14 +131,11 @@
         <label for="join_class_code">Enter Joining code</label>
       </div>
       <div class=" button-container">
-      <button id="cancel_form">Cancel</button>
+      <button id="cancel_form" formnovalidate value="Cancel">Cancel</button>
       <button id="submit_code">Join now</button>
     </div>
-   </form>
+  </form>
 
-    <button id="class_options">+</button>
-    <div id="class_options1">
-    <button id="join_class">Join</button>
 
     <script src="../js/classroom_view.js"></script>
   </body>
