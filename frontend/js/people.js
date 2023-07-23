@@ -53,9 +53,15 @@ window.onload = async function () {
 }
 
 const invite_btn = document.getElementById("invite_icon")
+const invite_btn2 = document.getElementById("invite_icon2")
 const cancel_btn = document.getElementById("cancel_icon")
 
 invite_btn.addEventListener('click', function(){
+        let overlay = document.getElementById('overlay');
+        overlay.style.display = "flex";
+})
+
+invite_btn2.addEventListener('click', function(){
         let overlay = document.getElementById('overlay');
         overlay.style.display = "flex";
 })
