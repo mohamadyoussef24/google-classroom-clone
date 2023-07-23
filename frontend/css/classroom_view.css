@@ -24,57 +24,32 @@ body{
 	transition: all 0.5s ease;
 }
 
-.wrapper .sidebar .profile{
-	margin-bottom: 30px;
-	text-align: center;
-}
-
-.wrapper .sidebar .profile img{
-	display: block;
-	width: 100px;
-	height: 100px;
-    border-radius: 50%;
-	margin: 0 auto;
-}
-
-.wrapper .sidebar .profile h3{
-	color: #ffffff;
-	margin: 10px 0 5px;
-}
-
-.wrapper .sidebar .profile p{
-	color: rgb(206, 240, 253);
-	font-size: 14px;
-}
 
 .wrapper .sidebar ul li a{
 	display: block;
 	padding: 13px 30px;
-	border-bottom: 1px solid #10558d;
-	color: rgb(241, 237, 237);
+	color: #555454;
 	font-size: 16px;
 	position: relative;
 }
 
+
+
 .wrapper .sidebar ul li a .icon{
-	color: #dee4ec;
+	color: #555454;
 	width: 30px;
 	display: inline-block;
 }
 
- 
-
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active{
-	color: #ffffff;
-
+	font-weight: bolder;
 	background:rgb(255, 255, 255);
-    border-right: 2px solid rgb(5, 68, 104);
 }
 
 .wrapper .sidebar ul li a:hover .icon,
 .wrapper .sidebar ul li a.active .icon{
-	color: #ffffff;
+	color: #555454;
 }
 
 .wrapper .sidebar ul li a:hover:before,
@@ -99,15 +74,16 @@ body{
 }
 
 .wrapper .section .top_navbar .hamburger a{
-	font-size: 28px;
-	color: #6f6f70;
+	font-size: 20px;
+	padding: 2vh 3vh;
+	border-radius: 30px;
+	background-color: #dedddd;
+	color: #787878;
 }
 
 .wrapper .section .top_navbar .hamburger a:hover{
-	color: #ffffff;
-}
+font-size: x-large;}
 
- 
 
 body.active .wrapper .sidebar{
 	left: -55vh;
