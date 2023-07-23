@@ -8,9 +8,8 @@ const validateForm = () => {
     const last_name = document.getElementById("last_name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const recovery_email = document.getElementById("recovery_email").value;
 
-    if (!first_name || !last_name || !email || !password || !recovery_email) {
+    if (!first_name || !last_name || !email || !password) {
         infoDiv.textContent = "All fields are required.";
         infoDiv.style= 'color: red;font-weight:bold;font-size:14px;';
         return false;
@@ -23,7 +22,9 @@ const validateForm = () => {
         return false;
     }
 
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
     if (!password.match(passwordRegex)) {
         infoDiv.textContent = "Password must be at least 8 characters long and contain letters and numbers.";
         infoDiv.style= 'color: red;font-weight:bold;font-size:14px;';
@@ -38,12 +39,10 @@ const register = () => {
         return;
     }
 
-
     const first_name = document.getElementById("first_name").value;
     const last_name = document.getElementById("last_name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const recovery_email = document.getElementById("recovery_email").value;
     
     try {
         const user_info = new FormData();
@@ -51,7 +50,6 @@ const register = () => {
         user_info.append("last_name", last_name);
         user_info.append("email", email);
         user_info.append("password", password);
-        user_info.append("recovery_email", recovery_email);
 
         fetch(base_url + 'register.php', {
             method: "POST",

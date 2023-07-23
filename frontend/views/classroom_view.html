@@ -3,7 +3,8 @@
   <head>
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
     <link rel="stylesheet" href="../css/classroom_view.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,7 +21,11 @@
             </a>
           </div>
           <div class="nav-logo">
-            <img src="../../assets/images/logo.svg" id="google-img" alt="Google">
+            <img
+              src="../../assets/images/logo.svg"
+              id="google-img"
+              alt="Google"
+            />
             <span class="logoname">Classroom</span>
           </div>
         </div>
@@ -29,16 +34,23 @@
           <div class="dropdown">
             <span onclick="myFunction()" class="dropbtn">+</span>
             <div id="myDropdown" class="dropdown-content">
-              <a href="#join">Join class</a>
-              <a href="#create">Create class</a>
+              <a href="#join" id="join_class">Join class</a>
+              <a href="#create" id="create_class">Create class</a>
             </div>
           </div>
-          <a href="#"><img src="../../assets/821996-200.png" alt="bento-menu" class="bento"></a>
-          <a href="#"><img src="../../assets/usericon.png" alt="usericon" class="userimg"></a>
+          <a href="#"
+            ><img
+              src="../../assets/821996-200.png"
+              alt="bento-menu"
+              class="bento"
+          /></a>
+          <a href="#"
+            ><img
+              src="../../assets/usericon.png"
+              alt="usericon"
+              class="userimg"
+          /></a>
         </div>
-
-
-
       </div>
       <div class="sidebar">
         <ul>
@@ -74,8 +86,38 @@
               <span class="item">Settings</span>
             </a>
           </li>
-        </ul>  
+        </ul>
       </div>
+    </div>
+    
+    <!--  -->
+    <button id="class_options">+</button>
+    <div id="class_options1">
+      <label><button id="join_class">Join</button></label>
+      <br />
+      <label><button id="create_class">Create</button></label>
+    </div>
+
+    <div id="join_class_requirements">
+      <label for="join_class_code">Class Code</label>
+      <input type="text" id="join_class_code" />
+      <button id="submit_code">Join</button>
+    </div>
+
+    <div id="create_class_requirements">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Class Name" />
+
+      <label for="section">Section</label>
+      <input type="text" id="section" placeholder="section" />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="subject" />
+
+      <label for="room">Room</label>
+      <input type="text" id="room" placeholder="room" />
+
+      <button id="submit_class_info">Create</button>
     </div>
     <script src="../js/classroom_view.js"></script>
   </body>

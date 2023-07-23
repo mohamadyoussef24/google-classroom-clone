@@ -73,8 +73,10 @@ if ($flag == "onload") {
 
             // Send a response (you can customize this as per your requirements)
 
+            $profile_pic = "user_$id/";
+
             $query = $mysqli->prepare('update users set profile_pic=? where id= ?');
-            $query->bind_param('si', $targetFilePath, $id);
+            $query->bind_param('si', $profile_pic, $id);
             $query->execute();
             echo "File uploaded successfully.";
         } else {
