@@ -11,6 +11,25 @@
 </head>
 
 <body class="container flex column width100">
+    <!-- Modal -->
+    <div class="overlay" id="overlay">
+        <div class="card flex column just-btw">
+            <div class="input-div-upper flex column gap10">
+                <span><b>invite</b> </span>
+                <label for="title">Type a name or email address</label>
+                <input type="text" name="email" id="email" class="email-input"></textarea>
+            </div>
+            <div class="input-div-lower">
+                Teachers added by you can do everything that you can except delete the class.
+            </div>
+            <div class="cancel-invite flex gap10">
+                <span class="modal-links" id="cancel_icon">cancel</span>
+                <span class="modal-links">invite</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
     <header>
         <div class="nav flex width100">
             <div class="nav-left flex gap10">
@@ -19,22 +38,22 @@
                     </svg></div>
                 <div class="flex column">
                     <!-- from database -->
-                    <a class="nav-links" href=""><span><b>classname</b>
+                    <a class="nav-links" href="-"><span><b>classname</b>
                             <br>topic
                         </span></a>
                 </div>
             </div>
             <div class="nav-middle flex gap20">
-                <a class="nav-links" href="">
+                <a class="nav-links" href="-">
                     <div class="nav-div flex center">Stream</div>
                 </a>
-                <a class="nav-links" href="">
+                <a class="nav-links" href="-">
                     <div class="nav-div flex center">Classwork</div>
                 </a>
-                <a class="nav-links" href="">
+                <a class="nav-links" href="-">
                     <div class="nav-div flex center">People</div>
                 </a>
-                <a class="nav-links" href="">
+                <a class="nav-links" href="-">
                     <div class="nav-div flex center">Marks</div>
                 </a>
             </div>
@@ -58,12 +77,12 @@
     <section class="wrapper">
         <div class="title-li">
             <span>Teachers</span>
-            <a href=""><svg class="svg-blue svg-add" focusable="false" width="24" height="24" viewBox="0 0 24 24"
+            <svg class="svg-blue svg-add" id="invite_icon" focusable="false" width="24" height="24" viewBox="0 0 24 24"
                     class=" NMm5M hhikbc">
                     <path
                         d="M9 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1zm3-4v-3h-3V9h3V6h2v3h3v2h-3v3h-2z">
                     </path>
-                </svg></a>
+                </svg>
         </div>
         <ul class="assignments-ul flex column" id="teachers-ul"></ul>
     </section>

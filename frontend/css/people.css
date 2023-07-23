@@ -7,6 +7,53 @@ html {
     font-size: 14px;
 }
 
+.overlay {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+}
+
+.card {
+    width: 400px;
+    height: 450px;
+    font-family: "Google Sans",'Roboto',Arial,sans-serif;
+    color: #5f6368;
+}
+
+.input-div-upper {
+    border-bottom: 1px solid #babec4;
+}
+
+.input-div-lower {
+    padding-top: 5px;
+    border-top: 1px solid #babec4;
+}
+
+.email-input {
+    border: none;
+    outline: none;
+    font-family: "Google Sans",'Roboto',Arial,sans-serif;
+}
+
+.cancel-invite {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-links {
+    text-decoration: none;
+    color: #5f6368;
+    cursor: pointer;
+}
+
 .nav {
     z-index: 2;
     position: sticky;

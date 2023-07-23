@@ -51,3 +51,15 @@ window.onload = async function () {
         console.log("failed to fetch", e)
     }
 }
+
+const invite_btn = document.getElementById("invite_icon")
+const cancel_btn = document.getElementById("cancel_icon")
+
+invite_btn.addEventListener('click', function(){
+        let overlay = document.getElementById('overlay');
+        overlay.style.display = "flex";
+})
+
+cancel_btn.addEventListener('click', function(){
+    overlay.style.display = "none";
+    });
