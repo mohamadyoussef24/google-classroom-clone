@@ -1,3 +1,4 @@
+//this code is for animating the input 
 const inputs = document.querySelectorAll('.form-control input');
 const labels = document.querySelectorAll('.form-control label');
 
@@ -5,10 +6,11 @@ labels.forEach(label => {
   label.innerHTML = label.innerText
     .split('')
     .map((letter, idx) => `<span style="
-        transition-delay: ${idx * 50}ms
+        transition-delay: ${idx * 5}ms
       ">${letter}</span>`)
     .join('');
 });
+////////////////////////////////////////////////
 
 
 var hamburger = document.querySelector(".hamburger");

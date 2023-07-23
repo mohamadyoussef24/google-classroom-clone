@@ -17,30 +17,32 @@
 .form-control {
   position: relative;
   margin: 10px 50px;
-  width: 300px;
+  width: 50vw;
 }
 
 .form-control input {
   border: 0;
-  border-bottom: 2px solid #333;
+  border-bottom: 1px solid #c0c0c0;
   padding: 15px 0;
   display: block;
   font-size: 18px;
   font-family: 'Muli', sans-serif;
   width: 100%;
   transition: 0.1s ease-in;
+  background-color: #efefefbf;
+
 }
 
 .form-control input:focus, 
 .form-control input:valid {
-  border-bottom-color: darksalmon;
+  border-bottom-color: rgb(122, 167, 233);
   outline: none;
 }
 
 .form-control input:focus + label span ,
 .form-control input:valid + label span{
-  color: darksalmon;
-  transform: translateY(-30px);
+  color: rgb(122, 167, 233);
+  transform: translateY(-20px);
 }
 
 .form-control label {
@@ -56,23 +58,18 @@
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.button-container{
+	display: flex;
+	flex-direction: row;
+	padding:10px ;
+	gap: 15px;
+}
+.button-container button{
+	border: 0;
+	background-color: transparent;
+	font-size: 0.9rem;
+	font-weight: 600
+}
 
 
 
@@ -192,7 +189,8 @@ body.active .wrapper .section{
 	display:none;
 }
 #create_class_requirements{
-	display: none
+	display: none;
+	margin: 30px;
 }
 #join_class_requirements{
 	display: none;
