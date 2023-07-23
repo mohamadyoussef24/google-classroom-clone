@@ -32,14 +32,6 @@ body {
     padding-right: 20px;
 }
 
-.btn {
-    height: 32px;
-    width: 96px;
-    border: none;
-    color: #fff;
-    font-family: "Google Sans",Roboto,Arial,sans-serif;
-}
-
 .nav-assign {
     border-radius: 4px 0px 0px 4px;
     cursor: pointer;
