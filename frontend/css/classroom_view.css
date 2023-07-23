@@ -7,12 +7,14 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Open Sans', sans-serif;
+
 }
 
 body{
-	background: #f5f6fa;
-	
-	
+	background: #ffffff;
+	height: 100%;
+	width: 100%;
+		
 }
 
 .wrapper .sidebar{
@@ -24,6 +26,8 @@ body{
 	height: 100%;
 	padding: 7px 0;
 	transition: all 0.5s ease;
+	box-shadow: 5px 1px 20px rgba(196, 196, 196, 0.573);
+	
 }
 .classes{
 background-color: rgba(165, 214, 255, 0.356);
@@ -69,7 +73,6 @@ border-top-right-radius: 33px;
 
 .wrapper .section{
 	width: calc(100% - 55vh);
-	margin-left: 55vh;
 	transition: all 0.5s ease;
 }
 
@@ -78,7 +81,7 @@ border-top-right-radius: 33px;
 	height: 12vh;
 	display: flex;
 	align-items: center;
-	padding: 0 30px;
+	padding: 0 10px;
     border-bottom : solid 1px rgb(224, 224, 235)
  
 }
