@@ -109,3 +109,6 @@ body.active .wrapper .section{
 #class_options1{
 	display:none;
 }
+#create_class_requirements{
+	display: none
+}

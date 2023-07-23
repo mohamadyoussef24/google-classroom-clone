@@ -65,8 +65,25 @@
     <!--  -->
     <button id="class_options">+</button>
     <div id="class_options1">
-      <label id="join_class">Join</label>
-      <label id="create_class">Create</label>
+      <label><button id="join_class">Join</button></label>
+      <br />
+      <label><button id="create_class">Create</button></label>
+    </div>
+
+    <div id="create_class_requirements">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Class Name" />
+
+      <label for="section">Section</label>
+      <input type="text" id="section" placeholder="section" />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="subject" />
+
+      <label for="room">Room</label>
+      <input type="text" id="room" placeholder="room" />
+
+      <button id="submit_class_info">Create</button>
     </div>
     <script src="../js/classroom_view.js"></script>
   </body>
