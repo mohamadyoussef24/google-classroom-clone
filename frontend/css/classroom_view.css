@@ -105,15 +105,85 @@ body.active .wrapper .section{
 	width: 100%;
 }
 .userimg{
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
 	border-radius: 50%;
 }
 .right-section{
-	background-color: #787878;
+	
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-around;
 	position: absolute;
 	top: 0;
 	right: 0;
+	width: 15%;
+	height: 80px;
+	align-items:center;
+	
+
+}
+
+.dropbtn {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0;
+	font-size: 40px;
+	cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus  {
+	background-color: rgba(128, 128, 128, 0.185);
+	border-radius: 50%;
+  }
+  
+  .dropdown {
+	
+	position: relative;
+	display: inline-block;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	right: 0;
+	z-index: 1;
+  }
+  
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+.bento{
+	width: 20px;
+	height: 20px;
+
+  }
+.logoname{
+	
+	position: absolute;
+	top: 40px;
+	color: #5f6368;
+	font-family: "Product Sans",Arial,Helvetica,sans-serif;
+    font-size: 1.38125rem;
+    position: relative;
+    top: -0.375rem;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+	  
+}
+.nav-logo{
+	position: absolute;
+	top: 27px;
+	left: 85px;
 }
