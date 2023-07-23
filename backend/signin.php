@@ -4,15 +4,14 @@ include('connection.php');
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-
-$query = $mysqli->prepare('select id,email,password,first_name,last_name,recovery_email,profile_pic
+$query = $mysqli->prepare('select id,email,password,first_name,last_name,profile_pic
 from users 
 where email=?');
 $query->bind_param('s', $email);
 $query->execute();
 
 $query->store_result();
-$query->bind_result($id, $email, $hashed_password, $first_name, $last_name, $recovery_email, $profile_pic);
+$query->bind_result($id, $email, $hashed_password, $first_name, $last_name, $profile_pic);
 $query->fetch();
 $num_rows = $query->num_rows();
 
