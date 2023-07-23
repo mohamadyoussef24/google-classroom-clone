@@ -1,12 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link rel="stylesheet" href="../css/classroom_view.css" />
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Google Classroom</title>
+    <title>classRoom View</title>
   </head>
-  <body>
-    <p>hellooooooooooooooo</p>
-    <script src="../js/classroom_classes.js"></script>
+  <body class="active">
+    <div class="wrapper">
+      <div class="section">
+        <div class="top_navbar">
+          <div class="hamburger">
+            <a href="#">
+              <i class="fas fa-bars"></i>
+            </a>
+          </div>
+          <div class="nav-logo">
+            <img
+              src="../../assets/images/logo.svg"
+              id="google-img"
+              alt="Google"
+            />
+            <span class="logoname">Classroom</span>
+          </div>
+        </div>
+
+        <div class="right-section">
+          <div class="dropdown">
+            <span onclick="myFunction()" class="dropbtn">+</span>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#join">Join class</a>
+              <a href="#create">Create class</a>
+            </div>
+          </div>
+          <a href="#"
+            ><img
+              src="../../assets/821996-200.png"
+              alt="bento-menu"
+              class="bento"
+          /></a>
+          <a href="#"
+            ><img
+              src="../../assets/usericon.png"
+              alt="usericon"
+              class="userimg"
+          /></a>
+        </div>
+      </div>
+      <div class="sidebar">
+        <ul>
+          <li class="classes">
+            <a href="#">
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="item">Classes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-calendar"></i></span>
+              <span class="item">Calendar</span>
+            </a>
+          </li>
+          <hr />
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-check"></i></span>
+              <span class="item">To-do</span>
+            </a>
+          </li>
+          <hr />
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-archive"></i></span>
+              <span class="item">Archived classes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="item">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p>
+      fsdfsdfsffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd
+    </p>
+    <!--  -->
+    <button id="class_options">+</button>
+    <div id="class_options1">
+      <label><button id="join_class">Join</button></label>
+      <br />
+      <label><button id="create_class">Create</button></label>
+    </div>
+
+    <div id="join_class_requirements">
+      <label for="join_class_code">Class Code</label>
+      <input type="text" id="join_class_code" />
+      <button id="submit_code">Join</button>
+    </div>
+
+    <div id="create_class_requirements">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Class Name" />
+
+      <label for="section">Section</label>
+      <input type="text" id="section" placeholder="section" />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="subject" />
+
+      <label for="room">Room</label>
+      <input type="text" id="room" placeholder="room" />
+
+      <button id="submit_class_info">Create</button>
+    </div>
+    <script src="../js/classroom_view.js"></script>
   </body>
 </html>

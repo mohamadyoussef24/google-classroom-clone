@@ -22,7 +22,7 @@ if ($flag == "onload") {
     $response['last_name'] = $last_name;
     // $response['profile_pic'] = $profile_pic;
     echo json_encode($response);
-} else {
+} elseif ($flag == "not onload") {
     $email = $_POST['email'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
@@ -37,31 +37,50 @@ if ($flag == "onload") {
     $response['first_name'] = $first_name;
     $response['last_name'] = $last_name;
     echo json_encode($response);
+} else {
+    $id = $_POST['id'];
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    echo $root;
+    $dir = "./users/user_$id";
+
+    if (!file_exists($dir)) {
+
+        if (mkdir($dir, 0755, true)) {
+            echo "Directory created successfully.";
+        } else {
+            echo "Failed to create the directory.";
+        }
+    } else {
+        echo "Directory already exists.";
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if (isset($_FILES["file"])) {
+            $file = $_FILES["file"];
+
+            // File properties
+            $fileName = $file["name"];
+            $fileTmpName = $file["tmp_name"];
+            $fileSize = $file["size"];
+            $fileError = $file["error"];
+
+            // Handle the file as needed (e.g., move it to a specific location)
+            // Example:
+
+            $targetDir = "./users/user_$id/";
+            $targetFilePath = $targetDir . $fileName;
+            move_uploaded_file($fileTmpName, $targetFilePath);
+
+            // Send a response (you can customize this as per your requirements)
+
+            $profile_pic = "user_$id/";
+
+            $query = $mysqli->prepare('update users set profile_pic=? where id= ?');
+            $query->bind_param('si', $profile_pic, $id);
+            $query->execute();
+            echo "File uploaded successfully.";
+        } else {
+            echo "No file uploaded.";
+        }
+    }
 };
-
-// $id = $_POST['user_id'];
-// $first_name = $_POST['first_name'];
-// $last_name = $_POST['last_name'];
-// $profile_pic = $_POST["profile_pic"];
-
-
-// $query = $mysqli->prepare('update users set first_name=?,last_name=?,profile_pic=? where id= ?');
-// $query->bind_param('sss', $first_name, $last_name, $profile_pic);
-// $query->execute();
-
-// $response['status'] = "success";
-
-// $folderName = "./users/user_$id";
-
-// if (!file_exists($folderName)) {
-//     if (mkdir($folderName)) {
-//         echo "Folder '$folderName' created successfully.";
-//     } else {
-//         echo "Failed to create folder '$folderName'.";
-//     }
-// } else {
-//     echo "Folder '$folderName' already exists.";
-// };
-
-
-// echo json_encode($response);
