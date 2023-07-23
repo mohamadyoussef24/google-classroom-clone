@@ -6,6 +6,22 @@
     flex: 1;
 }
 
+.just-btw {
+    justify-content: space-between;
+}
+
+.gap10 {
+    gap: 10px;
+}
+
+.gap5 {
+    gap: 5px;
+}
+
+.gap20 {
+    gap: 20px;
+}
+
 .column {
     flex-direction: column;
 }
@@ -40,7 +56,7 @@
 }
 
 .bg-blue {
-    background-color: rgb(66,133,244);
+    background-color: #1967d2;
 }
 
 .card {
@@ -58,13 +74,17 @@
 }
 
 .icon {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .btn {
-    height: 48px;
-    border-radius: 8px;
+    height: 32px;
+    width: 96px;
     border: none;
     color: #fff;
     font-family: "Google Sans",Roboto,Arial,sans-serif;

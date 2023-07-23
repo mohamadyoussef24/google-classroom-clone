@@ -13,13 +13,14 @@
     <!-- header -->
     <header>
         <div class="nav flex width100">
-            <div class="nav-right flex">
+            <div class="nav-left flex">
                 <div><svg focusable="false" width="24" height="24" viewBox="0 0 24 24" class=" NMm5M svg-grey">
                         <path
                             d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
                         </path>
                     </svg></div>
-                <div><svg focusable="false" width="24" height="24" viewBox="0 0 24 24" class=" NMm5M hhikbc svg-blue">
+                <div class="b-circle small flex center"><svg focusable="false" width="24" height="24"
+                        viewBox="0 0 24 24" class=" NMm5M hhikbc svg-blue">
                         <path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7z"></path>
                         <path
                             d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04a2.008 2.008 0 0 0-1.44 1.19c-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z">
@@ -27,10 +28,10 @@
                     </svg></div>
                 <div>Assignment</div>
             </div>
-            <div class="nav-left flex">
-                <button class="bg-blue btn">Assign</button>
-                <div class="bg-blue btn flex center"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
-                        class=" NMm5M svg-white">
+            <div class="nav-right flex">
+                <button class="nav-assign bg-blue btn" id="create_assignment">Assign</button>
+                <div class="nav-arrow bg-blue btn flex center"><svg focusable="false" width="24" height="24"
+                        viewBox="0 0 24 24" class=" NMm5M svg-white">
                         <path d="M7 10l5 5 5-5H7z"></path>
                     </svg></div>
             </div>
@@ -41,66 +42,119 @@
     <div class="content flex">
         <div class="assignment-details flex column">
             <!-- assignment text -->
-            <div class="card flex1">
-                <div class="">Title</div>
-                <div class="">Instructions (optional)</div>
+            <div class="assignment-text card flex column flex1 gap10">
+                <div class="input-div bg-grey">
+                    <label for="title">Title</label>
+                    <textarea name="title" id="title" class="textarea width100 bg-grey"></textarea>
+                </div>
+                <div class="input-div bg-grey flex1">
+                    <label for="instructions">Instructions (optional)</label>
+                    <textarea name="instructions" id="instructions" class="textarea width100 bg-grey"></textarea>
+                </div>
             </div>
             <!-- assignment attachments -->
-            <div class="flex flex1 column card">Attach
-                <div class="flex">
-                    <div class="b-circle"><img src="/assets/svgs/youtube.svg" alt="youtube-icon" class="icon"></div>
-                    <div class="b-circle"><svg width="36" height="36" viewBox="0 0 36 36">
-                            <path fill="#34A853" d="M16 16v14h4V20z"></path>
-                            <path fill="#4285F4" d="M30 16H20l-4 4h14z"></path>
-                            <path fill="#FBBC05" d="M6 16v4h10l4-4z"></path>
-                            <path fill="#EA4335" d="M20 16V6h-4v14z"></path>
-                            <path fill="none" d="M0 0h36v36H0z"></path>
-                        </svg></div>
-                    <div class="b-circle"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
-                            class=" NMm5M svg-blue">
-                            <path
-                                d="M4 15h2v3h12v-3h2v3c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2m4.41-7.59L11 7.83V16h2V7.83l2.59 2.59L17 9l-5-5-5 5 1.41 1.41z">
-                            </path>
-                        </svg></div>
-                    <div class="b-circle"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
-                            class=" NMm5M svg-blue">
-                            <path
-                                d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2z">
-                            </path>
-                            <path d="M8 11h8v2H8z"></path>
-                        </svg></div>
-                    <div class="b-circle"><img src="/assets/svgs/g-drive.svg" alt="g-drive-icon" class="icon"></div>
+            <div class="assignment-attach flex flex1 column card">
+                <div>Attach</div>
+                <div class="flex attach-icons">
+                    <div class="flex center column">
+                        <div class="b-circle flex center"><img src="/assets/svgs/g-drive.svg" alt="g-drive-icon"
+                                class="icon"></div>
+                        Drive
+                    </div>
+                    <div class="flex center column">
+                        <div class="b-circle flex center"><img src="/assets/svgs/youtube.svg" alt="youtube-icon"
+                                class="icon"></div>
+                        Youtube
+                    </div>
+                    <div class="flex center column">
+                        <div class="b-circle flex center"><svg width="36" height="36" viewBox="0 0 36 36">
+                                <path fill="#34A853" d="M16 16v14h4V20z"></path>
+                                <path fill="#4285F4" d="M30 16H20l-4 4h14z"></path>
+                                <path fill="#FBBC05" d="M6 16v4h10l4-4z"></path>
+                                <path fill="#EA4335" d="M20 16V6h-4v14z"></path>
+                                <path fill="none" d="M0 0h36v36H0z"></path>
+                            </svg></div>
+                        Create
+                    </div>
+                    <div class="flex center column">
+                        <div class="b-circle flex center"><svg focusable="false" width="24" height="24"
+                                viewBox="0 0 24 24" class=" NMm5M svg-blue">
+                                <path
+                                    d="M4 15h2v3h12v-3h2v3c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2m4.41-7.59L11 7.83V16h2V7.83l2.59 2.59L17 9l-5-5-5 5 1.41 1.41z">
+                                </path>
+                            </svg></div>
+                        Upload
+                    </div>
+                    <div class="flex center column">
+                        <div class="b-circle flex center"><svg focusable="false" width="24" height="24"
+                                viewBox="0 0 24 24" class=" NMm5M svg-blue">
+                                <path
+                                    d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2z">
+                                </path>
+                                <path d="M8 11h8v2H8z"></path>
+                            </svg></div>
+                        Link
+                    </div>
                 </div>
             </div>
         </div>
         <!-- assignment options -->
-        <div class="assignment-options column card">For
-            <div class="flex">
-                <div>class name</div>
-                <div>students</div>
+        <div class="assignment-options column card">
+            <p>For</p>
+            <div class="flex gap10">
+                <div class="nav-right flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">Class name</div>
+                    <div class="nav-arrow bg-grey btn flex center" id="arrow2"><svg focusable="false" width="24"
+                            height="24" viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+                <div class="nav-right flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">All Students</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
             </div>
-            <div>Points</div>
-            <div>Due</div>
-            <div>Topic</div>
+            <ul class="dropdown hidden" id="class-ul">
+            </ul>
+            <p>Points</p>
+            <div class="flex">
+                <div class="nav-right flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">100</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+            </div>
+            <p>Due</p>
+            <div class="flex">
+                <div class="nav-right flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">No Due Date</div>
+                    <div class="nav-arrow bg-grey btn flex center" id="arrow5"><svg focusable="false" width="24"
+                            height="24" viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+            </div>
+            <input type="datetime-local" name="due" id="due" class="hidden">
+            <!-- <p>Topic</p>
+            <div class="flex">
+                <div class="nav-right flex">
+                    <div class="assignment-option nav-assign bg-grey btn flex center">Topic</div>
+                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                            viewBox="0 0 24 24" class="svg-grey NMm5M">
+                            <path d="M7 10l5 5 5-5H7z"></path>
+                        </svg></div>
+                </div>
+            </div> -->
         </div>
     </div>
-    <!-- <div class="container flex column width50">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
-        <label for="instructions">Instructions</label>
-        <input type="text" id="instructions" name="instructions">
-        <label for="class">Class</label>
-        <input type="text" id="class" name="class">
-        <label for="students">Students</label>
-        <input type="text" id="students" name="students">
-        <label for="points">Points</label>
-        <input type="text" id="points" name="points">
-        <label for="due">Due</label>
-        <input type="text" id="due" name="due">
-        <label for="topic">Topic</label>
-        <input type="text" id="topic" name="topic">
-    </div> -->
     <script src="/frontend/js/assignment.js"></script>
+    <script>pages.loadFor("showDropdowns")
+        pages.loadFor("createAssignment")</script>
 </body>
 
 </html>
