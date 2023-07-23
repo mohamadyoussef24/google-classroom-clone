@@ -112,3 +112,6 @@ body.active .wrapper .section{
 #create_class_requirements{
 	display: none
 }
+#join_class_requirements{
+	display: none;
+}

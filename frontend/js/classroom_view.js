@@ -29,11 +29,10 @@ class_options.addEventListener('click', function(){
   }
 })
 
-const join_class = document.getElementById('join_class')
+
 const create_class = document.getElementById('create_class')
 const create_class_requirements = document.getElementById('create_class_requirements')
 
-// join_class.addEventListener('click', joinClass)
 create_class.addEventListener('click', function(){
   if (create_class_requirements.style.display == "none") {
     create_class_requirements.style.display = "block";
@@ -83,3 +82,48 @@ if (data.status  == "success") {
 
 
 submit_class_info.addEventListener('click', createClass)
+
+
+
+// 
+
+const join_class = document.getElementById('join_class')
+
+join_class.addEventListener('click', function(){
+  if (join_class_requirements.style.display == "none") {
+    join_class_requirements.style.display = "block";
+  } else {
+    join_class_requirements.style.display = "none";
+  }
+})
+
+const joinClass = () => {
+  const join_class_code = document.getElementById("join_class_code").value
+  const id = localStorage.getItem('user_id')
+  const join_code = new FormData();
+  join_code.append('class_code', join_class_code)
+  join_code.append('user_id', id)
+
+  fetch(base_url + 'join_class.php', {
+    method: "POST",
+    body: join_code,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      
+      if (data.status == 'success') { 
+        const class_id = data.class_id;
+        console.log(class_id)
+        window.location.replace("../views/classroom_stream.html");
+      } else {
+        console.log ("Class failed: " + data.status);
+      }
+    })
+    .catch((err) => {
+      console.log("Fetch error: " + err) 
+          });
+}
+
+const submit_code = document.getElementById('submit_code')
+
+submit_code.addEventListener('click', joinClass)
