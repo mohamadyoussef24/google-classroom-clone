@@ -127,10 +127,10 @@ body.active .wrapper .section{
 .right-section{
 	
 	display: flex;
-	justify-content: right;
-	gap: 15px;
+	justify-content: space-around;
 	align-items: center;
-	width: 50%;
+	width: 20%;
+
 
 }
 .dropbtn {
@@ -142,7 +142,8 @@ body.active .wrapper .section{
   
   .dropbtn:hover, .dropbtn:focus  {
 	background-color: rgba(128, 128, 128, 0.185);
-	border-radius: 30%;
+	border-radius: 50%;
+	padding: 2px;
   }
   
   .dropdown {
@@ -163,7 +164,7 @@ body.active .wrapper .section{
   }
   
   .dropdown-content a {
-	color: rgb(167, 163, 163);
+	color: rgb(0, 0, 0);
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
