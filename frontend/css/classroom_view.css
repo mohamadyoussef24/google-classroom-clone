@@ -74,6 +74,7 @@ border-top-right-radius: 33px;
 	transition: all 0.5s ease;
 	display: flex;
 	flex-direction: row;
+	width: 100%;
 }
 
 .wrapper .section .top_navbar{
@@ -115,28 +116,22 @@ body.active .wrapper .section{
 .right-section{
 	
 	display: flex;
-	justify-content: space-around;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 15%;
-	height: 80px;
-	align-items:center;
-	
+	justify-content: right;
+	gap: 15px;
+	align-items: center;
+	width: 50%;
 
 }
-
 .dropbtn {
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 0;
+
 	font-size: 40px;
+	color: #424345;
 	cursor: pointer;
   }
   
   .dropbtn:hover, .dropbtn:focus  {
 	background-color: rgba(128, 128, 128, 0.185);
-	border-radius: 50%;
+	border-radius: 30%;
   }
   
   .dropdown {
