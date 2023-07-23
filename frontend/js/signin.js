@@ -26,7 +26,7 @@ const signin = () => {
     })
       .then((res) => res.json()) // Parse the response as JSON
       .then((data) => {
-        console.log("Server Response:", data);
+        
         if (data.status === 'logged in') { // Check for "logged in" status
           const user_id = data.user_id;
           const email = data.email;

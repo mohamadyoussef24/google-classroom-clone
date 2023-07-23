@@ -38,7 +38,6 @@ const register = () => {
     const last_name = document.getElementById("last_name").value
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
-    const recovery_email = document.getElementById("recovery_email").value
 
     try {
         const user_info = new FormData();
@@ -46,7 +45,6 @@ const register = () => {
         user_info.append("last_name", last_name)
         user_info.append("email",email)
         user_info.append("password", password)
-        user_info.append("recovery_email", recovery_email)
 
         fetch(base_url + 'register.php', {
             method: "POST",
