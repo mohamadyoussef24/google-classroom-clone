@@ -57,24 +57,25 @@ if ($flag == "onload") {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isset($_FILES["file"])) {
             $file = $_FILES["file"];
-
+    
+            // Generate a unique file name
+            $uniqueFileName = uniqid() . '_' . $file["name"];
+            
             // File properties
-            $fileName = $file["name"];
             $fileTmpName = $file["tmp_name"];
             $fileSize = $file["size"];
             $fileError = $file["error"];
-
+    
             // Handle the file as needed (e.g., move it to a specific location)
             // Example:
-
-            $targetDir = "./users/user_$id/";
-            $targetFilePath = $targetDir . $fileName;
+    
+            $targetDir = "./users/user_$id/"; // This is where the image should be copied
+            $targetFilePath = $targetDir . $uniqueFileName; // Use the generated unique name
             move_uploaded_file($fileTmpName, $targetFilePath);
-
+    
             // Send a response (you can customize this as per your requirements)
-
-            $profile_pic = "user_$id/";
-
+    
+            $profile_pic = "user_$id/" . $uniqueFileName; // Save the unique name in the database
             $query = $mysqli->prepare('update users set profile_pic=? where id= ?');
             $query->bind_param('si', $profile_pic, $id);
             $query->execute();

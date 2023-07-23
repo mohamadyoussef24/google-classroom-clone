@@ -9,12 +9,19 @@
   <body>
   <div class="edit_profile_data">
     <div class="profile">
-      <label for="profile_pic"><h3>Profile Picture</h3></label>
-      <input type="file" id="profile_pic" />
+      <!-- <label for="profile_pic"><h3>Profile Picture</h3></label>
+
+      <input type="file" id="profile_pic" /> -->
+      <label for="imageInput" id="imagePreviewLabel" class="b-circle">
+        <div id="imagePreview"></div>
+    </label>
+    <!-- Hidden input element -->
+    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+
       <div class="btn-for-profile">
-        <button id="cancel_image" class="profile-btn button2">Cancel</button>
         <button id="save_picture" class="profile-btn button1">Save</button>
       </div>
+      
     </div>
     <div class="form-data">
        <label for="first_name">First Name</label>

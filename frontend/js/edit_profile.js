@@ -13,7 +13,7 @@ const submit = document.getElementById('submit')
 let flag ;
 
 
-const profile_pic = document.getElementById("profile_pic").value
+const profile_pic = document.getElementById("imageInput").value
 
 
 
@@ -113,7 +113,7 @@ submit.addEventListener("click", modifyInfo)
 const save_picture = document.getElementById('save_picture')
 
 const  handleFile = ()=> {
-  const fileInput = document.getElementById("profile_pic");
+  const fileInput = document.getElementById("imageInput");
   const id = window.localStorage.getItem("user_id")
   const flag = "Upload pic"
   
@@ -162,3 +162,33 @@ const  handleFile = ()=> {
 
 
 save_picture.addEventListener('click', handleFile)
+
+
+
+
+
+
+
+
+
+///////////////////////// for image ///////////////////
+document.getElementById('imageInput').addEventListener('change', function(event) {
+  const fileInput = event.target;
+  const imagePreview = document.getElementById('imagePreview');
+
+  if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+          imagePreview.style.backgroundImage = `url('${e.target.result}')`;
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+  }
+});
+
+const imagePreviewLabel = document.getElementById('imagePreviewLabel');
+imagePreviewLabel.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default behavior of the label click
+  document.getElementById('imageInput').click();
+});
