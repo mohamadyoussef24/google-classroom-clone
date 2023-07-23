@@ -47,7 +47,7 @@ border-top-right-radius: 33px;
 .wrapper .sidebar ul li a .icon{
 	color: #555454;
 	width: 30px;
-	display: inline-block;
+	
 }
 
 .wrapper .sidebar ul li a:hover,
@@ -72,11 +72,15 @@ border-top-right-radius: 33px;
 .wrapper .section{
 	width: calc(100% - 55vh);
 	transition: all 0.5s ease;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
 
 .wrapper .section .top_navbar{
 	background: rgb(255, 255, 255);
 	height: 12vh;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	padding: 0 10px;
@@ -114,4 +118,77 @@ body.active .wrapper .section{
 }
 #join_class_requirements{
 	display: none;
+}
+.userimg{
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+}
+.right-section{
+	
+	display: flex;
+	justify-content: right;
+	gap: 15px;
+	align-items: center;
+	width: 50%;
+
+}
+.dropbtn {
+
+	font-size: 40px;
+	color: #424345;
+	cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus  {
+	background-color: rgba(128, 128, 128, 0.185);
+	border-radius: 30%;
+  }
+  
+  .dropdown {
+	
+	position: relative;
+	display: inline-block;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	right: 0;
+	z-index: 1;
+  }
+  
+  .dropdown-content a {
+	color: rgb(167, 163, 163);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+.bento{
+	width: 20px;
+	height: 20px;
+
+  }
+.logoname{
+	color: #5f6368;
+	font-family: "Product Sans",Arial,Helvetica,sans-serif;
+    font-size: 1.38125rem;
+    position: relative;
+    top: -0.375rem;
+}
+.nav-logo{
+width: 50%;
+padding-right: 20px;
+margin-left: 20px;
+margin-top: 12px;
+
 }
