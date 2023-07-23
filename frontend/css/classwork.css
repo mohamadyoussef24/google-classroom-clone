@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+    box-sizing: border-box;
+    font-family: "Google Sans",'Roboto',Arial,sans-serif;
+    color: #5f6368;
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    height: 98vh;
+}
+
+/* navbar */
+.nav {
+    border-bottom: #dadce0 1px solid;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 4.5rem;
+}
+
+.nav-left {
+    padding-left: 20px;
+}
+
+.nav-right {
+    padding-right: 20px;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+.nav-links:hover, .nav-links:focus {
+    color: #1967d2;
+}
+
+.nav-div {
+    height: 4.5rem;
+}
+
+.nav-div:hover {
+    border-bottom: solid 2px #1967d2;
+}
+
+.nav-svg {
+    cursor: pointer;
+}
+
+/* central content div */
+.container {
+    align-self: center;
+    height: 100%;
+    width: 80%;
+    margin-top: 15px;
+}
+
+/* lower nav of content div */
+.create {
+    background-color: #1967d2;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.lower-nav {
+    color: #1967d2;
+}
+
+/* assignment list */
+.assignments-ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.assignment-li {
+    padding: 10px;
+    border-bottom: #dadce0 1px solid;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.assignment-li:hover {
+    background-color: #dadce0;
+    border-radius: 5px;
+}
+
+.li-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
