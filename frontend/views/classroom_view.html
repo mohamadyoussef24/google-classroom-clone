@@ -90,35 +90,56 @@
       </div>
     </div>
     
-    <!--  -->
+
+
+<form  id="create_class_requirements" class="create-group-form">
+  <span class="class-header">Create Class</span>
+
+    <div class="form-control">
+      <input type="text" id="name" required />
+      <label for="name">class Name(Required)</label>
+    </div>
+    
+    <div class="form-control">
+      <input type="text" id="section"  required />
+      <label for="section">Section</label>
+    </div>
+
+    <div class="form-control">
+      <input type="text" id="subject" required/>
+      <label for="subject">Subject</label>
+    </div>
+    
+    <div class="form-control">
+      <input type="text" id="room"  required />
+      <label for="room">Room</label>
+    </div>
+    <button id="submit_class_info">Create</button>
+  </form>
+
+
+
+
+  <form  id="join_class_requirements" class="create-group-form">
+    <span class="class-header">Create Class</span>
+  
+      <div class="form-control">
+        <input type="text" id="join_class_code" required />
+        <label for="join_class_code">Enter Joining code</label>
+      </div>
+
+      <button id="submit_code">Join now</button>
+    </div>
+   </form>
+
+
+
+
+
     <button id="class_options">+</button>
     <div id="class_options1">
       <label><button id="join_class">Join</button></label>
-      <br />
-      <label><button id="create_class">Create</button></label>
-    </div>
 
-    <div id="join_class_requirements">
-      <label for="join_class_code">Class Code</label>
-      <input type="text" id="join_class_code" />
-      <button id="submit_code">Join</button>
-    </div>
-
-    <div id="create_class_requirements">
-      <label for="name">Name</label>
-      <input type="text" id="name" placeholder="Class Name" />
-
-      <label for="section">Section</label>
-      <input type="text" id="section" placeholder="section" />
-
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" placeholder="subject" />
-
-      <label for="room">Room</label>
-      <input type="text" id="room" placeholder="room" />
-
-      <button id="submit_class_info">Create</button>
-    </div>
     <script src="../js/classroom_view.js"></script>
   </body>
 </html>

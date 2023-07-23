@@ -1,3 +1,16 @@
+const inputs = document.querySelectorAll('.form-control input');
+const labels = document.querySelectorAll('.form-control label');
+
+labels.forEach(label => {
+  label.innerHTML = label.innerText
+    .split('')
+    .map((letter, idx) => `<span style="
+        transition-delay: ${idx * 50}ms
+      ">${letter}</span>`)
+    .join('');
+});
+
+
 var hamburger = document.querySelector(".hamburger");
 var body = document.querySelector("body");
 var sidebar = document.querySelector(".sidebar");
@@ -35,7 +48,7 @@ const create_class_requirements = document.getElementById('create_class_requirem
 
 create_class.addEventListener('click', function(){
   if (create_class_requirements.style.display == "none") {
-    create_class_requirements.style.display = "block";
+    create_class_requirements.style.display = "flex";
   } else {
     create_class_requirements.style.display = "none";
   }
@@ -84,14 +97,11 @@ if (data.status  == "success") {
 submit_class_info.addEventListener('click', createClass)
 
 
-
-// 
-
 const join_class = document.getElementById('join_class')
 
 join_class.addEventListener('click', function(){
   if (join_class_requirements.style.display == "none") {
-    join_class_requirements.style.display = "block";
+    join_class_requirements.style.display = "flex";
   } else {
     join_class_requirements.style.display = "none";
   }
