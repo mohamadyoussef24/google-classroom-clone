@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="../css/edit_profile.css"> 
   </head>
   <body>
-    <div class="edit_profile_data">
-    <label for="profile_pic">Profile Picture</label>
-    <input type="file" id="profile_pic" />
-    <button id="cancel_image">Cancel</button>
-    <button id="save_picture">Save</button>
-    <!--  -->
-    <br />
-    <label for="first_name">First Name</label>
-    <input id="first_name" placeholder="" value="" />
-    <!--  -->
-    <label for="last_name">Last Name</label>
-    <input id="last_name" placeholder="" value="" />
-    <button id="submit">submit</button>
-    <!--  -->
-    <br />
-    <button id="modify_password">Password</button>
+  <div class="edit_profile_data">
+    <div class="profile">
+      <label for="profile_pic"><h3>Profile Picture</h3></label>
+      <input type="file" id="profile_pic" />
+      <div class="btn-for-profile">
+        <button id="cancel_image" class="profile-btn button2">Cancel</button>
+        <button id="save_picture" class="profile-btn button1">Save</button>
+      </div>
     </div>
+    <div class="form-data">
+       <label for="first_name">First Name</label>
+       <input type="text" id="first_name" placeholder="first name" value="" />
+       <!--  -->
+       <label for="last_name">Last Name</label>
+       <input type="text" id="last_name" placeholder="last name" value="" />
+       <input type="submit" id="submit" value="Submit">
+     </div>
+    <input type="submit" id="modify_password" value="Password">
+  </div>
+
     <script src="../js/edit_profile.js"></script>
-  </body>
+</body>
 </html>
