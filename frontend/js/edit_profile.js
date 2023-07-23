@@ -114,7 +114,8 @@ const save_picture = document.getElementById('save_picture')
 
 const  handleFile = ()=> {
   const fileInput = document.getElementById("profile_pic");
-
+  const id = window.localStorage.getItem("user_id")
+  const flag = "Upload pic"
   
   if (fileInput.files.length > 0) {
     const file = fileInput.files[0]; 
@@ -123,10 +124,41 @@ const  handleFile = ()=> {
     console.log("File type:", file.type);
     console.log("File size (in bytes):", file.size);
 
-  } else {
-    console.log("No file selected.");
+    
+
+      // Check if a file was selected
+      if (fileInput.files.length === 0) {
+        alert("Please select a file."); // change alert to document.getElementById  LABEL >>>>
+        return;
+      }
+    
+      // Create a new FormData object
+      const formData = new FormData();
+    
+      // Append the file to the FormData object with a specified field name ("file" in this case)
+      formData.append("file", fileInput.files[0]);
+      formData.append("id",id);
+      formData.append("flag",flag);
+      // Send the FormData to PHP using fetch
+      fetch(base_url + 'edit_profile.php', {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        // Handle the response from PHP (if needed)
+        console.log(data);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+    
+
+
+
+    }
+
   }
-}
 
 
 save_picture.addEventListener('click', handleFile)

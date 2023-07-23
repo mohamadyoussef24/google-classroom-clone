@@ -39,54 +39,46 @@ if ($flag == "onload") {
     echo json_encode($response);
 } else {
     $id = $_POST['id'];
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    echo $root;
+    $dir = "./users/user_$id";
 
-    if (isset($_POST["save_picture"])) {
-        $targetDir = "users/user_$id/"; // Directory where uploaded files will be stored
-        $targetFile = $targetDir . basename($_FILES["fileToUpload"]["name"]); // Full path to the uploaded file
-        $uploadOk = 1; // Flag to indicate if the file upload was successful
+    if (!file_exists($dir)) {
 
-        // Check if the file is an actual file or a fake one
-        if (isset($_FILES["fileToUpload"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
-        }
-
-        // Check if file already exists
-        if (file_exists($targetFile)) {
-            echo "Sorry, the file already exists.";
-            $uploadOk = 0;
-        }
-
-        // Check file size (you can set your own limit)
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-
-        // Allow only certain file formats (in this example, we only allow images)
-        $allowedTypes = array("jpg", "jpeg", "png", "gif");
-        $fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        if (!in_array($fileExtension, $allowedTypes)) {
-            echo "Sorry, only JPG, JPEG, PNG, and GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        // If the uploadOk flag is set to 0, there was an error, so we don't proceed with the file upload
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+        if (mkdir($dir, 0755, true)) {
+            echo "Directory created successfully.";
         } else {
-            // Move the uploaded file from the temporary directory to the specified directory
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
-                echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
+            echo "Failed to create the directory.";
+        }
+    } else {
+        echo "Directory already exists.";
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if (isset($_FILES["file"])) {
+            $file = $_FILES["file"];
+
+            // File properties
+            $fileName = $file["name"];
+            $fileTmpName = $file["tmp_name"];
+            $fileSize = $file["size"];
+            $fileError = $file["error"];
+
+            // Handle the file as needed (e.g., move it to a specific location)
+            // Example:
+
+            $targetDir = "./users/user_$id/";
+            $targetFilePath = $targetDir . $fileName;
+            move_uploaded_file($fileTmpName, $targetFilePath);
+
+            // Send a response (you can customize this as per your requirements)
+
+            $query = $mysqli->prepare('update users set profile_pic=? where id= ?');
+            $query->bind_param('si', $targetFilePath, $id);
+            $query->execute();
+            echo "File uploaded successfully.";
+        } else {
+            echo "No file uploaded.";
         }
     }
 };
