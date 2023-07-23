@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: roboto, "Noto Sans Myanmar UI", arial;
+}
+
+body {
+    background-image: url("/assets/images/classroom_main_page.png");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signin{
+    /* border: 1px solid black; */
+    float: right;
+    margin-right: 6%;
+    /* margin-top: 0.3%; */
+    width: 20vw;
+    height: 10vh;
+}
