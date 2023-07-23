@@ -11,13 +11,15 @@ const submit = document.getElementById('submit')
 
 
 let flag ;
-
+let profile_info = ""
 
 const profile_pic = document.getElementById("imageInput").value
 
 
 
+
 window.onload = function(){
+
 
     try {
         const email = window.localStorage.getItem("email")
@@ -35,6 +37,7 @@ window.onload = function(){
             if (data.status === 'info found') { 
               const first_name_info= data.first_name
               const last_name_info = data.last_name
+              profile_info = data.profile_pic
             
               const first_name = document.getElementById('first_name')
               const last_name = document.getElementById("last_name")
@@ -44,6 +47,8 @@ window.onload = function(){
               last_name.setAttribute('placeholder', last_name_info);
               last_name.setAttribute('value', last_name_info);
 
+              const imagePreview = document.getElementById('imagePreview');
+              imagePreview.style.backgroundImage = `url('${base_url}/users/${profile_info}')`;
             //   window.location.replace("../views/classroom_view.html");
             } else {
               console.log("Login failed:", data.status);
