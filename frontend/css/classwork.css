@@ -1,0 +1,20 @@
+html {
+    box-sizing: border-box;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    color: #5f6368;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    height: 98vh;
+}
+
+.nav {
+    border-bottom: #dadce0 1px solid;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    background-color: white;
+    height: 4rem;
+}
