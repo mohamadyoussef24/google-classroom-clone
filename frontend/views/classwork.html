@@ -54,7 +54,7 @@
         </div>
     </header>
 
-    <div class="container width50">
+    <div class="container width50 flex column">
         <div class="width100 flex just-btw">
             <button class="btn create flex center"><svg class="svg-white" focusable="false" width="24" height="24"
                     viewBox="0 0 24 24" class=" NMm5M">
@@ -75,7 +75,10 @@
                     </svg>Class Drive Folder</div>
             </div>
         </div>
+        <ul class="assignments-ul width100" id="assignments-ul"></ul>
     </div>
+    <script src="/frontend/js/assignment.js"></script>
+    <script>pages.loadFor("getAssignments")</script>
 </body>
 
 </html>
