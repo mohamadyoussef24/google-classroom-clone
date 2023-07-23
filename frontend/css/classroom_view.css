@@ -104,3 +104,8 @@ body.active .wrapper .section{
 	margin-left: 0;
 	width: 100%;
 }
+
+
+#class_options1{
+	display:none;
+}
