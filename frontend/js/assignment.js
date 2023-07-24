@@ -1,7 +1,7 @@
 
-    if(!localStorage.getItem("user_id")){
-        window.location.replace("../views/signin.html")
-    }
+    // if(!localStorage.getItem("user_id")){
+    //     window.location.replace("../views/signin.html")
+    // }
   
     ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
@@ -71,10 +71,10 @@ pages.showDropdowns = async () => {
 //function to get checked checkbox
 function getChecked() {
     let checkboxes = document.getElementsByName("class_name");
-    let checkedValue = "";
+    let checkedValue = [];
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
-            checkedValue += checkboxes[i].value;
+            checkedValue.append(checkboxes[i].value);
         }
     } return checkedValue;
 }
@@ -113,8 +113,7 @@ pages.createAssignment = () => {
         } catch (e) {
             console.log("failed to fetch", e)
         }
-        // window.location.replace('/index.html')
-
+        window.location.replace('classwork.html')
     })
 }
 
