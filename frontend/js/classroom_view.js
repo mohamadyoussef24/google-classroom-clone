@@ -6,6 +6,20 @@ if(!localStorage.getItem("user_id")){
 
 
 
+////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+  const encryptedData = id ^ secretKey;
+  const encryptedString = btoa(encryptedData.toString());
+  return encryptedString;
+}
+
+// Function to decrypt a base64 string and get back the integer ID
+function decrypt(encryptedData, secretKey) {
+  const encryptedString = atob(encryptedData);
+  const encryptedInt = parseInt(encryptedString, 10);
+  return encryptedInt ^ secretKey;
+}
 
 
 
@@ -82,7 +96,12 @@ const createClass = ()=> {
 
 
 
-  const id = localStorage.getItem('user_id')
+  const decryptid =  localStorage.getItem('user_id')
+  
+  const secretKey = 123; // Replace with your desired secret key
+
+                
+  const id = encrypt(decryptid, secretKey);
 
 
   const create_class_form = new FormData()
@@ -168,7 +187,12 @@ const joinClass = () => {
   const join_class_code = document.getElementById("join_class_code").value
  
 
-  const id = localStorage.getItem('user_id')
+  const decryptid =  localStorage.getItem('user_id')
+  
+  const secretKey = 123; // Replace with your desired secret key
+
+                
+  const id = encrypt(decryptid, secretKey);
 
   const join_code = new FormData();
   join_code.append('class_code', join_class_code)

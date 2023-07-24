@@ -12,8 +12,19 @@
 
 
 
-
-
+///emcrpt/decrypt
+  function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
 
 
 
@@ -71,8 +82,11 @@ const signin = () => {
         console.log("Server Response:", data);
         if (data.status === 'logged in') {
           const user_id = data.user_id;
-       
-          localStorage.setItem("user_id", user_id);
+          const secretKey = 123; // Replace with your desired secret key
+
+                
+          const encryptedID = encrypt(user_id, secretKey);
+          localStorage.setItem("user_id", encryptedID);
          
           window.location.replace("../views/classroom_view.html");
         } else {

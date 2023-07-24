@@ -1,3 +1,7 @@
+if(localStorage.getItem("user_id")){
+    window.location.replace("../views/classroom_view.html")
+}
+
 const submit = document.getElementById("submit");
 const proceed =document.getElementById("proceed");
 const infoDiv = document.querySelector(".info");

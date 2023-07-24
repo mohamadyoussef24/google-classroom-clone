@@ -8,7 +8,19 @@
 
 
 
-
+///encrypt/decrypt
+  function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
 
 
 
@@ -148,9 +160,12 @@ const  handleFile = ()=> {
   
   flag = "";
 
-  const id =  localStorage.getItem('user_id')
+  const decryptid =  localStorage.getItem('user_id')
   
+  const secretKey = 123; // Replace with your desired secret key
 
+                
+  const id = encrypt(decryptid, secretKey);
   
   if (fileInput.files.length > 0) {
     const file = fileInput.files[0]; 

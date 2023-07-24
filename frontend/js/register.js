@@ -3,9 +3,20 @@
         window.location.replace("../views/classroom_view.html")
     }
 
-
-
-
+////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
 
 
 const submit = document.getElementById("submit");
@@ -72,11 +83,15 @@ const register = () => {
 
 
                 const user_id = res.user_id;
-               
-                localStorage.setItem("user_id", user_id);
-                localStorage.setItem("email",email);
+                const secretKey = 123; // Replace with your desired secret key
+
                 
-                window.location.replace("../views/classroom_view.html");
+                const encryptedID = encrypt(user_id, secretKey);
+                
+                localStorage.setItem("user_id", encryptedID);
+                localStorage.setItem("email",email);
+               
+               
             } else {
                 alert("Registration failed. " + res.status); //change alert
             }
