@@ -52,20 +52,23 @@ window.onload = async function () {
     }
 }
 
-const invite_btn = document.getElementById("invite_icon")
-const invite_btn2 = document.getElementById("invite_icon2")
+const invite_btn_teacher = document.getElementById("invite_icon")
+const invite_btn_student = document.getElementById("invite_icon2")
 const cancel_btn = document.getElementById("cancel_icon")
+const email_input = document.getElementById("invite")
 
-invite_btn.addEventListener('click', function(){
+invite_btn_teacher.addEventListener('click', function(){
         let overlay = document.getElementById('overlay');
         overlay.style.display = "flex";
+        email_input.setAttribute('name', "teacher-email")
 })
 
-invite_btn2.addEventListener('click', function(){
+invite_btn_student.addEventListener('click', function(){
         let overlay = document.getElementById('overlay');
         overlay.style.display = "flex";
+        email_input.setAttribute('name', "student-email")
 })
 
 cancel_btn.addEventListener('click', function(){
     overlay.style.display = "none";
-    });
+});
