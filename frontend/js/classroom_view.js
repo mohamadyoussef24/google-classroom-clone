@@ -1,3 +1,8 @@
+
+// if(!localStorage.getItem("user_id")){
+//   window.location.replace("../views/signin.html")
+// }
+
 //this code is for animating the input 
 const inputs = document.querySelectorAll('.form-control input');
 const labels = document.querySelectorAll('.form-control label');
@@ -64,7 +69,20 @@ const createClass = ()=> {
   const section = document.getElementById('section').value
   const subject = document.getElementById('subject').value
   const room = document.getElementById('room').value
-  const id = localStorage.getItem('user_id')
+
+
+
+
+  // Retrieve the encrypted ID from LocalStorage
+const encryptedID = localStorage.getItem('user_id')
+
+// Decrypt the ID using the same secret key
+const secretKey = 'secretKey';
+
+// Now you can use the decrypted ID to interact with the database
+// For example, send it to the server to retrieve user data
+
+  const id = decrypt(encryptedID, secretKey);
 
 
   const create_class_form = new FormData()
@@ -82,18 +100,31 @@ const createClass = ()=> {
 })
 .then((res) => res.json())
 .then((data) => {
-
-if (data.status  == "success") {
+ if (data.status  == "success") {
+  console.log('success')
   window.location.replace("../views/classroom_stream.html")
     
 }else{
     console.log('error')
 }
-})
+}).catch((err) => {
+  console.log("Fetch error: " + err) 
+      });
 }
 
-submit_class_info.addEventListener('click', createClass)
+// <<<<<<< HEAD
+// submit_class_info.addEventListener('click', createClass)
 
+// =======
+
+
+// submit_class_info.addEventListener('click', function(e){
+//   e.preventDefault()
+//   createClass()})
+
+
+
+// >>>>>>> 2b551813edbfa98b2801a15d5b8067556b9ea52c
 join_class.addEventListener('click', function(){
   if (join_class_requirements.style.display == "flex") {
     if (create_class_requirements.style.display == "flex") {
@@ -126,22 +157,25 @@ create_class.addEventListener('click', function(){
 
 ////cancelling the form
 
-document.getElementById("cancel_form1").addEventListener("click", function() {
-  var form = document.getElementById("create-form");
-  form.style.display = "none";
-});
 
-document.getElementById("cancel_form2").addEventListener("click", function() {
-  var form = document.getElementById("join-form");
-  form.style.display = "none";
-});
 
 
 
 
 const joinClass = () => {
   const join_class_code = document.getElementById("join_class_code").value
-  const id = localStorage.getItem('user_id')
+ 
+  // Retrieve the encrypted ID from LocalStorage
+const encryptedID = localStorage.getItem('user_id')
+
+// Decrypt the ID using the same secret key
+const secretKey = 'secretKey';
+
+// Now you can use the decrypted ID to interact with the database
+// For example, send it to the server to retrieve user data
+
+  const id = decrypt(encryptedID, secretKey);
+
   const join_code = new FormData();
   join_code.append('class_code', join_class_code)
   join_code.append('user_id', id)
@@ -168,7 +202,9 @@ const joinClass = () => {
 
 const submit_code = document.getElementById('submit_code')
 
-submit_code.addEventListener('click', joinClass)
+submit_code.addEventListener('click', function(e){
+  e.preventDefault()
+  joinClass()})
 /* When the user clicks on the + button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -188,3 +224,52 @@ window.onclick = function(event) {
     }
   }
 }
+
+
+
+let profile = ""
+
+window.onload = function(){
+
+  try {
+    const email = window.localStorage.getItem("email")
+    flag = "onload";
+    const profile_pic_form = new FormData()
+    profile_pic_form.append("email", email)
+    profile_pic_form.append("flag", flag)
+
+    fetch(base_url + 'edit_profile.php', {
+      method: "POST",
+      body: profile_pic_form 
+    })
+      .then((res) => res.json()) 
+      .then((data) => {
+        if (data.status === 'info found') { 
+          profile_info = data.profile_pic
+          
+          if (profile_info == "" || profile_info == " " || profile_info == null){
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `../../assets/images/usericon.png`; 
+          }else{
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `${base_url}/users/${profile_info}`;
+          }
+
+        } else {
+          console.log("image failed:", data.status);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch error:", err);
+      });
+  } catch (err) {
+    console.log("Error:", err);
+  }
+
+}
+
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function(){
+  localStorage.removeItem("user_id")
+  window.location.replace('../views/signin.html')
+})

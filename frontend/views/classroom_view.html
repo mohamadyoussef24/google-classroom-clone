@@ -21,11 +21,7 @@
             </a>
           </div>
           <div class="nav-logo">
-            <img
-              src="../../assets/images/logo.svg"
-              id="google-img"
-              alt="Google"
-            />
+            <img src="../../assets/images/logo.svg" id="google-img" alt="Google" />
             <span class="logoname">Classroom</span>
           </div>
         </div>
@@ -34,21 +30,25 @@
           <div class="dropdown">
             <span onclick="myFunction()" class="dropbtn">+</span>
             <div id="myDropdown" class="dropdown-content">
-              <a  id="join_class" class="cursorpointer">Join class</a>
-              <a  id="create_class" class="cursorpointer">Create class</a>
+              <a id="join_class" class="cursorpointer">Join class</a>
+              <a id="create_class" class="cursorpointer">Create class</a>
             </div>
           </div>
           <a href="#"
             ><img
-              src="../../assets/821996-200.png"
+              src="../../assets/images/821996-200.png"
               alt="bento-menu"
               class="bento"
           /></a>
-          <a href="#"
+
+          <button id="logout">Logout</button>
+
+          <a href="../views/edit_profile.html"
             ><img
-              src="../../assets/usericon.png"
+              src="../../assets/images/usericon.png"
               alt="usericon"
               class="userimg"
+              id="imagePreview"
           /></a>
         </div>
       </div>
@@ -89,7 +89,6 @@
         </ul>
       </div>
     </div>
-    
 
 <div class="form-div" id="create-form">
 <form  id="create_class_requirements" class="create-group-form">
@@ -104,14 +103,13 @@
       <input type="text" id="section"  required />
       <label for="section">Section</label>
     </div>
-
     <div class="form-control">
       <input type="text" id="subject" required/>
       <label for="subject">Subject</label>
     </div>
     
     <div class="form-control">
-      <input type="text" id="room"  required />
+      <input type="text" id="room" required />
       <label for="room">Room</label>
     </div>
     <div class=" button-container form-control">
@@ -136,7 +134,6 @@
     </div>
   </form>
 </div>
-
 
     <script src="../js/classroom_view.js"></script>
   </body>

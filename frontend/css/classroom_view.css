@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .form-control {
   position: relative;
@@ -54,7 +48,7 @@
 .button-container{
 	display: flex;
 	justify-content:right ;
-	flex-direction: button-container;
+	flex-direction: row;
 	padding:10px ;
 	gap: 15px;
 }
@@ -65,9 +59,6 @@
 	font-weight: 600
 }
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 *{
 	list-style: none;
@@ -161,6 +152,7 @@ border-top-right-radius: 33px;
 .wrapper .section .top_navbar .hamburger a{
 	font-size: 20px;
 	padding: 2vh 3vh;
+	margin-left: 15px;
 	border-radius: 30px;
 	background-color: #dedddd;
 	color: #787878;
@@ -278,4 +270,17 @@ margin-top: 12px;
 	width: 100%;
 display: flex;
 justify-content: center;
+}
+#logout {
+	background-color: transparent;
+	border: none;
+	font-weight: bolder;
+}
+
+#logout:hover{
+	cursor: pointer;
+	background-color: #ababab;
+	padding: 0.5rem;
+	color: white;
+	
 }

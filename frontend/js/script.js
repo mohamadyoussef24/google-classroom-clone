@@ -1,3 +1,9 @@
+
+    if(localStorage.getItem("user_id")){
+        window.location.replace("../views/classroom_view.html")
+    }
+
+
 $(document).ready(function(){ 
 
     //removes the present preloader quickly
