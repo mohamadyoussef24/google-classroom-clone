@@ -3,7 +3,7 @@
 //   window.location.replace("../views/signin.html")
 // }
 
-function displayPosts(classes_array) {
+function displayClasses(classes_array) {
   const classes_wrapper = document.getElementById("classes-wrapper")
 
   classes_array.forEach((classs) => {
@@ -23,11 +23,11 @@ function displayPosts(classes_array) {
       <div class="student-work"></div>
     </div>
   `;
-    classes_wrapper.appendChild(announcement_div)
+    classes_wrapper.appendChild(class_div)
   })
 }
 
-window.onload = async () => {
+window.onload = async function () {
 
   const user_id = 3
   let formdata = new FormData();
@@ -39,10 +39,10 @@ window.onload = async () => {
   };
 
   try {
-    const assignments = await fetch("http://localhost/google-classroom-backend/get_user_classes.php", requestOptions)
-    const json = await assignments.json()
-    console.log(json)
+    const classes = await fetch("http://localhost/google-classroom-backend/get_user_classes.php", requestOptions)
+    const json = await classes.json()
     displayClasses(json)
+    console.log(json)
   }
   catch (e) {
     console.log("failed to fetch", e)
