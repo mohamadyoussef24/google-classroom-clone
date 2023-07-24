@@ -39,7 +39,7 @@ window.onload = async function () {
   };
 
   try {
-    const classes = await fetch("http://localhost/google-classroom-backend/get_user_classes.php", requestOptions)
+    const classes = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_user_classes.php", requestOptions)
     const json = await classes.json()
     displayClasses(json)
     console.log(json)

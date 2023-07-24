@@ -32,7 +32,7 @@ window.onload = async function () {
     };
 
     try {
-        const assignments = await fetch("http://localhost/google-classroom-backend/get_students.php", requestOptions)
+        const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_students.php", requestOptions)
         const json = await assignments.json()
         console.log(json)
         displayParticipants(json, "students")
@@ -42,7 +42,7 @@ window.onload = async function () {
     }
 
     try {
-        const assignments = await fetch("http://localhost/google-classroom-backend/get_teachers.php", requestOptions)
+        const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_teachers.php", requestOptions)
         const json = await assignments.json()
         console.log(json)
         displayParticipants(json, "teachers")

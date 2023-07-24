@@ -27,7 +27,7 @@ pages.showDropdowns = async () => {
         };
 
         try {
-            const response = await fetch('http://localhost/google-classroom-backend/get_teacher_classes.php', requestOptions)
+            const response = await fetch('http://localhost/Assignments/google-classroom-clone/backend/get_teacher_classes.php', requestOptions)
             let json = await response.json()
             console.log(json)
             // populating class list with class names
@@ -93,7 +93,7 @@ pages.createAssignment = () => {
         };
 
         try {
-            const response = await fetch('http://localhost/google-classroom-backend/create_assignment.php', requestOptions)
+            const response = await fetch('http://localhost/Assignments/google-classroom-clone/backend/create_assignment.php', requestOptions)
             const json = await response.json()
             console.log(json)
         } catch (e) {
@@ -141,7 +141,7 @@ pages.getAssignments = () => {
         };
 
         try {
-            const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
+            const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
             const json = await assignments.json()
             console.log(json)
             displayAssignments(json)

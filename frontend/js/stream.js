@@ -45,7 +45,7 @@ window.onload = async function () {
     };
 
     try {
-        const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
+        const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
         const json = await assignments.json()
         console.log(json)
         displayPosts(json)
@@ -96,7 +96,7 @@ post_btn.addEventListener('click', async function () {
     };
 
     try {
-        const posts = await fetch("http://localhost/google-classroom-backend/create_post.php", requestOptions)
+        const posts = await fetch("http://localhost/Assignments/google-classroom-clone/backend/create_post.php", requestOptions)
         const json = await posts.json()
         console.log(json)
     }
