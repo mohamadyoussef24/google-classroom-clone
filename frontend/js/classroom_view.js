@@ -97,19 +97,23 @@ const secretKey = 'secretKey';
 })
 .then((res) => res.json())
 .then((data) => {
-
-if (data.status  == "success") {
+ if (data.status  == "success") {
+  console.log('success')
   window.location.replace("../views/classroom_stream.html")
     
 }else{
     console.log('error')
 }
-})
+}).catch((err) => {
+  console.log("Fetch error: " + err) 
+      });
 }
 
 
-submit_class_info.addEventListener('click', createClass)
 
+submit_class_info.addEventListener('click', function(e){
+  e.preventDefault()
+  createClass()})
 
 
 
@@ -197,9 +201,9 @@ const secretKey = 'secretKey';
 
 const submit_code = document.getElementById('submit_code')
 
-submit_code.addEventListener('click', joinClass)
-
-
+submit_code.addEventListener('click', function(e){
+  e.preventDefault()
+  joinClass()})
 /* When the user clicks on the + button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
