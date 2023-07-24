@@ -135,11 +135,6 @@ const createClass = ()=> {
 }
 
 
-submit_class_info.addEventListener('click', createClass)
-
-
-
-
 submit_class_info.addEventListener('click', function(e){
   e.preventDefault()
   createClass()})
