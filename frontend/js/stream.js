@@ -1,10 +1,9 @@
 
 // function to create and display assignment li
-function displayAssignments(assignments_array) {
+function displayPosts(posts_array) {
     const stream_container = document.getElementById("stream-container");
 
-    stream_container.innerHTML = "";
-    assignments_array.forEach((assignment) => {
+    posts_array.forEach((post) => {
         let announcement_div = document.createElement("div");
 
         announcement_div.innerHTML = `
@@ -18,7 +17,7 @@ function displayAssignments(assignments_array) {
                                         </path>
                                     </svg></div>
                                 <div class="flex column">
-                                    <span class="stream-title">[Teacher name] posted a new assignment: ${assignment.title} </span>
+                                    <span class="stream-title">[Teacher name] posted a new assignment: ${post.title} </span>
                                     <span class="stream-date">date now</span>
                                 </div>
                             </div>
@@ -35,8 +34,6 @@ function displayAssignments(assignments_array) {
     })
 }
 
-// get assigmnets
-
     window.onload = async function () {
         const class_id = "3";
         let formdata = new FormData();
@@ -51,7 +48,7 @@ function displayAssignments(assignments_array) {
             const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
             const json = await assignments.json()
             console.log(json)
-            displayAssignments(json)
+            displayPosts(json)
         }
         catch (e) {
             console.log("failed to fetch", e)
@@ -75,7 +72,35 @@ function displayAssignments(assignments_array) {
         post_input.style.display = "none";
     })
 
-    post_btn.addEventListener('click', function(){
+    post_btn.addEventListener('click', async function(){
         post_div.style.display = "flex";
         post_input.style.display = "none";
+
+        // test
+        const message = document.getElementById("announcement-text").value;
+        let post = { title: message}
+        displayPosts([post])
+
+        const class_id = "3";
+        const teacher_id = "2";
+
+        let formdata = new FormData();
+        formdata.append("teacher_id", teacher_id);
+        formdata.append("class_id", class_id);
+        formdata.append("message", message);
+
+        let requestOptions = {
+            method: 'POST',
+            body: formdata
+        };
+
+        try {
+            const assignments = await fetch("http://localhost/google-classroom-backend/create_post.php", requestOptions)
+            const json = await assignments.json()
+            console.log(json)
+        }
+        catch (e) {
+            console.log("failed to fetch", e)
+        }
+
     })
