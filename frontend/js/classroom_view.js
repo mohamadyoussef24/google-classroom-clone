@@ -178,6 +178,19 @@ create_class.addEventListener('click', function(){
 ////cancelling the form
 
 
+let cancel_form1 = document.getElementById("cancel_form1")
+create_class.addEventListener('click', function(e){
+  e.preventDefault();
+
+})
+
+
+let cancel_form2 = document.getElementById("cancel_form2")
+create_class.addEventListener('click', function(e){
+  e.preventDefault();
+
+})
+
 
 
 
