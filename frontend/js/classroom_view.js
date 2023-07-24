@@ -10,10 +10,10 @@ function displayClasses(classes_array) {
     let class_div = document.createElement("div");
 
     class_div.innerHTML = `
-    <div class="class-card card column">
+    <a href=""><div class="class-card card column">
       <div class="class-credits flex column">
-        <div class="class-title width100">${classs.name}</div>
-        <div class="class-subject">${classs.subject}</div>
+        <div class="class-title width100"></div>
+        <div class="class-subject"></div>
       </div>
       <div class="b-circle class-icon"></div>
       <div class="class-assignments flex column">
@@ -21,7 +21,7 @@ function displayClasses(classes_array) {
         <div class="assignment-title"></div>
       </div>
       <div class="student-work"></div>
-    </div>
+    </div></a>
   `;
     classes_wrapper.appendChild(class_div)
   })
