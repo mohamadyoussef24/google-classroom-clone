@@ -89,3 +89,48 @@
     color: #fff;
     font-family: "Google Sans",Roboto,Arial,sans-serif;
 }
+
+.nav {
+    border-bottom: #dadce0 1px solid;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 4.5rem;
+}
+
+.nav-left {
+    padding-left: 20px;
+}
+
+.nav-right {
+    padding-right: 20px;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+.nav-links:hover, .nav-links:focus {
+    color: #1967d2;
+}
+
+.nav-div {
+    height: 4.5rem;
+}
+
+.nav-div:hover {
+    border-bottom: solid 2px #1967d2;
+}
+
+.nav-svg {
+    cursor: pointer;
+}
+
+.container {
+    align-self: center;
+    height: 100%;
+    width: 80%;
+    margin-top: 15px;
+}

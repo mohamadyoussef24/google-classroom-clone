@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+    box-sizing: border-box;
+    font-family: "Google Sans",'Roboto',Arial,sans-serif;
+    color: #5f6368;
+    font-size: 14px;
+}
+
+/* .container {
+    width: 60%;
+}
+
+.cover-imag {
+    background-image: url("/assets/svgs/img_backtoschool.jpg");
+    background-size: cover;
+    height: 240px;
+} */
