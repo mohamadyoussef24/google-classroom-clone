@@ -1,7 +1,7 @@
 
-// if(!localStorage.getItem("user_id")){
-//   window.location.replace("../views/signin.html")
-// }
+if(!localStorage.getItem("user_id")){
+  window.location.replace("../views/signin.html")
+}
 
 function displayClasses(classes_array) {
   const classes_wrapper = document.getElementById("classes-wrapper")
