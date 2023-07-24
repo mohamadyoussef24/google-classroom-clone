@@ -1,3 +1,9 @@
+
+    if(localStorage.getItem("user_id")){
+        window.location.replace("../views/classroom_view.html")
+    }
+
+
 const submit = document.getElementById("submit");
 const infoDiv = document.querySelector(".info");
 
@@ -58,7 +64,18 @@ const register = () => {
         .then((res) => {
             if (res.status === 'success') {
                 const user_id = res.user_id;
-                localStorage.setItem("user_id", user_id);
+                // Assuming you have an ID to encrypt (replace 'your_id_to_encrypt' with the actual ID)
+                const idToEncrypt = user_id;
+
+                // Encrypt the ID using a secret key (replace 'your_secret_key' with your own secret key)
+                 const secretKey = 'secretKey';
+                 const encryptedID = encrypt(idToEncrypt, secretKey);
+
+                // Store the encrypted ID in LocalStorage
+
+                localStorage.setItem("user_id", encryptedID);
+
+                
                 window.location.replace("../views/classroom_view.html");
             } else {
                 alert("Registration failed. " + res.message);

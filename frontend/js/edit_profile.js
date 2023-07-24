@@ -1,3 +1,9 @@
+
+  if(!localStorage.getItem("user_id")){
+      window.location.replace("../views/signin.html")
+  }
+
+
 const password =document.getElementById('password')
 const modify_password =document.getElementById('modify_password')
 
@@ -11,13 +17,15 @@ const submit = document.getElementById('submit')
 
 
 let flag ;
+let profile_info = ""
 
+const profile_pic = document.getElementById("imageInput").value
 
-const profile_pic = document.getElementById("profile_pic").value
 
 
 
 window.onload = function(){
+
 
     try {
         const email = window.localStorage.getItem("email")
@@ -35,6 +43,7 @@ window.onload = function(){
             if (data.status === 'info found') { 
               const first_name_info= data.first_name
               const last_name_info = data.last_name
+              profile_info = data.profile_pic
             
               const first_name = document.getElementById('first_name')
               const last_name = document.getElementById("last_name")
@@ -44,6 +53,8 @@ window.onload = function(){
               last_name.setAttribute('placeholder', last_name_info);
               last_name.setAttribute('value', last_name_info);
 
+              const imagePreview = document.getElementById('imagePreview');
+              imagePreview.style.backgroundImage = `url('${base_url}/users/${profile_info}')`;
             //   window.location.replace("../views/classroom_view.html");
             } else {
               console.log("Login failed:", data.status);
@@ -113,8 +124,19 @@ submit.addEventListener("click", modifyInfo)
 const save_picture = document.getElementById('save_picture')
 
 const  handleFile = ()=> {
-  const fileInput = document.getElementById("profile_pic");
-  const id = window.localStorage.getItem("user_id")
+  const fileInput = document.getElementById("imageInput");
+  
+  // Retrieve the encrypted ID from LocalStorage
+const encryptedID = localStorage.getItem('user_id')
+
+// Decrypt the ID using the same secret key
+const secretKey = 'secretKey';
+
+// Now you can use the decrypted ID to interact with the database
+// For example, send it to the server to retrieve user data
+
+  const id = decrypt(encryptedID, secretKey);
+
   const flag = "Upload pic"
   
   if (fileInput.files.length > 0) {
@@ -162,3 +184,33 @@ const  handleFile = ()=> {
 
 
 save_picture.addEventListener('click', handleFile)
+
+
+
+
+
+
+
+
+
+///////////////////////// for image ///////////////////
+document.getElementById('imageInput').addEventListener('change', function(event) {
+  const fileInput = event.target;
+  const imagePreview = document.getElementById('imagePreview');
+
+  if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+          imagePreview.style.backgroundImage = `url('${e.target.result}')`;
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+  }
+});
+
+const imagePreviewLabel = document.getElementById('imagePreviewLabel');
+imagePreviewLabel.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default behavior of the label click
+  document.getElementById('imageInput').click();
+});

@@ -10,13 +10,21 @@ body {
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
 }
 
 .signin{
-    /* border: 1px solid black; */
-    float: right;
-    margin-right: 6%;
-    /* margin-top: 0.3%; */
-    width: 20vw;
-    height: 10vh;
+    
+    width: 20%;
+    position: absolute;
+    top: 13px;
+    right: 63px;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    
+}
+.signin:hover{
+    background-color: rgb(94, 201, 201);
+    
 }
