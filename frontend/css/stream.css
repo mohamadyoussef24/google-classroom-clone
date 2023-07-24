@@ -37,3 +37,26 @@ html {
 .stream {
     width: 80%;
 }
+
+.post-div {
+    padding: 10px 10px 10px 20px;
+    align-items: center;
+}
+
+.teacher-icon {
+    background-image: url("/assets/svgs/unnamed.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.announcement {
+    cursor: pointer;
+}
+
+.stream-title {
+    font-weight: 600;
+}
+
+.stream-date {
+    font-weight: 400;
+}
