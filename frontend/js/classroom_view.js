@@ -34,33 +34,27 @@ body.addEventListener("click", function(event) {
 });
 
 
-const class_options = document.getElementById('class_options')
-const class_options_list = document.getElementById('class_options1')
+// const class_options = document.getElementById('class_options')
+// const class_options_list = document.getElementById('class_options1')
 
 
 const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
-class_options.addEventListener('click', function(){
-  if (class_options_list.style.display == "none") {
-    class_options_list.style.display = "block";
-  } else {
-    class_options_list.style.display = "none";
-  }
-})
+// class_options.addEventListener('click', function(){
+//   if (class_options_list.style.display == "none") {
+//     class_options_list.style.display = "block";
+//   } else {
+//     class_options_list.style.display = "none";
+//   }
+// })
 
+
+
+const join_class = document.getElementById('join_class')
+const join_class_requirements = document.getElementById('join_class_requirements')
 
 const create_class = document.getElementById('create_class')
 const create_class_requirements = document.getElementById('create_class_requirements')
-
-create_class.addEventListener('click', function(){
-  if (create_class_requirements.style.display == "none") {
-    create_class_requirements.style.display = "flex";
-  } else {
-    create_class_requirements.style.display = "none";
-  }
-})
-
-
 
 const submit_class_info = document.getElementById('submit_class_info')
 
@@ -103,15 +97,51 @@ if (data.status  == "success") {
 submit_class_info.addEventListener('click', createClass)
 
 
-const join_class = document.getElementById('join_class')
+
 
 join_class.addEventListener('click', function(){
-  if (join_class_requirements.style.display == "none") {
-    join_class_requirements.style.display = "flex";
+  if (join_class_requirements.style.display == "flex") {
+    if (create_class_requirements.style.display == "flex") {
+    create_class_requirements.style.display = "none";
+  }
+    join_class_requirements.style.display = "none";
   } else {
+    join_class_requirements.style.display = "flex";
+    create_class_requirements.style.display = "none";
+  }
+})
+
+
+
+
+////user presses the buttons at the same time....
+
+
+create_class.addEventListener('click', function(){
+  if (create_class_requirements.style.display == "flex") {
+    create_class_requirements.style.display = "none" ;
+    if (join_class_requirements.style.display == "flex") {
+    join_class_requirements.style.display = "none" ;}
+  } else {
+    create_class_requirements.style.display = "flex";
     join_class_requirements.style.display = "none";
   }
 })
+
+
+
+////cancelling the form
+
+let cancel_form = document.getElementById("cancel_form")
+create_class.addEventListener('click', function(e){
+  e.preventDefault();
+
+})
+
+
+
+
+
 
 const joinClass = () => {
   const join_class_code = document.getElementById("join_class_code").value
