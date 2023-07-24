@@ -165,7 +165,7 @@ const  handleFile = ()=> {
   const secretKey = 123; // Replace with your desired secret key
 
                 
-  const id = encrypt(decryptid, secretKey);
+  const id = decrypt(decryptid, secretKey);
   
   if (fileInput.files.length > 0) {
     const file = fileInput.files[0]; 

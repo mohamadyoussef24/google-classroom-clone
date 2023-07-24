@@ -101,7 +101,7 @@ const createClass = ()=> {
   const secretKey = 123; // Replace with your desired secret key
 
                 
-  const id = encrypt(decryptid, secretKey);
+  const id = decrypt(decryptid, secretKey);
 
 
   const create_class_form = new FormData()
@@ -192,7 +192,7 @@ const joinClass = () => {
   const secretKey = 123; // Replace with your desired secret key
 
                 
-  const id = encrypt(decryptid, secretKey);
+  const id = decrypt(decryptid, secretKey);
 
   const join_code = new FormData();
   join_code.append('class_code', join_class_code)

@@ -90,8 +90,8 @@ const register = () => {
                 
                 localStorage.setItem("user_id", encryptedID);
                 localStorage.setItem("email",email);
-               
-               
+                
+                window.location.replace("../views/classroom_view.html");
             } else {
                 alert("Registration failed. " + res.status); //change alert
             }
