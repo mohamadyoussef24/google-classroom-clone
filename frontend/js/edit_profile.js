@@ -4,6 +4,23 @@
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const password =document.getElementById('password')
 const modify_password =document.getElementById('modify_password')
 
@@ -54,8 +71,11 @@ window.onload = function(){
               last_name.setAttribute('value', last_name_info);
 
               const imagePreview = document.getElementById('imagePreview');
-              imagePreview.style.backgroundImage = `url('${base_url}/users/${profile_info}')`;
-            //   window.location.replace("../views/classroom_view.html");
+              if (profile_info==null || profile_info == "" || profile_info == " "){
+                imagePreview.style.backgroundImage = "../../assets/images/usericon.png";
+              }else{ imagePreview.style.backgroundImage = `url('${base_url}/users/${profile_info}')`;}
+             
+            
             } else {
               console.log("Login failed:", data.status);
             }
@@ -126,18 +146,11 @@ const save_picture = document.getElementById('save_picture')
 const  handleFile = ()=> {
   const fileInput = document.getElementById("imageInput");
   
-  // Retrieve the encrypted ID from LocalStorage
-const encryptedID = localStorage.getItem('user_id')
+  flag = "";
 
-// Decrypt the ID using the same secret key
-const secretKey = 'secretKey';
+  const id =  localStorage.getItem('user_id')
+  
 
-// Now you can use the decrypted ID to interact with the database
-// For example, send it to the server to retrieve user data
-
-  const id = decrypt(encryptedID, secretKey);
-
-  const flag = "Upload pic"
   
   if (fileInput.files.length > 0) {
     const file = fileInput.files[0]; 

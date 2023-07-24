@@ -3,6 +3,16 @@ if(!localStorage.getItem("user_id")){
   window.location.replace("../views/signin.html")
 }
 
+
+
+
+
+
+
+
+
+
+
 //this code is for animating the input 
 const inputs = document.querySelectorAll('.form-control input');
 const labels = document.querySelectorAll('.form-control label');
@@ -70,16 +80,9 @@ const createClass = ()=> {
 
 
 
-  // Retrieve the encrypted ID from LocalStorage
-const encryptedID = localStorage.getItem('user_id')
 
-// Decrypt the ID using the same secret key
-const secretKey = 'secretKey';
 
-// Now you can use the decrypted ID to interact with the database
-// For example, send it to the server to retrieve user data
-
-  const id = decrypt(encryptedID, secretKey);
+  const id = localStorage.getItem('user_id')
 
 
   const create_class_form = new FormData()
@@ -164,16 +167,8 @@ create_class.addEventListener('click', function(e){
 const joinClass = () => {
   const join_class_code = document.getElementById("join_class_code").value
  
-  // Retrieve the encrypted ID from LocalStorage
-const encryptedID = localStorage.getItem('user_id')
 
-// Decrypt the ID using the same secret key
-const secretKey = 'secretKey';
-
-// Now you can use the decrypted ID to interact with the database
-// For example, send it to the server to retrieve user data
-
-  const id = decrypt(encryptedID, secretKey);
+  const id = localStorage.getItem('user_id')
 
   const join_code = new FormData();
   join_code.append('class_code', join_class_code)
@@ -270,5 +265,6 @@ window.onload = function(){
 const logout = document.getElementById('logout')
 logout.addEventListener('click', function(){
   localStorage.removeItem("user_id")
+  localStorage.removeItem("email")
   window.location.replace('../views/signin.html')
 })

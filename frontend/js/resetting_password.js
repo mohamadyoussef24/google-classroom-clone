@@ -10,7 +10,7 @@ document.getElementById("reset_password").addEventListener("input", function() {
   const confirm_reset_password = document.getElementById("confirm_reset_password");
 
   try {
-    const isPasswordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(reset_password);
+    const isPasswordValid = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?_&])[A-Za-z\d@$!%*_#?&]{8,}$/.test(reset_password);
 
     if (!isPasswordValid) {
       infoDiv.innerText = "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.";

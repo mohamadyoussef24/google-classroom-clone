@@ -4,6 +4,10 @@
     }
 
 
+
+
+
+
 const submit = document.getElementById("submit");
 const infoDiv = document.querySelector(".info");
 
@@ -21,15 +25,15 @@ const validateForm = () => {
         return false;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (!email.match(emailRegex)) {
         infoDiv.textContent = "Invalid email format.";
         infoDiv.style= 'color: red;font-weight:bold;font-size:14px;';
         return false;
     }
 
-    // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?_&])[A-Za-z\d@$!%_*#?&]{8,}$/;
 
     if (!password.match(passwordRegex)) {
         infoDiv.textContent = "Password must be at least 8 characters long and contain letters and numbers.";
@@ -62,23 +66,19 @@ const register = () => {
             body: user_info
         }).then((res) => res.json())
         .then((res) => {
-            if (res.status === 'success') {
+            if (res.status == 'success') {
+
+
+
+
                 const user_id = res.user_id;
-                // Assuming you have an ID to encrypt (replace 'your_id_to_encrypt' with the actual ID)
-                const idToEncrypt = user_id;
-
-                // Encrypt the ID using a secret key (replace 'your_secret_key' with your own secret key)
-                 const secretKey = 'secretKey';
-                 const encryptedID = encrypt(idToEncrypt, secretKey);
-
-                // Store the encrypted ID in LocalStorage
-
-                localStorage.setItem("user_id", encryptedID);
-
+               
+                localStorage.setItem("user_id", user_id);
+                localStorage.setItem("email",email);
                 
                 window.location.replace("../views/classroom_view.html");
             } else {
-                alert("Registration failed. " + res.message);
+                alert("Registration failed. " + res.status); //change alert
             }
         });
 
