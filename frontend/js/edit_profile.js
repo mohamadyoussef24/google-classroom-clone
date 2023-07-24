@@ -1,8 +1,8 @@
-window.onload = function(){
+
   if(!localStorage.getItem("user_id")){
-      window.location.replace("../frontend/views/signin.html")
+      window.location.replace("../views/signin.html")
   }
-}
+
 
 const password =document.getElementById('password')
 const modify_password =document.getElementById('modify_password')
@@ -125,7 +125,18 @@ const save_picture = document.getElementById('save_picture')
 
 const  handleFile = ()=> {
   const fileInput = document.getElementById("imageInput");
-  const id = window.localStorage.getItem("user_id")
+  
+  // Retrieve the encrypted ID from LocalStorage
+const encryptedID = localStorage.getItem('user_id')
+
+// Decrypt the ID using the same secret key
+const secretKey = 'secretKey';
+
+// Now you can use the decrypted ID to interact with the database
+// For example, send it to the server to retrieve user data
+
+  const id = decrypt(encryptedID, secretKey);
+
   const flag = "Upload pic"
   
   if (fileInput.files.length > 0) {

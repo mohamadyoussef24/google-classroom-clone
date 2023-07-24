@@ -41,7 +41,7 @@ if ($num_rows == 0) {
     $num_rows3 = $query->num_rows();
 
 
-    if ($num_rows2 == 0 && $num_rows3) {
+    if ($num_rows2 == 0 && $num_rows3==0) {
 
         $query = $mysqli->prepare('insert into students(class_id,user_id)  values(?,?)');
         $query->bind_param('ii', $class_id, $user_id);

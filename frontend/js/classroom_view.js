@@ -1,9 +1,7 @@
-window.onload = function(){
-  if(!localStorage.getItem("user_id")){
-      window.location.replace("../frontend/views/signin.html")
-  }
-}
 
+if(!localStorage.getItem("user_id")){
+  window.location.replace("../views/signin.html")
+}
 
 //this code is for animating the input 
 const inputs = document.querySelectorAll('.form-control input');
@@ -68,7 +66,20 @@ const createClass = ()=> {
   const section = document.getElementById('section').value
   const subject = document.getElementById('subject').value
   const room = document.getElementById('room').value
-  const id = localStorage.getItem('user_id')
+
+
+
+
+  // Retrieve the encrypted ID from LocalStorage
+const encryptedID = localStorage.getItem('user_id')
+
+// Decrypt the ID using the same secret key
+const secretKey = 'secretKey';
+
+// Now you can use the decrypted ID to interact with the database
+// For example, send it to the server to retrieve user data
+
+  const id = decrypt(encryptedID, secretKey);
 
 
   const create_class_form = new FormData()
@@ -148,7 +159,18 @@ create_class.addEventListener('click', function(e){
 
 const joinClass = () => {
   const join_class_code = document.getElementById("join_class_code").value
-  const id = localStorage.getItem('user_id')
+ 
+  // Retrieve the encrypted ID from LocalStorage
+const encryptedID = localStorage.getItem('user_id')
+
+// Decrypt the ID using the same secret key
+const secretKey = 'secretKey';
+
+// Now you can use the decrypted ID to interact with the database
+// For example, send it to the server to retrieve user data
+
+  const id = decrypt(encryptedID, secretKey);
+
   const join_code = new FormData();
   join_code.append('class_code', join_class_code)
   join_code.append('user_id', id)
@@ -176,6 +198,8 @@ const joinClass = () => {
 const submit_code = document.getElementById('submit_code')
 
 submit_code.addEventListener('click', joinClass)
+
+
 /* When the user clicks on the + button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {

@@ -1,8 +1,8 @@
-window.onload = function(){
+
     if(!localStorage.getItem("user_id")){
-        window.location.replace("../frontend/views/signin.html")
+        window.location.replace("../views/signin.html")
     }
-  }
+  
   
 const pages = {}
 
