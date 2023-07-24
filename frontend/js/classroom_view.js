@@ -83,17 +83,18 @@ const createClass = ()=> {
   fetch(base_url + "create_classroom.php",{
     method: "POST",
     body: create_class_form
-})
-.then((res) => res.json())
+}).then((res) => res.json())
 .then((data) => {
-
-if (data.status  == "success") {
+ if (data.status  == "success") {
+  console.log('success')
   window.location.replace("../views/classroom_stream.html")
     
 }else{
     console.log('error')
 }
-})
+}).catch((err) => {
+  console.log("Fetch error: " + err) 
+      });
 }
 
 
