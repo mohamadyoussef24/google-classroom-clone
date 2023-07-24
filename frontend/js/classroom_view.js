@@ -1,7 +1,7 @@
 
-// if(!localStorage.getItem("user_id")){
-//   window.location.replace("../views/signin.html")
-// }
+if(!localStorage.getItem("user_id")){
+  window.location.replace("../views/signin.html")
+}
 
 
 
@@ -134,19 +134,17 @@ const createClass = ()=> {
       });
 }
 
-// <<<<<<< HEAD
-// submit_class_info.addEventListener('click', createClass)
 
-// =======
-
-
-// submit_class_info.addEventListener('click', function(e){
-//   e.preventDefault()
-//   createClass()})
+submit_class_info.addEventListener('click', createClass)
 
 
 
-// >>>>>>> 2b551813edbfa98b2801a15d5b8067556b9ea52c
+
+submit_class_info.addEventListener('click', function(e){
+  e.preventDefault()
+  createClass()})
+
+
 join_class.addEventListener('click', function(){
   if (join_class_requirements.style.display == "flex") {
     if (create_class_requirements.style.display == "flex") {
@@ -293,3 +291,9 @@ logout.addEventListener('click', function(){
   localStorage.removeItem("email")
   window.location.replace('../views/signin.html')
 })
+
+
+function toggleMenu() {
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
+}

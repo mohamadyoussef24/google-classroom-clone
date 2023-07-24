@@ -157,3 +157,10 @@ pages.loadFor = (func_name) => {
     eval("pages." + func_name + "();")
 }
 
+
+
+function toggleMenu() {
+    var menuItems = document.getElementById("menuItems");
+    menuItems.classList.toggle("show");
+  }
+  

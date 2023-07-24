@@ -64,3 +64,8 @@ submit.addEventListener("click", function(e) {
   e.preventDefault();
   password_matching();
 });
+
+function toggleMenu() {
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
+}
