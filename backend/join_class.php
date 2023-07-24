@@ -41,26 +41,17 @@ if ($num_rows == 0) {
     $num_rows3 = $query->num_rows();
 
 
-    if($num_rows2 == 0 && $num_rows3 ){
-        
-    $query = $mysqli->prepare('insert into students(class_id,user_id)  values(?,?)');
-    $query->bind_param('ii', $class_id, $user_id);
-    $query->execute();
-    $response['status'] = "success";
-    $response['class_id'] = $class_id;
-    $response['user_id '] = $user_id;
-    
-    }else{
-        $response['status'] = "You are already in class"
+    if ($num_rows2 == 0 && $num_rows3) {
+
+        $query = $mysqli->prepare('insert into students(class_id,user_id)  values(?,?)');
+        $query->bind_param('ii', $class_id, $user_id);
+        $query->execute();
+        $response['status'] = "success";
+        $response['class_id'] = $class_id;
+        $response['user_id '] = $user_id;
+    } else {
+        $response['status'] = "You are already in class";
     }
-
-
-
-
-
-
-
-
 }
 
 echo json_encode($response);

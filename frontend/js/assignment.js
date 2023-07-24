@@ -1,4 +1,9 @@
-
+window.onload = function(){
+    if(!localStorage.getItem("user_id")){
+        window.location.replace("../frontend/views/signin.html")
+    }
+  }
+  
 const pages = {}
 
 // function to show dropdowns on assignment creation page

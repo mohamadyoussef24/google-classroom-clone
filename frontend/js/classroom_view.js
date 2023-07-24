@@ -1,3 +1,10 @@
+window.onload = function(){
+  if(!localStorage.getItem("user_id")){
+      window.location.replace("../frontend/views/signin.html")
+  }
+}
+
+
 //this code is for animating the input 
 const inputs = document.querySelectorAll('.form-control input');
 const labels = document.querySelectorAll('.form-control label');
@@ -187,4 +194,47 @@ window.onclick = function(event) {
       }
     }
   }
+}
+
+
+
+let profile = ""
+
+window.onload = function(){
+
+  try {
+    const email = window.localStorage.getItem("email")
+    flag = "onload";
+    const profile_pic_form = new FormData()
+    profile_pic_form.append("email", email)
+    profile_pic_form.append("flag", flag)
+
+    fetch(base_url + 'edit_profile.php', {
+      method: "POST",
+      body: profile_pic_form 
+    })
+      .then((res) => res.json()) 
+      .then((data) => {
+        if (data.status === 'info found') { 
+          profile_info = data.profile_pic
+          
+          if (profile_info == "" || profile_info == " " || profile_info == null){
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `../../assets/images/usericon.png`; 
+          }else{
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `${base_url}/users/${profile_info}`;
+          }
+
+        } else {
+          console.log("image failed:", data.status);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch error:", err);
+      });
+  } catch (err) {
+    console.log("Error:", err);
+  }
+
 }

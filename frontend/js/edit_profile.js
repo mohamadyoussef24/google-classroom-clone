@@ -1,3 +1,9 @@
+window.onload = function(){
+  if(!localStorage.getItem("user_id")){
+      window.location.replace("../frontend/views/signin.html")
+  }
+}
+
 const password =document.getElementById('password')
 const modify_password =document.getElementById('modify_password')
 
