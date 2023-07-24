@@ -13,46 +13,32 @@
       </div>
       <h1 class="heading">
         <div class="h_main">Register</div>
-        <div class="h_sub">to a new Google Account</div>
-      </h1>
+      </h1> 
+        <!-- <div class="h_sub">to a new Google Account</div> -->
 
       <div class="slide-content">
         <div class="content1">
           <form id="register_form">
-            <div>
-              <input type="text" id="first_name" placeholder="First Name" />
-              <input type="text" id="last_name" placeholder="Last Name" />
+            <div  class="input-group">
+              <input type="text" id="first_name" placeholder="First Name" class="field" />
+              <input type="text" id="last_name" placeholder="Last Name" class="field" />
             </div>
-            <div>
-              <input type="text" id="email" placeholder="email" /><br />
-              <span>you can use letters,numbers&periods</span> <br />
-              <span>Use my current email adress instead </span>
+            <div class="input-group">
+              <input type="text" id="email" placeholder="'User name'@gmail.com" class="field"/><br />
+              <span>you can use letters,numbers&periods</span> <br>
+              <span><a href="signin.html">my current email adress instead </a> </span>
             </div>
-            <br />
-            <div>
-              <input type="password" id="password" placeholder="Password" />
-              <br />
-              <span
-                >Use 8 or more characters with mix of letters ,numbers &
-                symbols</span>
+            <br>
+            <div class="input-group">
+              <input type="password" id="password" placeholder="Password" class="field" />
+              <br>
+              <span class="info">Use 8 or more characters with mix of letters ,numbers & symbols</span>
             </div>
-            <br />
-            <div>
+            <br>
+            <div class="input-group last-row">
               <span><a href="signin.html">Signin instead</a></span>
-              <button type="submit" id="submit">Register</button>
+              <button type="submit" id="submit" class="btn">Register</button>
             </div>
-
-            <div class="info">
-              Not your computer? Use Guest mode to sign in privately.
-            </div>
-            <!-- <div class="input-group">
-              <label class="field-label email-label" for="email" name="email">Email or phone</label>
-              <input type="text" class="field email-field" id="email" placeholder="">   
-          </div>
-          <div class="input-group">
-            <label class="field-label password-label" for="password">Password</label>
-            <input type="password" class="field password-field" id="password" placeholder="">
-          </div> -->
           </form>
         </div>
       </div>
