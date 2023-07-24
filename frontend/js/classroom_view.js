@@ -83,7 +83,8 @@ const createClass = ()=> {
   fetch(base_url + "create_classroom.php",{
     method: "POST",
     body: create_class_form
-}).then((res) => res.json())
+})
+.then((res) => res.json())
 .then((data) => {
  if (data.status  == "success") {
   console.log('success')
@@ -98,8 +99,10 @@ const createClass = ()=> {
 }
 
 
-submit_class_info.addEventListener('click', createClass)
 
+submit_class_info.addEventListener('click', function(e){
+  e.preventDefault()
+  createClass()})
 
 
 
@@ -176,7 +179,9 @@ const joinClass = () => {
 
 const submit_code = document.getElementById('submit_code')
 
-submit_code.addEventListener('click', joinClass)
+submit_code.addEventListener('click', function(e){
+  e.preventDefault()
+  joinClass()})
 /* When the user clicks on the + button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
