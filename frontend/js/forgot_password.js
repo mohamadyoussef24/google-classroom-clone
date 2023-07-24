@@ -114,3 +114,9 @@ checkEmail = () => {
         console.log("Error:", err);
       }
 }
+
+function toggleMenu() {
+    var menuItems = document.getElementById("menuItems");
+    menuItems.classList.toggle("show");
+  }
+  

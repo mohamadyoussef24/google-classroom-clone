@@ -1,7 +1,7 @@
 
-  if(!localStorage.getItem("user_id")){
-      window.location.replace("../views/signin.html")
-  }
+  // if(!localStorage.getItem("user_id")){
+  //     window.location.replace("../views/signin.html")
+  // }
 
 
 const password =document.getElementById('password')
