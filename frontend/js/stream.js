@@ -34,32 +34,32 @@ function displayPosts(posts_array) {
     })
 }
 
-    window.onload = async function () {
-        const class_id = "3";
-        let formdata = new FormData();
-        formdata.append("class_id", class_id);
+window.onload = async function () {
+    const class_id = "21";
+    let formdata = new FormData();
+    formdata.append("class_id", class_id);
 
-        let requestOptions = {
-            method: 'POST',
-            body: formdata
-        };
+    let requestOptions = {
+        method: 'POST',
+        body: formdata
+    };
 
-        try {
-            const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
-            const json = await assignments.json()
-            console.log(json)
-            displayPosts(json)
-        }
-        catch (e) {
-            console.log("failed to fetch", e)
-        }
+    try {
+        const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
+        const json = await assignments.json()
+        console.log(json)
+        displayPosts(json)
     }
+    catch (e) {
+        console.log("failed to fetch", e)
+    }
+
 
     const announcement = document.getElementById("announcement")
     const post_div = document.getElementById("post-div")
     const post_input = document.getElementById("post-input")
 
-    announcement.addEventListener('click', function() {
+    announcement.addEventListener('click', function () {
         post_div.style.display = "none";
         post_input.style.display = "flex";
         const textarea = document.getElementById("announcement-text");
@@ -69,40 +69,39 @@ function displayPosts(posts_array) {
     const cancel_btn = document.getElementById("cancel-btn")
     const post_btn = document.getElementById("post-btn")
 
-    cancel_btn.addEventListener('click', function(){
+    cancel_btn.addEventListener('click', function () {
         post_div.style.display = "flex";
         post_input.style.display = "none";
     })
+}
 
-    post_btn.addEventListener('click', async function(){
-        post_div.style.display = "flex";
-        post_input.style.display = "none";
+post_btn.addEventListener('click', async function () {
+    post_div.style.display = "flex";
+    post_input.style.display = "none";
 
-        // test
-        const message = document.getElementById("announcement-text").value;
-        let post = { title: message}
-        displayPosts([post])
+    // test
+    const message = document.getElementById("announcement-text").value;
 
-        const class_id = "3";
-        const teacher_id = "2";
+    const class_id = "21";
+    const teacher_id = "20";
 
-        let formdata = new FormData();
-        formdata.append("teacher_id", teacher_id);
-        formdata.append("class_id", class_id);
-        formdata.append("message", message);
+    let formdata = new FormData();
+    formdata.append("teacher_id", teacher_id);
+    formdata.append("class_id", class_id);
+    formdata.append("message", message);
 
-        let requestOptions = {
-            method: 'POST',
-            body: formdata
-        };
+    let requestOptions = {
+        method: 'POST',
+        body: formdata
+    };
 
-        try {
-            const assignments = await fetch("http://localhost/google-classroom-backend/create_post.php", requestOptions)
-            const json = await assignments.json()
-            console.log(json)
-        }
-        catch (e) {
-            console.log("failed to fetch", e)
-        }
+    try {
+        const posts = await fetch("http://localhost/google-classroom-backend/create_post.php", requestOptions)
+        const json = await posts.json()
+        console.log(json)
+    }
+    catch (e) {
+        console.log("failed to fetch", e)
+    }
 
-    })
+})
