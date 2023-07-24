@@ -189,7 +189,6 @@ body.active .wrapper .section{
 	font-family: 'Muli', sans-serif;
 	justify-content: center;
 	flex-direction: column;
-	/* height: 65%; */
 	width: 60%;
 	background-color: #f3f0f07a;
 	border-radius: 20px;

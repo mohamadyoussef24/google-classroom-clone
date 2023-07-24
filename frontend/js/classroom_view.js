@@ -11,7 +11,6 @@ labels.forEach(label => {
     .join('');
 });
 
-// cancel button:
 
 
 ////////////////////////////////////////////////
@@ -93,11 +92,7 @@ if (data.status  == "success") {
 })
 }
 
-
 submit_class_info.addEventListener('click', createClass)
-
-
-
 
 join_class.addEventListener('click', function(){
   if (join_class_requirements.style.display == "flex") {
@@ -116,7 +111,6 @@ join_class.addEventListener('click', function(){
 
 ////user presses the buttons at the same time....
 
-
 create_class.addEventListener('click', function(){
   if (create_class_requirements.style.display == "flex") {
     create_class_requirements.style.display = "none" ;
@@ -132,13 +126,15 @@ create_class.addEventListener('click', function(){
 
 ////cancelling the form
 
-let cancel_form = document.getElementById("cancel_form")
-create_class.addEventListener('click', function(e){
-  e.preventDefault();
+document.getElementById("cancel_form1").addEventListener("click", function() {
+  var form = document.getElementById("create-form");
+  form.style.display = "none";
+});
 
-})
-
-
+document.getElementById("cancel_form2").addEventListener("click", function() {
+  var form = document.getElementById("join-form");
+  form.style.display = "none";
+});
 
 
 
