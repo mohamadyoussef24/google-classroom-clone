@@ -75,7 +75,7 @@ pages.createAssignment = () => {
         let instructions = document.getElementById("instructions").value;
         let class_name = getChecked();
         let due = document.getElementById("due").value;
-
+        
         localStorage.setItem('user_id', 3)
         let id = localStorage.getItem('user_id')
 
