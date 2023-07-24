@@ -1,3 +1,22 @@
+if(!localStorage.getItem("user_id")){
+    window.location.replace("../views/signin.html")
+  }
+
+
+////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
 
 // function to create and display assignment li
 function displayPosts(posts_array) {
@@ -45,9 +64,9 @@ window.onload = async function () {
     };
 
     try {
-        const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
+        const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
         const json = await assignments.json()
-        console.log(json)
+        // console.log(json)
         displayPosts(json)
     }
     catch (e) {
@@ -73,7 +92,45 @@ window.onload = async function () {
         post_div.style.display = "flex";
         post_input.style.display = "none";
     })
+
+    try {
+        const email = window.localStorage.getItem("email")
+        flag = "onload";
+        const profile_pic_form = new FormData()
+        profile_pic_form.append("email", email)
+        profile_pic_form.append("flag", flag)
+    
+        fetch(base_url + 'edit_profile.php', {
+          method: "POST",
+          body: profile_pic_form
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === 'info found') {
+              profile_info = data.profile_pic
+    
+              if (profile_info == "" || profile_info == " " || profile_info == null) {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = `../../assets/images/usericon.png`;
+              } else {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = `${base_url}/users/${profile_info}`;
+              }
+    
+            } else {
+              console.log("image failed:", data.status);
+            }
+          })
+          .catch((err) => {
+            console.log("Fetch error:", err);
+          });
+      } catch (err) {
+        console.log("Error:", err);
+      }
+     
 }
+const post_btn = document.getElementById("post-btn")
+
 
 post_btn.addEventListener('click', async function () {
     post_div.style.display = "flex";
@@ -96,7 +153,7 @@ post_btn.addEventListener('click', async function () {
     };
 
     try {
-        const posts = await fetch("http://localhost/google-classroom-backend/create_post.php", requestOptions)
+        const posts = await fetch("http://localhost/Assignments/google-classroom-clone/backend/create_post.php", requestOptions)
         const json = await posts.json()
         console.log(json)
     }
@@ -105,3 +162,49 @@ post_btn.addEventListener('click', async function () {
     }
 
 })
+
+
+
+// 
+const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
+let profile = ""
+
+window.onload = function () {
+
+  try {
+    const email = window.localStorage.getItem("email")
+    flag = "onload";
+    const profile_pic_form = new FormData()
+    profile_pic_form.append("email", email)
+    profile_pic_form.append("flag", flag)
+
+    fetch(base_url + 'edit_profile.php', {
+      method: "POST",
+      body: profile_pic_form
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 'info found') {
+          profile_info = data.profile_pic
+
+          if (profile_info == "" || profile_info == " " || profile_info == null) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `../../assets/images/usericon.png`;
+          } else {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `${base_url}/users/${profile_info}`;
+          }
+
+        } else {
+          console.log("image failed:", data.status);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch error:", err);
+      });
+  } catch (err) {
+    console.log("Error:", err);
+  }
+
+}
