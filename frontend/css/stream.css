@@ -11,8 +11,29 @@ html {
     width: 60%;
 }
 
-.cover-imag {
+.cover-img {
     background-image: url("/assets/svgs/img_backtoschool.jpg");
-    background-size: cover;
     height: 240px;
+}
+
+.class-wrapper {
+    align-self: flex-end;
+    color: white;
+}
+
+.class-name {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.class-topic {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.side-cards {
+    width: 20%;
+}
+.stream {
+    width: 80%;
 }
