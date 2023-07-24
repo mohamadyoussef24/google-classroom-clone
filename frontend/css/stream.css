@@ -8,7 +8,7 @@ html {
 }
 
 .container {
-    width: 60%;
+    width: 75%;
 }
 
 .cover-img {
@@ -60,3 +60,37 @@ html {
 .stream-date {
     font-weight: 400;
 }
+
+.post-announcement {
+    height: 240px;
+    display: none;
+}
+
+.assignment-text {
+    justify-content: space-around;
+}
+
+.input-div {
+    border-bottom: 1px solid #5f6368;
+    height: 70%;
+}
+
+.textarea {
+    border: none;
+    overflow: hidden;
+    height: 70%;
+    outline: none;
+}
+
+.nav-assign {
+    border-radius: 4px 0px 0px 4px;
+    cursor: pointer;
+    color: #5f6368;
+}
+
+.nav-arrow {
+    width: 20px;
+    border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
+}
+

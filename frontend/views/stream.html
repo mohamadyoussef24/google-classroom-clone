@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+
+
     <!-- navbar -->
     <header>
         <div class="nav flex width100">
@@ -68,53 +71,67 @@
                 <!-- side cards -->
                 <div class="side-cards flex column gap10">
                     <div class="card">
-                        google meet
+                        Class code
                     </div>
                     <div class="card">
-                        upcoming
+                        Upcoming
                     </div>
                 </div>
                 <div class="stream flex column gap5">
-                    <div class="card post-div flex just-btw">
+                    <div class="card post-div flex just-btw" id="post-div">
                         <div class="flex center gap10">
                             <div class="b-circle flex center teacher-icon"></div>
-                            <span class="announcement">Announce something to your class</span>
+                            <span class="announcement" id="announcement">Announce something to your class</span>
+                        </div>
+                    </div>
+                    <div class="post-announcement card gap20 column" id="post-input">
+                        <div class="flex gap10">
+                            <div class="flex">
+                                <div class="assignment-option nav-assign bg-grey btn flex center">Class name</div>
+                                <div class="nav-arrow bg-grey btn flex center" id="arrow2"><svg focusable="false"
+                                        width="24" height="24" viewBox="0 0 24 24" class="svg-grey NMm5M">
+                                        <path d="M7 10l5 5 5-5H7z"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="flex">
+                                <div class="assignment-option nav-assign bg-grey btn flex center">Students</div>
+                                <div class="nav-arrow bg-grey btn flex center" id="arrow2"><svg focusable="false"
+                                        width="24" height="24" viewBox="0 0 24 24" class="svg-grey NMm5M">
+                                        <path d="M7 10l5 5 5-5H7z"></path>
+                                    </svg></div>
+                            </div>
+                        </div>
+                        <div class="input-div bg-grey">
+                            <textarea name="title" id="title" class="textarea width100 bg-grey"></textarea>
+                        </div>
+                        <div class="flex just-btw">
+                            <!-- <div class="file-icons flex">
+                                <div class="b-circle"></div>
+                                <div class="b-circle"></div>
+                                <div class="b-circle"></div>
+                                <div class="b-circle"></div>
+                            </div> -->
+                            <div class="announcement-btns">
+                                <div class="flex">
+                                <div class="assignment-option nav-assign bg-grey btn flex center" id="cancel-btn">Cancel</div>
+                                    <button class="nav-assign bg-grey btn" id="post-btn">Post</button>
+                                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
+                                            viewBox="0 0 24 24" class=" NMm5M svg-grey">
+                                            <path d="M7 10l5 5 5-5H7z"></path>
+                                        </svg></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="stream-content flex column gap5" id="stream-container">
-                        <!-- <div class="card post-div flex just-btw">
-                            <div class="flex center gap10">
-                                <div class="b-circle bg-blue flex center" id="assignment-icon"><svg focusable="false"
-                                        width="24" height="24" viewBox="0 0 24 24" class=" NMm5M hhikbc svg-white">
-                                        <path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7z"></path>
-                                        <path
-                                            d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04a2.008 2.008 0 0 0-1.44 1.19c-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z">
-                                        </path>
-                                    </svg></div>
-                                <div class="flex column">
-                                    <span class="stream-title">[Teacher name] posted a new assignment: </span>
-                                    <span class="stream-date">date now</span>
-                                </div>
-                            </div>
-                            <div><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
-                                    class=" NMm5M svg-blue">
-                                    <path
-                                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z">
-                                    </path>
-                                </svg></div>
-                        </div> -->
+                        <!-- stream posts -->
                     </div>
+                    
                 </div>
+
             </div>
         </div>
     </div>
-
-    <!-- <svg focusable="false" width="24"
-                                    height="24" viewBox="0 0 24 24" class=" NMm5M svg-white">
-                                    <path
-                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h2v8l2.5-1.5L13 12V4h5v16z">
-                                    </path>
-                                </svg> -->
 
     <script src="/frontend/js/stream.js"></script>
 </body>

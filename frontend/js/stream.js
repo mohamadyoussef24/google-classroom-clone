@@ -57,3 +57,25 @@ function displayAssignments(assignments_array) {
             console.log("failed to fetch", e)
         }
     }
+
+    const announcement = document.getElementById("announcement")
+    const post_div = document.getElementById("post-div")
+    const post_input = document.getElementById("post-input")
+
+    announcement.addEventListener('click', function() {
+        post_div.style.display = "none";
+        post_input.style.display = "flex";
+    })
+
+    const cancel_btn = document.getElementById("cancel-btn")
+    const post_btn = document.getElementById("post-btn")
+
+    cancel_btn.addEventListener('click', function(){
+        post_div.style.display = "flex";
+        post_input.style.display = "none";
+    })
+
+    post_btn.addEventListener('click', function(){
+        post_div.style.display = "flex";
+        post_input.style.display = "none";
+    })
