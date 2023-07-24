@@ -238,3 +238,9 @@ window.onload = function(){
   }
 
 }
+
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function(){
+  localStorage.removeItem("user_id")
+  window.location.replace('../views/signin.html')
+})

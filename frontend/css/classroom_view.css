@@ -278,3 +278,17 @@ margin-top: 12px;
 .cursorpointer{
 	cursor: pointer;
 }
+
+#logout {
+	background-color: transparent;
+	border: none
+}
+
+#logout:hover{
+	cursor: pointer;
+	background-color: #DA70D6;
+	padding: 0.5rem;
+	color: white;
+	font-weight: bold;
+	
+}
