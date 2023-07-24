@@ -7,9 +7,8 @@ html {
     font-size: 14px;
 }
 
-.body {
+body {
     margin: 0;
-    height: 98vh;
 }
 
 /* navbar */
@@ -52,11 +51,9 @@ html {
 }
 
 /* central content div */
+
 .container {
-    align-self: center;
-    height: 100%;
-    width: 80%;
-    margin-top: 15px;
+    width: 60% !important;
 }
 
 /* lower nav of content div */
@@ -64,6 +61,7 @@ html {
     background-color: #1967d2;
     border-radius: 20px;
     padding: 20px;
+    cursor: pointer;
 }
 
 .lower-nav {

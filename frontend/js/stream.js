@@ -70,6 +70,17 @@ window.onload = async function () {
     }
 
 
+    try {
+        const posts = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_posts.php", requestOptions)
+        const json = await posts.json()
+        console.log(json)
+        displayPosts(json)
+    }
+    catch (e) {
+        console.log("failed to fetch", e)
+    }
+
+
     const announcement = document.getElementById("announcement")
     const post_div = document.getElementById("post-div")
     const post_input = document.getElementById("post-input")
@@ -82,13 +93,16 @@ window.onload = async function () {
     })
 
     const cancel_btn = document.getElementById("cancel-btn")
-    const post_btn = document.getElementById("post-btn")
 
     cancel_btn.addEventListener('click', function () {
         post_div.style.display = "flex";
         post_input.style.display = "none";
     })
 }
+
+const post_btn = document.getElementById("post-btn")
+const post_div = document.getElementById("post-div")
+const post_input = document.getElementById("post-input")
 
 post_btn.addEventListener('click', async function () {
     post_div.style.display = "flex";

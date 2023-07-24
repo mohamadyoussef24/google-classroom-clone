@@ -27,6 +27,7 @@ pages.showDropdowns = async () => {
     let class_ul = document.getElementById("class-ul")
     let arrow5 = document.getElementById("arrow5")
     let date = document.getElementById("due")
+    let close_btn = document.getElementById("close")
 
     localStorage.setItem('user_id', 1)
         let id = localStorage.getItem('user_id')
@@ -65,7 +66,9 @@ pages.showDropdowns = async () => {
         date.classList.toggle("hidden")
     })
 
-
+    close_btn.addEventListener('click', function(){
+        window.location.replace('classwork.html')
+    })
 }
 
 //function to get checked checkbox
@@ -163,6 +166,11 @@ pages.getAssignments = () => {
             console.log("failed to fetch", e)
         }
     }
+
+    const create_btn = document.getElementById('create')
+    create_btn.addEventListener('click', function(){
+        window.location.replace('assignments.html')
+    })
 }
 
 //this will load the scripts of the mentioned page

@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <div class="body flex column">
+    <div class="flex column width100">
         <header>
-            <div class="nav flex">
+            <div class="nav flex width100">
                 <div class="nav-left flex gap10">
                     <div><svg width="24" height="24" viewBox="0 0 24 24" focusable="false"
                             class=" NMm5M svg-grey nav-svg">
@@ -20,23 +20,20 @@
                         </svg></div>
                     <div class="flex column">
                         <!-- from database -->
-                        <a class="nav-links" href=""><span><b>classname</b>
+                        <a class="nav-links" href="-"><span><b>classname</b>
                                 <br>topic
                             </span></a>
                     </div>
                 </div>
                 <div class="nav-middle flex gap20">
-                    <a class="nav-links" href="">
+                    <a class="nav-links" href="stream.html">
                         <div class="nav-div flex center">Stream</div>
                     </a>
-                    <a class="nav-links" href="">
+                    <a class="nav-links" href="classwork.html">
                         <div class="nav-div flex center">Classwork</div>
                     </a>
-                    <a class="nav-links" href="">
+                    <a class="nav-links" href="people.html">
                         <div class="nav-div flex center">People</div>
-                    </a>
-                    <a class="nav-links" href="">
-                        <div class="nav-div flex center">Marks</div>
                     </a>
                 </div>
                 <div class="nav-right flex center gap10">
@@ -57,10 +54,9 @@
                 </div>
             </div>
         </header>
-
-        <div class="container width50 flex column">
-            <div class="width100 flex just-btw">
-                <button class="btn create flex center"><svg class="svg-white" focusable="false" width="24" height="24"
+        <div class="container flex column">
+            <div class="flex just-btw">
+                <button id="create" class="btn create flex center"><svg class="svg-white" focusable="false" width="24" height="24"
                         viewBox="0 0 24 24" class=" NMm5M">
                         <path d="M20 13h-7v7h-2v-7H4v-2h7V4h2v7h7v2z"></path>
                     </svg>Create</button>
