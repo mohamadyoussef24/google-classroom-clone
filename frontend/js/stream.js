@@ -15,10 +15,11 @@ function encrypt(id, secretKey) {
   }
 
 // function to create and display assignment li
-function displayPosts(posts_array) {
+function displayPosts(posts) {
     const stream_container = document.getElementById("stream-container");
 
-    posts_array.forEach((post) => {
+    stream_container.innerHTML = "";
+    posts.forEach((post) => {
         let announcement_div = document.createElement("div");
 
         announcement_div.innerHTML = `
@@ -32,7 +33,7 @@ function displayPosts(posts_array) {
                                         </path>
                                     </svg></div>
                                 <div class="flex column">
-                                    <span class="stream-title">[Teacher name] posted a new assignment: ${post.title} </span>
+                                    <span class="stream-title">[Teacher name] posted a new assignment: ${post} </span>
                                     <span class="stream-date">date now</span>
                                 </div>
                             </div>
