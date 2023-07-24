@@ -46,7 +46,8 @@ body{
     position:absolute;
     top:50%;
     left:50%;
-    width:352px;
+    width:30vw;
+    height: 95vh;
     transform: translate(-50%,-50%);
     padding:40px 30px 10px 30px;
     background:#fff;
@@ -84,7 +85,29 @@ body{
 }
 .menu-items.show {
     display: block; 
+    margin-top: 4vh;
+    margin-right: 2vw;
 }
+
+.menu-items ul {
+    list-style: none;
+    background-color: #e0e3e9;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-items ul li {
+    padding: 1vh;
+    cursor: pointer;
+  }
+  
+  .menu-items ul li:hover {
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+
+
 
 .logo{
     display: flex;
@@ -196,3 +219,4 @@ a {
     text-decoration: none;
     color: rgb(3, 106, 189);
 }
+

@@ -105,9 +105,7 @@ nextButton.addEventListener("click", function (e) {
   signin();
 });
 
-
 function toggleMenu() {
-  var menuItemsDiv = document.querySelector('.menu-icon');
-  menuItemsDiv.classList.toggle('show'); 
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
 }
-

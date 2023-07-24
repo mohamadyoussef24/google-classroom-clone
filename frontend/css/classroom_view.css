@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .form-control {
   position: relative;
@@ -53,6 +47,7 @@
 
 .button-container{
 	display: flex;
+	justify-content:right ;
 	flex-direction: row;
 	padding:10px ;
 	gap: 15px;
@@ -64,9 +59,6 @@
 	font-weight: 600
 }
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 *{
 	list-style: none;
@@ -94,6 +86,7 @@ body{
 	height: 100%;
 	padding: 7px 0;
 	transition: all 0.5s ease;
+	z-index: 2;
 	box-shadow: 5px 1px 20px rgba(196, 196, 196, 0.573);
 	
 }
@@ -145,7 +138,7 @@ border-top-right-radius: 33px;
 	width: 100%;
 }
 
-.wrapper .section .top_navbar{
+.wrapper .section .top_navbar ,.right-section{
 	background: rgb(255, 255, 255);
 	height: 12vh;
 	width: 100%;
@@ -159,6 +152,7 @@ border-top-right-radius: 33px;
 .wrapper .section .top_navbar .hamburger a{
 	font-size: 20px;
 	padding: 2vh 3vh;
+	margin-left: 15px;
 	border-radius: 30px;
 	background-color: #dedddd;
 	color: #787878;
@@ -181,25 +175,17 @@ body.active .wrapper .section{
 #class_options1{
 	display:none;
 }
-#create_class_requirements{
+.create-group-form{
 	display: none;
-	margin: 30px;
+	margin: 3%;
 	font-family: 'Muli', sans-serif;
-	
-	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	height: 65%;
+	width: 60%;
+	background-color: #f3f0f07a;
+	border-radius: 20px;
 }
-#join_class_requirements{
-	display: none;
-	font-family: 'Muli', sans-serif;
-	
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: 65%;
-}
+
 .userimg{
 	width: 45px;
 	height: 45px;
@@ -231,6 +217,7 @@ body.active .wrapper .section{
 	
 	position: relative;
 	display: inline-block;
+	
   }
   
   .dropdown-content {
@@ -279,16 +266,21 @@ margin-top: 12px;
 	cursor: pointer;
 }
 
+.form-div{
+	width: 100%;
+display: flex;
+justify-content: center;
+}
 #logout {
 	background-color: transparent;
-	border: none
+	border: none;
+	font-weight: bolder;
 }
 
 #logout:hover{
 	cursor: pointer;
-	background-color: #DA70D6;
+	background-color: #ababab;
 	padding: 0.5rem;
 	color: white;
-	font-weight: bold;
 	
 }

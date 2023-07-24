@@ -1,7 +1,7 @@
 
-if(!localStorage.getItem("user_id")){
-  window.location.replace("../views/signin.html")
-}
+// if(!localStorage.getItem("user_id")){
+//   window.location.replace("../views/signin.html")
+// }
 
 
 
@@ -39,6 +39,9 @@ labels.forEach(label => {
       ">${letter}</span>`)
     .join('');
 });
+
+
+
 ////////////////////////////////////////////////
 
 
@@ -131,14 +134,19 @@ const createClass = ()=> {
       });
 }
 
+// <<<<<<< HEAD
+// submit_class_info.addEventListener('click', createClass)
+
+// =======
 
 
-submit_class_info.addEventListener('click', function(e){
-  e.preventDefault()
-  createClass()})
+// submit_class_info.addEventListener('click', function(e){
+//   e.preventDefault()
+//   createClass()})
 
 
 
+// >>>>>>> 2b551813edbfa98b2801a15d5b8067556b9ea52c
 join_class.addEventListener('click', function(){
   if (join_class_requirements.style.display == "flex") {
     if (create_class_requirements.style.display == "flex") {
@@ -156,7 +164,6 @@ join_class.addEventListener('click', function(){
 
 ////user presses the buttons at the same time....
 
-
 create_class.addEventListener('click', function(){
   if (create_class_requirements.style.display == "flex") {
     create_class_requirements.style.display = "none" ;
@@ -171,12 +178,6 @@ create_class.addEventListener('click', function(){
 
 
 ////cancelling the form
-
-let cancel_form = document.getElementById("cancel_form")
-create_class.addEventListener('click', function(e){
-  e.preventDefault();
-
-})
 
 
 
