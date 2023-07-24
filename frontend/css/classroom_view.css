@@ -53,7 +53,8 @@
 
 .button-container{
 	display: flex;
-	flex-direction: row;
+	justify-content:right ;
+	flex-direction: button-container;
 	padding:10px ;
 	gap: 15px;
 }
@@ -94,6 +95,7 @@ body{
 	height: 100%;
 	padding: 7px 0;
 	transition: all 0.5s ease;
+	z-index: 2;
 	box-shadow: 5px 1px 20px rgba(196, 196, 196, 0.573);
 	
 }
@@ -145,7 +147,7 @@ border-top-right-radius: 33px;
 	width: 100%;
 }
 
-.wrapper .section .top_navbar{
+.wrapper .section .top_navbar ,.right-section{
 	background: rgb(255, 255, 255);
 	height: 12vh;
 	width: 100%;
@@ -181,25 +183,18 @@ body.active .wrapper .section{
 #class_options1{
 	display:none;
 }
-#create_class_requirements{
+.create-group-form{
 	display: none;
-	margin: 30px;
+	margin: 3%;
 	font-family: 'Muli', sans-serif;
-	
-	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	height: 65%;
+	/* height: 65%; */
+	width: 60%;
+	background-color: #f3f0f07a;
+	border-radius: 20px;
 }
-#join_class_requirements{
-	display: none;
-	font-family: 'Muli', sans-serif;
-	
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: 65%;
-}
+
 .userimg{
 	width: 45px;
 	height: 45px;
@@ -231,6 +226,7 @@ body.active .wrapper .section{
 	
 	position: relative;
 	display: inline-block;
+	
   }
   
   .dropdown-content {
@@ -277,4 +273,10 @@ margin-top: 12px;
 
 .cursorpointer{
 	cursor: pointer;
+}
+
+.form-div{
+	width: 100%;
+display: flex;
+justify-content: center;
 }
