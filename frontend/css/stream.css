@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+    box-sizing: border-box;
+    font-family: "Google Sans",'Roboto',Arial,sans-serif;
+    color: #5f6368;
+    font-size: 14px;
+}
+
+.container {
+    width: 75%;
+}
+
+.cover-img {
+    background-image: url("/assets/svgs/img_backtoschool.jpg");
+    height: 240px;
+}
+
+.class-wrapper {
+    align-self: flex-end;
+    color: white;
+}
+
+.class-name {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.class-topic {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.side-cards {
+    width: 20%;
+}
+.stream {
+    width: 80%;
+}
+
+.post-div {
+    padding: 10px 10px 10px 20px;
+    align-items: center;
+}
+
+.teacher-icon {
+    background-image: url("/assets/svgs/unnamed.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.announcement {
+    cursor: pointer;
+}
+
+.stream-title {
+    font-weight: 600;
+}
+
+.stream-date {
+    font-weight: 400;
+}
+
+.post-announcement {
+    height: 240px;
+    display: none;
+}
+
+.assignment-text {
+    justify-content: space-around;
+}
+
+.input-div {
+    border-bottom: 1px solid #5f6368;
+    height: 70%;
+}
+
+.textarea {
+    border: none;
+    overflow: hidden;
+    height: 70%;
+    outline: none;
+}
+
+.nav-assign {
+    border-radius: 4px 0px 0px 4px;
+    cursor: pointer;
+    color: #5f6368;
+}
+
+.nav-arrow {
+    width: 20px;
+    border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
+}
+
