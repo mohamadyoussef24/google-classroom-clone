@@ -62,6 +62,8 @@ function displayPosts(posts_array) {
     announcement.addEventListener('click', function() {
         post_div.style.display = "none";
         post_input.style.display = "flex";
+        const textarea = document.getElementById("announcement-text");
+        textarea.value = ""
     })
 
     const cancel_btn = document.getElementById("cancel-btn")
