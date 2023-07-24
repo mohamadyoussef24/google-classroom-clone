@@ -3,6 +3,20 @@
         window.location.replace("../views/signin.html")
     }
   
+    ////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
   
 const pages = {}
 
