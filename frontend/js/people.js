@@ -3,16 +3,10 @@ if(!localStorage.getItem("user_id")){
   window.location.replace("../views/signin.html")
 }
 
-
-let site_url = window.location.href
-console.log(site_url)
-let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
-console.log(class_code)
-if (class_code == "" || class_code == " ") {
-    window.location.replace("../views/classroom_view.html")
-}
+const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
 
+class_code=localStorage.getItem('class_code')
 try {
   
   const decryptid = localStorage.getItem('user_id')
@@ -154,7 +148,7 @@ cancel_btn.addEventListener('click', function(){
 
 // 
 
-const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
 
 let profile = ""
 

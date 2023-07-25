@@ -4,7 +4,9 @@ $user_id = $_POST['user_id'];
 $code = $_POST['class_code'];
 
 
-$query = $mysqli->prepare('select id from classes where class_code=?');
+$query = $mysqli->prepare('select id
+from classes 
+where class_code=?');
 $query->bind_param('s', $code);
 $query->execute();
 
@@ -23,7 +25,9 @@ if ($num_rows == 0) {
 
 
 
-    $query = $mysqli->prepare('select user_id from teachers where class_id=? and user_id=?');
+    $query = $mysqli->prepare('select user_id
+    from teachers 
+    where class_id=? and user_id=?');
     $query->bind_param('ii', $class_id, $user_id);
     $query->execute();
     $query->store_result();

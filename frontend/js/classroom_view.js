@@ -36,7 +36,7 @@ function displayClasses(classses_array) {
     </div></a>
   `;
     classes_wrapper.appendChild(class_div)
-    document.create
+   
   })
 }
 
