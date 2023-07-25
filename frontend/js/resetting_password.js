@@ -1,5 +1,3 @@
-
-
 const submit = document.getElementById('submit');
 const infoDiv = document.querySelector(".info");
 
