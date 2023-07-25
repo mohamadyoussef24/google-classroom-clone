@@ -29,6 +29,8 @@ const validateForm = () => {
     const last_name = document.getElementById("last_name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const password_confirm = document.getElementById("password_confirm").value;
+
 
     if (!first_name || !last_name || !email || !password) {
         infoDiv.textContent = "All fields are required.";
@@ -52,7 +54,9 @@ const validateForm = () => {
         return false;
     }
 
+
     return true;
+
 };
 
 const register = () => {

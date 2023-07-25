@@ -196,15 +196,19 @@ body.active .wrapper .section {
 	border-radius: 50%;
 }
 
-.right-section {
-
+.right-section{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: 20%;
-
-
+	width: 25%;
+	gap: 3px;
 }
+
+.userimg:hover{
+	border: 1px solid gray;
+	box-shadow: 1px 1px 20px rgb(143, 143, 143);
+	
+	}
 
 .dropbtn {
 
@@ -217,7 +221,7 @@ body.active .wrapper .section {
 .dropbtn:focus {
 	background-color: rgba(128, 128, 128, 0.185);
 	border-radius: 50%;
-	padding: 2px;
+	padding:0.0rem 1rem;
 }
 
 .dropdown {
@@ -256,7 +260,10 @@ body.active .wrapper .section {
 .bento {
 	width: 20px;
 	height: 20px;
-
+}
+.bento:hover{
+	width: 25px;
+	height: 25px;
 }
 
 .logoname {
@@ -289,14 +296,15 @@ body.active .wrapper .section {
 	background-color: transparent;
 	border: none;
 	font-weight: bolder;
+	color: rgb(81, 81, 81);
+
 }
 
-#logout:hover {
+#logout:hover{
 	cursor: pointer;
-	background-color: #ababab;
+	background-color: #dbdbdb;
+	border-radius: 10px;
 	padding: 0.5rem;
-	color: white;
-
 }
 
 .classes-wrapper {

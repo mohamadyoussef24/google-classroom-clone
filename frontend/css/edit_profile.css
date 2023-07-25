@@ -16,18 +16,17 @@ body {
   align-items: center;
   justify-content: center;
 }
-.edit_profile_data{
     
+.edit_profile_data{
 border-radius: 5px;
-background-color: #f2f2f2;
-padding: 20px;
-display: flex;
-justify-content: space-between;
-flex-direction: column;
-width: 30%;
-height: 80%;
-
-}
+ background-color: #f2f2f2;
+ padding: 20px;
+ display: flex;
+ justify-content: space-between;
+ flex-direction: column;
+ width: 27vw;
+ height: 90vh;
+ }
 .profile{
     display: flex;
     flex-direction: column;
