@@ -107,3 +107,9 @@ html {
 .nav-links div{
     margin-bottom: -14px;
 }
+
+#imagePreview {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}

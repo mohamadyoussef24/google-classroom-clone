@@ -2,6 +2,93 @@ if(!localStorage.getItem("user_id")){
     window.location.replace("../views/signin.html")
   }
 
+  const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
+let profile = ""
+
+window.onload = function () {
+
+  try {
+    const email = window.localStorage.getItem("email")
+    flag = "onload";
+    const profile_pic_form = new FormData()
+    profile_pic_form.append("email", email)
+    profile_pic_form.append("flag", flag)
+
+    fetch(base_url + 'edit_profile.php', {
+      method: "POST",
+      body: profile_pic_form
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 'info found') {
+          profile_info = data.profile_pic
+
+          if (profile_info == "" || profile_info == " " || profile_info == null) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `../../assets/images/usericon.png`;
+          } else {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `${base_url}/users/${profile_info}`;
+          }
+
+        } else {
+          console.log("image failed:", data.status);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch error:", err);
+      });
+  } catch (err) {
+    console.log("Error:", err);
+  }
+
+}
+
+
+// class and topic names
+window.onload = function(){
+  const classname = document.getElementById("classname")
+  const class_topic = document.getElementById("class_topic")
+  const class_name_cover = document.getElementById("class_name_cover");
+  const class_topic_cover = document.getElementById("class_topic_cover");
+
+  
+  let site_url = window.location.href
+  console.log(site_url)
+  var class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+  console.log(class_code)
+  
+
+  try{
+    const class_name = new FormData()
+    class_name.append("class_code", class_code)
+
+    fetch(base_url + "displaying_classes.php",{
+        method: "POST",
+        body: class_name
+    })
+.then((res) => res.json())
+.then((data) => {
+    console.log(data.status)
+
+    if (data.status  == "class found") {
+      const new_class_name = data.name
+      const new_class_topic = data.subject
+      console.log(new_class_name)
+      classname.innerHTML = `${new_class_name}`
+      class_topic.innerHTML = `${new_class_topic}`
+      class_name_cover.innerHTML = `${new_class_name}`
+      class_topic_cover.innerHTML = `${new_class_topic}` 
+    }else{
+        console.log('class does not exist')
+    }
+})
+}catch (err) {
+    console.log("Error:", err);
+  }
+
+}
 
 ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
@@ -166,90 +253,3 @@ post_btn.addEventListener('click', async function () {
 
 
 // 
-const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
-
-let profile = ""
-
-window.onload = function () {
-
-  try {
-    const email = window.localStorage.getItem("email")
-    flag = "onload";
-    const profile_pic_form = new FormData()
-    profile_pic_form.append("email", email)
-    profile_pic_form.append("flag", flag)
-
-    fetch(base_url + 'edit_profile.php', {
-      method: "POST",
-      body: profile_pic_form
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 'info found') {
-          profile_info = data.profile_pic
-
-          if (profile_info == "" || profile_info == " " || profile_info == null) {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = `../../assets/images/usericon.png`;
-          } else {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = `${base_url}/users/${profile_info}`;
-          }
-
-        } else {
-          console.log("image failed:", data.status);
-        }
-      })
-      .catch((err) => {
-        console.log("Fetch error:", err);
-      });
-  } catch (err) {
-    console.log("Error:", err);
-  }
-
-}
-
-
-// class and topic names
-window.onload = function(){
-  const classname = document.getElementById("classname")
-  const class_topic = document.getElementById("class_topic")
-  const class_name_cover = document.getElementById("class_name_cover");
-  const class_topic_cover = document.getElementById("class_topic_cover");
-
-  
-  let site_url = window.location.href
-  console.log(site_url)
-  var class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
-  console.log(class_code)
-  
-
-  try{
-    const class_name = new FormData()
-    class_name.append("class_code", class_code)
-
-    fetch(base_url + "displaying_classes.php",{
-        method: "POST",
-        body: class_name
-    })
-.then((res) => res.json())
-.then((data) => {
-    console.log(data.status)
-
-    if (data.status  == "class found") {
-      const new_class_name = data.name
-      const new_class_topic = data.subject
-      console.log(new_class_name)
-      classname.innerHTML = `${new_class_name}`
-      class_topic.innerHTML = `${new_class_topic}`
-      class_name_cover.innerHTML = `${new_class_name}`
-      class_topic_cover.innerHTML = `${new_class_topic}` 
-    }else{
-        console.log('class does not exist')
-    }
-})
-}catch (err) {
-    console.log("Error:", err);
-  }
-
-}
