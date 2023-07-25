@@ -98,3 +98,12 @@ html {
 .userimg{
     margin-top: -18%;
 }
+
+/*  */
+#classname {
+    font-weight: bold;
+}
+
+.nav-links div{
+    margin-bottom: -14px;
+}

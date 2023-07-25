@@ -208,3 +208,48 @@ window.onload = function () {
   }
 
 }
+
+
+// class and topic names
+window.onload = function(){
+  const classname = document.getElementById("classname")
+  const class_topic = document.getElementById("class_topic")
+  const class_name_cover = document.getElementById("class_name_cover");
+  const class_topic_cover = document.getElementById("class_topic_cover");
+
+  
+  let site_url = window.location.href
+  console.log(site_url)
+  var class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+  console.log(class_code)
+  
+
+  try{
+    const class_name = new FormData()
+    class_name.append("class_code", class_code)
+
+    fetch(base_url + "displaying_classes.php",{
+        method: "POST",
+        body: class_name
+    })
+.then((res) => res.json())
+.then((data) => {
+    console.log(data.status)
+
+    if (data.status  == "class found") {
+      const new_class_name = data.name
+      const new_class_topic = data.subject
+      console.log(new_class_name)
+      classname.innerHTML = `${new_class_name}`
+      class_topic.innerHTML = `${new_class_topic}`
+      class_name_cover.innerHTML = `${new_class_name}`
+      class_topic_cover.innerHTML = `${new_class_topic}` 
+    }else{
+        console.log('class does not exist')
+    }
+})
+}catch (err) {
+    console.log("Error:", err);
+  }
+
+}
