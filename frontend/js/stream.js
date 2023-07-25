@@ -37,6 +37,7 @@ const post_btn = document.getElementById("post-btn")
 post_btn.addEventListener('click', async function () {
     post_div.style.display = "flex";
     post_input.style.display = "none";
+    location.reload()
 
     // test
     const message = document.getElementById("announcement-text").value;
