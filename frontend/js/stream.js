@@ -55,12 +55,6 @@ window.onload = function () {
   } catch (err) {
     console.log("Error:", err);
   }
-
-}
-
-
-// class and topic names
-window.onload = function(){
   const classname = document.getElementById("classname")
   const class_topic = document.getElementById("class_topic")
   const class_name_cover = document.getElementById("class_name_cover");
@@ -99,6 +93,10 @@ window.onload = function(){
   }
 
 }
+
+
+// class and topic names
+
 
 ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
