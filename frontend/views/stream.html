@@ -17,9 +17,12 @@
     <header>
         <div class="nav flex width100">
             <div class="nav-left flex gap10">
-                <a href="classroom_view.html"><div><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class=" NMm5M svg-grey nav-svg">
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                    </svg></div></a>
+                <a href="classroom_view.html">
+                    <div><svg width="24" height="24" viewBox="0 0 24 24" focusable="false"
+                            class=" NMm5M svg-grey nav-svg">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                        </svg></div>
+                </a>
                 <div class="flex column">
                     <!-- from database -->
                     <a class="nav-links" href="-"><span><b>classname</b>
@@ -52,13 +55,8 @@
                     </svg></div>
                 <div class="nav-links" id="logout">Logout</div>
                 <div class="b-circle">
-                  <a href="../views/edit_profile.html"
-                    ><img
-                      src="../../assets/images/usericon.png"
-                      alt="usericon"
-                      class="userimg"
-                      id="imagePreview"
-                  /></a>
+                    <a href="../views/edit_profile.html"><img src="../../assets/images/usericon.png" alt="usericon"
+                            class="userimg" id="imagePreview" /></a>
                 </div>
             </div>
         </div>
@@ -77,7 +75,11 @@
                 <!-- side cards -->
                 <div class="side-cards flex column gap10">
                     <div class="card">
-                        Class code
+                        <!-- The text field -->
+                        <input type="text" value="Hello World" id="myInput">
+
+                        <!-- The button used to copy the text -->
+                        <button onclick="myFunction()">Copy Code</button>
                     </div>
                     <div class="card">
                         Upcoming
@@ -113,10 +115,11 @@
                         <div class="flex just-btw">
                             <div class="announcement-btns">
                                 <div class="flex">
-                                <div class="assignment-option nav-assign bg-grey btn flex center" id="cancel-btn">Cancel</div>
+                                    <div class="assignment-option nav-assign bg-grey btn flex center" id="cancel-btn">
+                                        Cancel</div>
                                     <button class="nav-assign bg-grey btn" id="post-btn">Post</button>
-                                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24" height="24"
-                                            viewBox="0 0 24 24" class=" NMm5M svg-grey">
+                                    <div class="nav-arrow bg-grey btn flex center"><svg focusable="false" width="24"
+                                            height="24" viewBox="0 0 24 24" class=" NMm5M svg-grey">
                                             <path d="M7 10l5 5 5-5H7z"></path>
                                         </svg></div>
                                 </div>
@@ -126,7 +129,7 @@
                     <div class="stream-content flex column gap5" id="stream-container">
                         <!-- stream posts -->
                     </div>
-                    
+
                 </div>
 
             </div>

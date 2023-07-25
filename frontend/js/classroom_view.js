@@ -356,7 +356,7 @@ window.onload = async function () {
         body: formdata_class_id
       }).then((res) => res.json())
       .then((data) => {
-        
+        console.log(data)
         displayClasses(data)
       }).catch((err) => {
         console.log("Fetch error:", err);
