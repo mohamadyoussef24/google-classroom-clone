@@ -37,23 +37,30 @@ border-radius: 5px;
     
 }
 .profile-btn{
-    background-color: #4CAF50; /* Green */
-    border: none;
+    background-color: #4CAF50;
+    border: 1px solid ;
+    border-radius: 3px;
     color: white;
-    padding: 10px 20px;
+    height: 8vh;
+    width: 18vh;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
 }
 .button1 {
     background-color: white; 
     color: black; 
     border: 2px solid #4CAF50;
   }
-.button1:hover {
-    background-color: #4CAF50;
+.button1:hover{
+  background-color: #172f18;
+  cursor: pointer;
+  color: white;
+}
+.profile-btn:hover {
+    background-color: #172f18;
+    cursor: pointer;
+    transition-duration: 0.4s;
     color: white;
   }
 .button2 {
@@ -94,6 +101,10 @@ border-radius: 5px;
   
   input[type=submit]:hover {
     background-color: #45a049;
+      background-color: #172f18;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      color: white;
   }
 
 
