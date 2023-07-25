@@ -1,4 +1,9 @@
 
+if(!localStorage.getItem("user_id")){
+  window.location.replace("../views/signin.html")
+}
+
+
 ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
 function encrypt(id, secretKey) {
