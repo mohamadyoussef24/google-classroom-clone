@@ -7,7 +7,7 @@ if(!localStorage.getItem("user_id")){
 
 // window.onload = async function () {
 
-  
+
  
 
 // }
