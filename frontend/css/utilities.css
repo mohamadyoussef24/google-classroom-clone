@@ -110,6 +110,7 @@
     text-decoration: none;
     color: #5f6368;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .nav-links:hover, .nav-links:focus {

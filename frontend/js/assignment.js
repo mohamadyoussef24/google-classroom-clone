@@ -178,6 +178,12 @@ pages.loadFor = (func_name) => {
     eval("pages." + func_name + "();")
 }
 
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function () {
+  localStorage.removeItem("user_id")
+  localStorage.removeItem("email")
+  window.location.replace('../views/signin.html')
+})
 
 
 function toggleMenu() {

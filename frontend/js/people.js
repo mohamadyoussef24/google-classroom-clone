@@ -87,3 +87,10 @@ invite_btn_student.addEventListener('click', function(){
 cancel_btn.addEventListener('click', function(){
     overlay.style.display = "none";
 });
+
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function () {
+  localStorage.removeItem("user_id")
+  localStorage.removeItem("email")
+  window.location.replace('../views/signin.html')
+})
