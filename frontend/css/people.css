@@ -5,6 +5,7 @@ html {
     font-family: "Google Sans",'Roboto',Arial,sans-serif;
     color: #5f6368;
     font-size: 14px;
+
 }
 
 .overlay {
@@ -96,3 +97,8 @@ html {
     cursor: pointer;
 }
 
+#imagePreview {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}

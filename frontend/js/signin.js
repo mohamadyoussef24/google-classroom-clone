@@ -82,11 +82,13 @@ const signin = () => {
         console.log("Server Response:", data);
         if (data.status === 'logged in') {
           const user_id = data.user_id;
-          const secretKey = 123; // Replace with your desired secret key
+          const secretKey = 123;
+           // Replace with your desired secret key
 
                 
           const encryptedID = encrypt(user_id, secretKey);
           localStorage.setItem("user_id", encryptedID);
+          localStorage.setItem('email', email)
          
           window.location.replace("../views/classroom_view.html");
         } else {

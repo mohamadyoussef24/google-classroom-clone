@@ -1,9 +1,10 @@
 
-// if(!localStorage.getItem("user_id")){
-//     window.location.replace("../views/signin.html")
-// }
+    if(!localStorage.getItem("user_id")){
+        window.location.replace("../views/signin.html")
+    }
 
-////////////////////Encrypt and decrypt
+  
+    ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
 function encrypt(id, secretKey) {
     const encryptedData = id ^ secretKey;
@@ -183,7 +184,48 @@ pages.getAssignments = () => {
         localStorage.removeItem("email")
         window.location.replace('../views/signin.html')
     })
-}
+    const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
+    let profile = ""
+    let flag ;
+        
+      try {
+        
+        const email = window.localStorage.getItem("email")
+        flag = "onload";
+        const profile_pic_form = new FormData()
+        profile_pic_form.append("email", email)
+        profile_pic_form.append("flag", flag)
+    
+        fetch(base_url + 'edit_profile.php', {
+          method: "POST",
+          body: profile_pic_form
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === 'info found') {
+              profile_info = data.profile_pic
+    
+              if (profile_info == "" || profile_info == " " || profile_info == null) {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = `../../assets/images/usericon.png`;
+              } else {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = `${base_url}/users/${profile_info}`;
+              }
+    
+            } else {
+              console.log("image failed:", data.status);
+            }
+          })
+          .catch((err) => {
+            console.log("Fetch error:", err);
+          });
+      } catch (err) {
+        console.log("Error:", err);
+      }
+    
+    }
 
 //this will load the scripts of the mentioned page
 pages.loadFor = (func_name) => {
@@ -194,4 +236,8 @@ pages.loadFor = (func_name) => {
 function toggleMenu() {
     var menuItems = document.getElementById("menuItems");
     menuItems.classList.toggle("show");
-}
+  }
+  
+
+//   
+

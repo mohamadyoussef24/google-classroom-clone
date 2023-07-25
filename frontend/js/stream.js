@@ -1,3 +1,102 @@
+if(!localStorage.getItem("user_id")){
+    window.location.replace("../views/signin.html")
+  }
+
+  const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
+let profile = ""
+//IMPORTANT
+let site_url = window.location.href
+console.log(site_url)
+let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+console.log(class_code)
+if (class_code=="" || class_code== " "){
+  window.location.replace("../views/classroom_view.html")
+}
+
+
+window.onload = function () {
+  let site_url = window.location.href
+  console.log(site_url)
+  let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+  console.log(class_code)
+ 
+  try {
+    const email = window.localStorage.getItem("email")
+    flag = "onload";
+    const profile_pic_form = new FormData()
+    profile_pic_form.append("email", email)
+    profile_pic_form.append("flag", flag)
+
+    fetch(base_url + 'edit_profile.php', {
+      method: "POST",
+      body: profile_pic_form
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 'info found') {
+          profile_info = data.profile_pic
+
+          if (profile_info == "" || profile_info == " " || profile_info == null) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `../../assets/images/usericon.png`;
+          } else {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = `${base_url}/users/${profile_info}`;
+          }
+
+        } else {
+          console.log("image failed:", data.status);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch error:", err);
+      });
+  } catch (err) {
+    console.log("Error:", err);
+  }
+  const classname = document.getElementById("classname")
+  const class_topic = document.getElementById("class_topic")
+  const class_name_cover = document.getElementById("class_name_cover");
+  const class_topic_cover = document.getElementById("class_topic_cover");
+
+  
+
+  
+
+  try{
+    const class_name = new FormData()
+    class_name.append("class_code", class_code)
+
+    fetch(base_url + "displaying_classes.php",{
+        method: "POST",
+        body: class_name
+    })
+.then((res) => res.json())
+.then((data) => {
+    console.log(data.status)
+
+    if (data.status  == "class found") {
+      const new_class_name = data.name
+      const new_class_topic = data.subject
+      console.log(new_class_name)
+      classname.innerHTML = `${new_class_name}`
+      class_topic.innerHTML = `${new_class_topic}`
+      class_name_cover.innerHTML = `${new_class_name}`
+      class_topic_cover.innerHTML = `${new_class_topic}` 
+    }else{
+        console.log('class does not exist')
+    }
+})
+}catch (err) {
+    console.log("Error:", err);
+  }
+
+}
+
+
+// class and topic names
+
 
 ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
@@ -138,16 +237,93 @@ window.onload = async function () {
     }
 
 
+    const announcement = document.getElementById("announcement")
+    const post_div = document.getElementById("post-div")
+    const post_input = document.getElementById("post-input")
+
+    announcement.addEventListener('click', function () {
+        post_div.style.display = "none";
+        post_input.style.display = "flex";
+        const textarea = document.getElementById("announcement-text");
+        textarea.value = ""
+    })
+
+    const cancel_btn = document.getElementById("cancel-btn")
+
+    cancel_btn.addEventListener('click', function () {
+        post_div.style.display = "flex";
+        post_input.style.display = "none";
+    })
+
     try {
-        const posts = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_posts.php", requestOptions)
-        let json2 = await posts.json()
-        console.log(json2)
-        displayPosts(json2, "announcement")
-    }
-    catch (e) {
-        console.log("failed to fetch", e)
-    }
+        const email = window.localStorage.getItem("email")
+        flag = "onload";
+        const profile_pic_form = new FormData()
+        profile_pic_form.append("email", email)
+        profile_pic_form.append("flag", flag)
+    
+        fetch(base_url + 'edit_profile.php', {
+          method: "POST",
+          body: profile_pic_form
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === 'info found') {
+              profile_info = data.profile_pic
+    
+              if (profile_info == "" || profile_info == " " || profile_info == null) {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = `../../assets/images/usericon.png`;
+              } else {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = `${base_url}/users/${profile_info}`;
+              }
+    
+            } else {
+              console.log("image failed:", data.status);
+            }
+          })
+          .catch((err) => {
+            console.log("Fetch error:", err);
+          });
+      } catch (err) {
+        console.log("Error:", err);
+      }
+     
 }
+// const post_btn = document.getElementById("post-btn")
+
+
+// post_btn.addEventListener('click', async function () {
+//     post_div.style.display = "flex";
+//     post_input.style.display = "none";
+
+//     // test
+//     const message = document.getElementById("announcement-text").value;
+
+//     const class_id = "21";
+//     const teacher_id = "20";
+
+//     let formdata = new FormData();
+//     formdata.append("teacher_id", teacher_id);
+//     formdata.append("class_id", class_id);
+//     formdata.append("message", message);
+
+//     let requestOptions = {
+//         method: 'POST',
+//         body: formdata
+//     };
+
+//     try {
+//         const posts = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_posts.php", requestOptions)
+//         let json2 = await posts.json()
+//         console.log(json2)
+//         displayPosts(json2, "announcement")
+//     }
+//     catch (e) {
+//         console.log("failed to fetch", e)
+//     }
+// })
 
 const logout = document.getElementById('logout')
 logout.addEventListener('click', function () {
@@ -157,3 +333,5 @@ logout.addEventListener('click', function () {
 })
 
 
+
+// 

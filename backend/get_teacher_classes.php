@@ -10,9 +10,9 @@ $query->bind_param('i', $id);
 $query->execute();
 
 $array = $query->get_result();
-    $response = [];
-    while($assignment = $array->fetch_assoc()){
-        $response[] = $assignment;
-    }
+$response = [];
+while ($assignment = $array->fetch_assoc()) {
+    $response[] = $assignment;
+}
 
 echo json_encode($response);
