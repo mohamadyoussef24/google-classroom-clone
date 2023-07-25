@@ -257,7 +257,7 @@ const joinClass = () => {
       if (data.status == 'success') {
         const class_id = data.class_id;
         console.log(class_id)
-        window.location.replace("../views/classroom_stream.html");
+        window.location.replace("../views/stream.html");
       } else {
         console.log("Class failed: " + data.status);
       }

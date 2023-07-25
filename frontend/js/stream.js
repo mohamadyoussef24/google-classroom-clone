@@ -3,16 +3,89 @@ if(!localStorage.getItem("user_id")){
   }
 
   const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
-const post_btn = document.getElementById("post-btn")
-let profile = ""
-//IMPORTANT
-let site_url = window.location.href
-console.log(site_url)
-let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
-console.log(class_code)
-if (class_code=="" || class_code== " "){
-  window.location.replace("../views/classroom_view.html")
+  const post_btn = document.getElementById("post-btn")
+  const announcement = document.getElementById("announcement")
+  const post_div = document.getElementById("post-div")
+  const post_input = document.getElementById("post-input")
+////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+  const encryptedData = id ^ secretKey;
+  const encryptedString = btoa(encryptedData.toString());
+  return encryptedString;
 }
+
+// Function to decrypt a base64 string and get back the integer ID
+function decrypt(encryptedData, secretKey) {
+  const encryptedString = atob(encryptedData);
+  const encryptedInt = parseInt(encryptedString, 10);
+  return encryptedInt ^ secretKey;
+}
+
+
+
+  let site_url = window.location.href
+  console.log(site_url)
+  let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+  console.log(class_code)
+  if (class_code == "" || class_code == " ") {
+      window.location.replace("../views/classroom_view.html")
+  }
+
+
+  try {
+    
+    const decryptid = localStorage.getItem('user_id')
+
+    const secretKey = 123
+    const user_id = decrypt(decryptid,secretKey)
+    
+    const checkclass_form = new FormData()
+    checkclass_form.append("user_id", user_id)
+    checkclass_form.append("class_code", class_code)
+    
+    fetch(base_url + 'Check_user_class.php', {
+        method: "POST",
+        body: checkclass_form
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            result = data.status
+            console.log(data)
+            if (result == "teacher") {
+                user_type="teacher"
+               localStorage.setItem("class_code",class_code)
+            }
+            else if (result == "student") {
+                user_type="student"
+                
+                post_div.style.display= "none";
+                localStorage.setItem("class_code",class_code)
+            }
+            else if (result == "notallowed") {
+                window.location.replace("../views/classroom_view.html")
+                localStorage.removeItem("class_code")
+
+            }
+            else if (result == "classnotfound") {
+                window.location.replace("../views/classroom_view.html")
+                localStorage.removeItem("class_code")
+
+            }
+
+
+        })
+        .catch((err) => {
+            console.log("Fetch error:", err);
+        });
+} catch (err) {
+    console.log("Error:", err);
+}
+
+
+
+
+
 
 
 window.onload =  async function () {
@@ -102,28 +175,68 @@ window.onload =  async function () {
 
 
   
-  let formdata = new FormData();
-  formdata.append("class_code", class_code);
 
-  let requestOptions = {
-      method: 'POST',
-      body: formdata
-  };
 
   try {
+    let formdata = new FormData();
+    formdata.append("class_code", class_code);
+  
+    let requestOptions = {
+        method: 'POST',
+        body: formdata
+    };
       const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
       const json = await assignments.json()
-      // console.log(json)
-      displayPosts(json)
+      console.log(json)
+      displayPosts(json,"assignment")
   }
   catch (e) {
       console.log("failed to fetch", e)
   }
 
 
-  const announcement = document.getElementById("announcement")
-  const post_div = document.getElementById("post-div")
-  const post_input = document.getElementById("post-input")
+
+
+
+
+  try {
+    let formdata = new FormData();
+    formdata.append("class_code", class_code);
+  
+    let requestOptions = {
+        method: 'POST',
+        body: formdata
+    };
+
+    const posts = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_posts.php", requestOptions)
+    let json2 = await posts.json()
+    console.log(json2)
+    displayPosts(json2, "announcement")
+}
+catch (e) {
+    console.log("failed to fetch", e)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   announcement.addEventListener('click', function () {
       post_div.style.display = "none";
@@ -195,15 +308,22 @@ function encrypt(id, secretKey) {
     const encryptedInt = parseInt(encryptedString, 10);
     return encryptedInt ^ secretKey;
   }
-
+let post_prefix;
 // function to create and display assignment li
-function displayPosts(posts_array) {
+function displayPosts(posts_array,type) {
     const stream_container = document.getElementById("stream-container");
 
     posts_array.forEach((post) => {
         let announcement_div = document.createElement("div");
-
-        announcement_div.innerHTML = `
+        if (type == "assignment") {
+          post_prefix = "Posted a new assignment:"
+          message = post.title
+      } else {
+          post_prefix = "Added new material:"
+          message = post.message
+          
+      }
+        announcement_div.innerHTML += `
         <div class="card post-div flex just-btw">
         <div class="flex center gap10">
                                 <div class="b-circle bg-blue flex center" id="assignment-icon"><svg focusable="false"
@@ -214,8 +334,8 @@ function displayPosts(posts_array) {
                                         </path>
                                     </svg></div>
                                 <div class="flex column">
-                                    <span class="stream-title">[Teacher name] posted a new assignment: ${post.title} </span>
-                                    <span class="stream-date">date now</span>
+                                    <span class="stream-title"> ${post_prefix+" "+ message} </span>
+                                    
                                 </div>
                             </div>
                             <div><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
@@ -244,8 +364,10 @@ post_btn.addEventListener('click', async function () {
     // test
     const message = document.getElementById("announcement-text").value;
 
-  
+    const decryptid = localStorage.getItem('user_id')
 
+    const secretKey = 123; // Replace with your desired secret key
+    const user_id = decrypt(decryptid,secretKey)
     let formdata = new FormData();
     formdata.append("teacher_id", user_id);
     formdata.append("class_code", class_code);
@@ -264,7 +386,7 @@ post_btn.addEventListener('click', async function () {
     catch (e) {
         console.log("failed to fetch", e)
     }
-
+window.location.reload()
 })
 
 

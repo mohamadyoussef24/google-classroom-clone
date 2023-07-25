@@ -4,6 +4,65 @@ if(!localStorage.getItem("user_id")){
 }
 
 
+let site_url = window.location.href
+console.log(site_url)
+let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+console.log(class_code)
+if (class_code == "" || class_code == " ") {
+    window.location.replace("../views/classroom_view.html")
+}
+
+
+try {
+  
+  const decryptid = localStorage.getItem('user_id')
+
+  const secretKey = 123
+  const user_id = decrypt(decryptid,secretKey)
+  
+  const checkclass_form = new FormData()
+  checkclass_form.append("user_id", user_id)
+  checkclass_form.append("class_code", class_code)
+  
+  fetch(base_url + 'Check_user_class.php', {
+      method: "POST",
+      body: checkclass_form
+  })
+      .then((res) => res.json())
+      .then((data) => {
+          result = data.status
+          console.log(data)
+          if (result == "teacher") {
+              user_type="teacher"
+             localStorage.setItem("class_code",class_code)
+          }
+          else if (result == "student") {
+              user_type="student"
+              
+              post_div.style.display= "none";
+              localStorage.setItem("class_code",class_code)
+          }
+          else if (result == "notallowed") {
+              window.location.replace("../views/classroom_view.html")
+              localStorage.removeItem("class_code")
+
+          }
+          else if (result == "classnotfound") {
+              window.location.replace("../views/classroom_view.html")
+              localStorage.removeItem("class_code")
+
+          }
+
+
+      })
+      .catch((err) => {
+          console.log("Fetch error:", err);
+      });
+} catch (err) {
+  console.log("Error:", err);
+}
+
+
 ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
 function encrypt(id, secretKey) {
