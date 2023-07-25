@@ -3,17 +3,33 @@ if(!localStorage.getItem("user_id")){
   window.location.replace("../views/signin.html")
 }
 
-function displayClasses(classes_array) {
+
+
+// window.onload = async function () {
+
+  
+ 
+
+// }
+
+
+function decrypt(encryptedData, secretKey) {
+  const encryptedString = atob(encryptedData);
+  const encryptedInt = parseInt(encryptedString, 10);
+  return encryptedInt ^ secretKey;
+}
+
+function displayClasses(classses_array) {
   const classes_wrapper = document.getElementById("classes-wrapper")
 
-  classes_array.forEach((classs) => {
+  
+  classses_array.forEach((classs)=> {
     let class_div = document.createElement("div");
 
-    class_div.innerHTML = `
-    <a href=""><div class="class-card card column">
+    class_div.innerHTML += `<a href=""><div class="class-card card column">
       <div class="class-credits flex column">
-        <div class="class-title width100"></div>
-        <div class="class-subject"></div>
+        <div class="class-title width100 color"> ${classs.name}</div>
+        <div class="class-subject color">${classs.subject}</div>
       </div>
       <div class="b-circle class-icon"></div>
       <div class="class-assignments flex column">
@@ -24,31 +40,10 @@ function displayClasses(classes_array) {
     </div></a>
   `;
     classes_wrapper.appendChild(class_div)
+    document.create
   })
 }
 
-window.onload = async function () {
-
-  const user_id = 3
-  let formdata = new FormData();
-  formdata.append("user_id", user_id)
-
-  let requestOptions = {
-    method: 'POST',
-    body: formdata
-  };
-
-  try {
-    const classes = await fetch("http://localhost/Assignments/google-classroom-clone/backend/select_class.php", requestOptions)
-    const json = await classes.json()
-    displayClasses(json)
-    console.log(json)
-  }
-  catch (e) {
-    console.log("failed to fetch", e)
-  }
-
-}
 
 
 ////////////////////Encrypt and decrypt
@@ -169,7 +164,7 @@ const createClass = () => {
     .then((data) => {
       if (data.status == "success") {
         console.log('success')
-        window.location.replace("../views/classroom_stream.html")
+        window.location.replace("../views/stream.html")
 
       } else {
         console.log('error')
@@ -300,9 +295,68 @@ window.onclick = function (event) {
 
 
 
+
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function () {
+  localStorage.removeItem("user_id")
+  localStorage.removeItem("email")
+  window.location.replace('../views/signin.html')
+})
+
+
+function toggleMenu() {
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
+}
+
+// =============================
+
 let profile = ""
 
-window.onload = function () {
+window.onload = async function () {
+
+  try {
+  const decryptid =  localStorage.getItem('user_id')
+  
+  const secretKey = 123;
+  let user_id = decrypt(decryptid, secretKey);
+
+  
+  let formdata = new FormData();
+  formdata.append("user_id", user_id)
+
+  fetch(base_url + 'select_class.php', {
+    method: "POST",
+    body: formdata
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const parsedData = data
+      const classIDs = []
+      for (const role in parsedData) {
+        if (parsedData.hasOwnProperty(role)) {
+          const classID = parsedData[role].class_id;
+          classIDs.push(classID);
+        }
+      }
+      for (let i = 0; i < classIDs.length; i++) {
+        const classID = classIDs[i];
+
+        let formdata_class_id = new FormData();
+      formdata_class_id.append("class_id", classID)
+      fetch(base_url + 'select_class_info.php', {
+        method: "POST",
+        body: formdata_class_id
+      }).then((res) => res.json())
+      .then((data) => {
+        
+        displayClasses(data)
+      })
+    }
+    })
+  }catch (e) {
+    console.log("failed to fetch", e)
+  }
 
   try {
     const email = window.localStorage.getItem("email")
@@ -339,17 +393,4 @@ window.onload = function () {
     console.log("Error:", err);
   }
 
-}
-
-const logout = document.getElementById('logout')
-logout.addEventListener('click', function () {
-  localStorage.removeItem("user_id")
-  localStorage.removeItem("email")
-  window.location.replace('../views/signin.html')
-})
-
-
-function toggleMenu() {
-  var menuItems = document.getElementById("menuItems");
-  menuItems.classList.toggle("show");
 }

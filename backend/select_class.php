@@ -41,6 +41,4 @@ while ($classes = $array->fetch_assoc()) {
 }
 
 
-
-
 echo json_encode($response);

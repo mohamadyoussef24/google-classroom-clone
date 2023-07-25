@@ -359,3 +359,12 @@ body.active .wrapper .section {
 	position: absolute;
 	transform: translate(300%, -30%);
 }
+
+.color {
+	color:white
+}
+
+.flex_gap {
+	gap: 20px;
+	margin-top: 100px;
+}

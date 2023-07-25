@@ -1,135 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link rel="stylesheet" href="../css/classroom_view.css" />
+    <link rel="stylesheet" href="../css/utilities.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classroom View</title>
+  </head>
 
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
-  <link rel="stylesheet" href="../css/classroom_view.css" />
-  <link rel="stylesheet" href="../css/utilities.css">
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>classroom View</title>
-</head>
-
-<body class="active">
-  <div class="wrapper">
-    <div class="section">
-      <div class="top_navbar">
-        <div class="hamburger">
-          <a href="#">
-            <i class="fas fa-bars"></i>
-          </a>
-        </div>
-        <div class="nav-logo">
-          <img src="../../assets/images/logo.svg" id="google-img" alt="Google" />
-          <span class="logoname">Classroom</span>
-        </div>
-      </div>
-
-      <div class="right-section">
-        <div class="dropdown">
-          <span onclick="myFunction()" class="dropbtn">+</span>
-          <div id="myDropdown" class="dropdown-content">
-            <a id="join_class" class="cursorpointer">Join class</a>
-            <a id="create_class" class="cursorpointer">Create class</a>
+  <body class="active">
+    <div class="wrapper">
+      <div class="section">
+        <div class="top_navbar">
+          <div class="hamburger">
+            <a href="#">
+              <i class="fas fa-bars"></i>
+            </a>
+          </div>
+          <div class="nav-logo">
+            <img
+              src="../../assets/images/logo.svg"
+              id="google-img"
+              alt="Google"
+            />
+            <span class="logoname">Classroom</span>
           </div>
         </div>
-        <a href="#"><img src="../../assets/images/821996-200.png" alt="bento-menu" class="bento" /></a>
 
-        <button id="logout">Logout</button>
+        <div class="right-section">
+          <div class="dropdown">
+            <span onclick="myFunction()" class="dropbtn">+</span>
+            <div id="myDropdown" class="dropdown-content">
+              <a id="join_class" class="cursorpointer">Join class</a>
+              <a id="create_class" class="cursorpointer">Create class</a>
+            </div>
+          </div>
+          <a href="#"
+            ><img
+              src="../../assets/images/821996-200.png"
+              alt="bento-menu"
+              class="bento"
+          /></a>
 
-        <a href="../views/edit_profile.html"><img src="../../assets/images/usericon.png" alt="usericon" class="userimg"
-            id="imagePreview" /></a>
+          <button id="logout">Logout</button>
+
+          <a href="../views/edit_profile.html"
+            ><img
+              src="../../assets/images/usericon.png"
+              alt="usericon"
+              class="userimg"
+              id="imagePreview"
+          /></a>
+        </div>
+      </div>
+      <div class="sidebar">
+        <ul>
+          <li class="classes">
+            <a href="#">
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="item">Classes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-calendar"></i></span>
+              <span class="item">Calendar</span>
+            </a>
+          </li>
+          <hr />
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-check"></i></span>
+              <span class="item">To-do</span>
+            </a>
+          </li>
+          <hr />
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-archive"></i></span>
+              <span class="item">Archived classes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="item">Settings</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="sidebar">
-      <ul>
-        <li class="classes">
-          <a href="#">
-            <span class="icon"><i class="fas fa-home"></i></span>
-            <span class="item">Classes</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-calendar"></i></span>
-            <span class="item">Calendar</span>
-          </a>
-        </li>
-        <hr />
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-check"></i></span>
-            <span class="item">To-do</span>
-          </a>
-        </li>
-        <hr />
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-archive"></i></span>
-            <span class="item">Archived classes</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-cog"></i></span>
-            <span class="item">Settings</span>
-          </a>
-        </li>
-      </ul>
+
+    <div class="form-div" id="create-form">
+      <form id="create_class_requirements" class="create-group-form">
+        <span class="class-header form-control">Create Class</span>
+
+        <div class="form-control">
+          <input type="text" id="name" required />
+          <label for="name">class Name(Required)</label>
+        </div>
+
+        <div class="form-control">
+          <input type="text" id="section" required />
+          <label for="section">Section</label>
+        </div>
+        <div class="form-control">
+          <input type="text" id="subject" required />
+          <label for="subject">Subject</label>
+        </div>
+
+        <div class="form-control">
+          <input type="text" id="room" required />
+          <label for="room">Room</label>
+        </div>
+        <div class="button-container form-control">
+          <button id="cancel_form1" class="cursorpointer" formnovalidate>
+            Cancel
+          </button>
+          <button id="submit_class_info" class="cursorpointer">Create</button>
+        </div>
+      </form>
     </div>
-  </div>
 
-  <div class="form-div" id="create-form">
-    <form id="create_class_requirements" class="create-group-form">
-      <span class="class-header form-control">Create Class</span>
+    <div class="form-div" id="join-form">
+      <form id="join_class_requirements" class="create-group-form">
+        <span class="class-header form-control">Create Class</span>
 
-      <div class="form-control">
-        <input type="text" id="name" required />
-        <label for="name">class Name(Required)</label>
-      </div>
+        <div class="form-control">
+          <input type="text" id="join_class_code" required />
+          <label for="join_class_code">Enter Joining code</label>
+        </div>
+        <div class="button-container form-control">
+          <button id="cancel_form2" class="cursorpointer" formnovalidate>
+            Cancel
+          </button>
+          <button id="submit_code" class="cursorpointer">Join now</button>
+        </div>
+      </form>
+    </div>
 
-      <div class="form-control">
-        <input type="text" id="section" required />
-        <label for="section">Section</label>
-      </div>
-      <div class="form-control">
-        <input type="text" id="subject" required />
-        <label for="subject">Subject</label>
-      </div>
-
-      <div class="form-control">
-        <input type="text" id="room" required />
-        <label for="room">Room</label>
-      </div>
-      <div class="button-container form-control">
-        <button id="cancel_form1" class="cursorpointer" formnovalidate>
-          Cancel
-        </button>
-        <button id="submit_class_info" class="cursorpointer">Create</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="form-div" id="join-form">
-    <form id="join_class_requirements" class="create-group-form">
-      <span class="class-header form-control">Create Class</span>
-
-      <div class="form-control">
-        <input type="text" id="join_class_code" required />
-        <label for="join_class_code">Enter Joining code</label>
-      </div>
-      <div class="button-container form-control">
-        <button id="cancel_form2" class="cursorpointer" formnovalidate>
-          Cancel
-        </button>
-        <button id="submit_code" class="cursorpointer">Join now</button>
-      </div>
-    </form>
-  </div>
-
-  <!-- <div class="classes-wrapper width100 flex" id="classes-wrapper">
-    <a href=""><div class="class-card card column">
+    <div
+      class="classes-wrapper width100 flex flex_gap"
+      id="classes-wrapper"
+    ></div>
+    <!-- <a href=""><div class="class-card card column">
       <div class="class-credits flex column">
         <div class="class-title width100"></div>
         <div class="class-subject"></div>
@@ -141,9 +160,8 @@
       </div>
       <div class="student-work"></div>
     </div></a>
-  </div> -->
+  </div>  -->
 
-  <script src="../js/classroom_view.js"></script>
-</body>
-
+    <script src="../js/classroom_view.js"></script>
+  </body>
 </html>
