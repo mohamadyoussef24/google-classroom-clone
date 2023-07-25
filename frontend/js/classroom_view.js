@@ -192,6 +192,16 @@ submit_class_info.addEventListener('click', function (e) {
 
 
 join_class.addEventListener('click', function () {
+  // if (join_class_requirements.style.display == "flex") {
+  //   if (create_class_requirements.style.display == "flex") {
+  //     create_class_requirements.style.display = "none";
+  //   }
+  //   join_class_requirements.style.display = "none";
+  // } else {
+  //   join_class_requirements.style.display = "flex";
+  //   create_class_requirements.style.display = "none";
+  // }
+
   join_class_requirements.style.display = "flex"
 })
 
@@ -201,6 +211,15 @@ join_class.addEventListener('click', function () {
 ////user presses the buttons at the same time....
 
 create_class.addEventListener('click', function () {
+  // if (create_class_requirements.style.display == "flex") {
+  //   create_class_requirements.style.display = "none";
+  //   if (join_class_requirements.style.display == "flex") {
+  //     join_class_requirements.style.display = "none";
+  //   }
+  // } else {
+  //   create_class_requirements.style.display = "flex";
+  //   join_class_requirements.style.display = "flex";
+  // }
   create_class_requirements.style.display = "flex"
 })
 
