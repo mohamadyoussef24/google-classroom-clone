@@ -7,7 +7,7 @@ include('connection.php');
 if(isset($_POST['class_id'])) {
     $id = $_POST['class_id'];
 
-$query = $mysqli->prepare('select message from posts where class_id=?');
+$query = $mysqli->prepare('select message from announcements join where class_id=?');
 $query->bind_param('i', $id);
 $query->execute();
 
