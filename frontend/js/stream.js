@@ -5,9 +5,22 @@ if(!localStorage.getItem("user_id")){
   const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
 let profile = ""
+//IMPORTANT
+let site_url = window.location.href
+console.log(site_url)
+let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+console.log(class_code)
+if (class_code=="" || class_code== " "){
+  window.location.replace("../views/classroom_view.html")
+}
+
 
 window.onload = function () {
-
+  let site_url = window.location.href
+  console.log(site_url)
+  let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+  console.log(class_code)
+ 
   try {
     const email = window.localStorage.getItem("email")
     flag = "onload";
@@ -42,22 +55,13 @@ window.onload = function () {
   } catch (err) {
     console.log("Error:", err);
   }
-
-}
-
-
-// class and topic names
-window.onload = function(){
   const classname = document.getElementById("classname")
   const class_topic = document.getElementById("class_topic")
   const class_name_cover = document.getElementById("class_name_cover");
   const class_topic_cover = document.getElementById("class_topic_cover");
 
   
-  let site_url = window.location.href
-  console.log(site_url)
-  var class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
-  console.log(class_code)
+
   
 
   try{
@@ -89,6 +93,10 @@ window.onload = function(){
   }
 
 }
+
+
+// class and topic names
+
 
 ////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string

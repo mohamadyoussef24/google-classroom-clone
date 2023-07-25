@@ -1,7 +1,8 @@
 const site_email = "noreply.classroom.noreply@gmail.com";
 let code = "8jpxYq" ; 
+let email_sent="";
 let invite = `<html>
-<a href="http://127.0.0.1:5500/frontend/views/testing_accept_cancel.html?code=${code}"> <button>See Details </button></a> </html> `
+<a href="http://127.0.0.1:5500/frontend/views/testing_accept_cancel.html?code=${code}&email_sent=${email_sent}"> <button>See Details </button></a> </html> `
 
 sendEmail = () => {
     const email = "najmchoueiry1@gmail.com"

@@ -7,7 +7,7 @@ if(!localStorage.getItem("user_id")){
 
 // window.onload = async function () {
 
-  
+
  
 
 // }
@@ -25,8 +25,8 @@ function displayClasses(classses_array) {
   
   classses_array.forEach((classs)=> {
     let class_div = document.createElement("div");
-
-    class_div.innerHTML += `<a href=""><div class="class-card card column">
+    console.log(classs)
+    class_div.innerHTML += `<a href="../views/stream.html?code=${classs.class_code}"><div class="class-card card column">
       <div class="class-credits flex column">
         <div class="class-title width100 color"> ${classs.name}</div>
         <div class="class-subject color">${classs.subject}</div>
@@ -164,7 +164,8 @@ const createClass = () => {
     .then((data) => {
       if (data.status == "success") {
         console.log('success')
-        window.location.replace("../views/stream.html")
+        
+        window.location.replace("../views/stream.html?code="+data.class_code)
 
       } else {
         console.log('error')
@@ -216,16 +217,19 @@ create_class.addEventListener('click', function () {
 
 
 let cancel_form1 = document.getElementById("cancel_form1")
-create_class.addEventListener('click', function (e) {
+cancel_form1.addEventListener('click', function (e) {
+  create_class_requirements.style.display = "none";
   e.preventDefault();
-
 })
 
 
 let cancel_form2 = document.getElementById("cancel_form2")
-create_class.addEventListener('click', function (e) {
-  e.preventDefault();
+cancel_form2.addEventListener('click', function (e) {
+ 
+ 
 
+  join_class_requirements.style.display = "none";
+  e.preventDefault();
 })
 
 
@@ -351,7 +355,9 @@ window.onload = async function () {
       .then((data) => {
         
         displayClasses(data)
-      })
+      }).catch((err) => {
+        console.log("Fetch error:", err);
+      });
     }
     })
   }catch (e) {
