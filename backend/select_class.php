@@ -5,7 +5,7 @@ include('connection.php');
 $user_id = $_POST['user_id'];
 
 
-$query = $mysqli->prepare('select class_id,classes.class_code from teachers where user_id=?');
+$query = $mysqli->prepare('select class_id from teachers where user_id=?');
 $query->bind_param('i', $user_id);
 $query->execute();
 

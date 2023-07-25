@@ -25,8 +25,8 @@ function displayClasses(classses_array) {
   
   classses_array.forEach((classs)=> {
     let class_div = document.createElement("div");
-
-    class_div.innerHTML += `<a href="../views/stream.html?code="${classs.class_code}><div class="class-card card column">
+    console.log(classs)
+    class_div.innerHTML += `<a href="../views/stream.html?code=${classs.class_code}"><div class="class-card card column">
       <div class="class-credits flex column">
         <div class="class-title width100 color"> ${classs.name}</div>
         <div class="class-subject color">${classs.subject}</div>
