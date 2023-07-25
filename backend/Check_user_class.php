@@ -51,6 +51,7 @@ if ($num_rows == 0) {
 
         if ($num_rows3 == 0) {
             $response['status'] = "Not allowed in";
+            echo json_encode($response);
         } else {
             $response['status'] = "You are already  a student in this class";
             echo json_encode($response);

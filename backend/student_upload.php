@@ -4,10 +4,23 @@ include('connection.php');
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
     if (isset($_FILES['uploadedFiles'])) {
             
-            $class_id = 0; // Replace 0 with the actual class ID
-            $id = 1; // Replace 1 with the actual student ID
+            $class_code = $_POST['class_code']; 
+
+
+            $query = $mysqli->prepare('select id
+from classes 
+where class_code=?');
+$query->bind_param('s', $code);
+$query->execute();
+
+$query->store_result();
+$query->bind_result($class_id);
+$query->fetch();
+
+            $id = $_POST['user_id']; 
             $dir = "./classes/class_$class_id/student_$id/";
 
             if (!file_exists($dir)) {

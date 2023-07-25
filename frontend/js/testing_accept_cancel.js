@@ -20,5 +20,7 @@ confirm1.addEventListener("click", function(event){
     email_sent=arraypair[1]
     console.log(get_code)
     console.log(email_sent)
+    //// join class as student////
+    
     // window.location.replace(url + "?code=" + get_code)
 });
