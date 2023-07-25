@@ -14,6 +14,21 @@ if (class_code=="" || class_code== " "){
   window.location.replace("../views/classroom_view.html")
 }
 
+function myFunction() {
+  // Get the text field
+  var copyText = document.getElementById("class-code");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  alert("Copied the text: " + copyText.value);
+}
+
 
 window.onload = function () {
   let site_url = window.location.href
