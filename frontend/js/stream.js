@@ -3,7 +3,7 @@ if(!localStorage.getItem("user_id")){
   }
 
   const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
-
+const post_btn = document.getElementById("post-btn")
 let profile = ""
 //IMPORTANT
 let site_url = window.location.href
@@ -15,7 +15,9 @@ if (class_code=="" || class_code== " "){
 }
 
 
-window.onload = function () {
+window.onload =  async function () {
+  let copyText = document.getElementById("class-link");
+  copyText.innerHTML=window.location.href;
   let site_url = window.location.href
   console.log(site_url)
   let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
@@ -92,6 +94,87 @@ window.onload = function () {
     console.log("Error:", err);
   }
 
+
+
+
+
+
+
+
+  
+  let formdata = new FormData();
+  formdata.append("class_code", class_code);
+
+  let requestOptions = {
+      method: 'POST',
+      body: formdata
+  };
+
+  try {
+      const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
+      const json = await assignments.json()
+      // console.log(json)
+      displayPosts(json)
+  }
+  catch (e) {
+      console.log("failed to fetch", e)
+  }
+
+
+  const announcement = document.getElementById("announcement")
+  const post_div = document.getElementById("post-div")
+  const post_input = document.getElementById("post-input")
+
+  announcement.addEventListener('click', function () {
+      post_div.style.display = "none";
+      post_input.style.display = "flex";
+      const textarea = document.getElementById("announcement-text");
+      textarea.value = ""
+  })
+
+  const cancel_btn = document.getElementById("cancel-btn")
+
+
+  cancel_btn.addEventListener('click', function () {
+      post_div.style.display = "flex";
+      post_input.style.display = "none";
+  })
+
+  try {
+      const email = window.localStorage.getItem("email")
+      flag = "onload";
+      const profile_pic_form = new FormData()
+      profile_pic_form.append("email", email)
+      profile_pic_form.append("flag", flag)
+  
+      fetch(base_url + 'edit_profile.php', {
+        method: "POST",
+        body: profile_pic_form
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 'info found') {
+            profile_info = data.profile_pic
+  
+            if (profile_info == "" || profile_info == " " || profile_info == null) {
+              const imagePreview = document.getElementById('imagePreview');
+              imagePreview.src = `../../assets/images/usericon.png`;
+            } else {
+              const imagePreview = document.getElementById('imagePreview');
+              imagePreview.src = `${base_url}/users/${profile_info}`;
+            }
+  
+          } else {
+            console.log("image failed:", data.status);
+          }
+        })
+        .catch((err) => {
+          console.log("Fetch error:", err);
+        });
+    } catch (err) {
+      console.log("Error:", err);
+    }
+   
 }
 
 
@@ -148,83 +231,10 @@ function displayPosts(posts_array) {
     })
 }
 
-window.onload = async function () {
-    const class_id = "21";
-    let formdata = new FormData();
-    formdata.append("class_id", class_id);
 
-    let requestOptions = {
-        method: 'POST',
-        body: formdata
-    };
-
-    try {
-        const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
-        const json = await assignments.json()
-        // console.log(json)
-        displayPosts(json)
-    }
-    catch (e) {
-        console.log("failed to fetch", e)
-    }
+ 
 
 
-    const announcement = document.getElementById("announcement")
-    const post_div = document.getElementById("post-div")
-    const post_input = document.getElementById("post-input")
-
-    announcement.addEventListener('click', function () {
-        post_div.style.display = "none";
-        post_input.style.display = "flex";
-        const textarea = document.getElementById("announcement-text");
-        textarea.value = ""
-    })
-
-    const cancel_btn = document.getElementById("cancel-btn")
-    const post_btn = document.getElementById("post-btn")
-
-    cancel_btn.addEventListener('click', function () {
-        post_div.style.display = "flex";
-        post_input.style.display = "none";
-    })
-
-    try {
-        const email = window.localStorage.getItem("email")
-        flag = "onload";
-        const profile_pic_form = new FormData()
-        profile_pic_form.append("email", email)
-        profile_pic_form.append("flag", flag)
-    
-        fetch(base_url + 'edit_profile.php', {
-          method: "POST",
-          body: profile_pic_form
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.status === 'info found') {
-              profile_info = data.profile_pic
-    
-              if (profile_info == "" || profile_info == " " || profile_info == null) {
-                const imagePreview = document.getElementById('imagePreview');
-                imagePreview.src = `../../assets/images/usericon.png`;
-              } else {
-                const imagePreview = document.getElementById('imagePreview');
-                imagePreview.src = `${base_url}/users/${profile_info}`;
-              }
-    
-            } else {
-              console.log("image failed:", data.status);
-            }
-          })
-          .catch((err) => {
-            console.log("Fetch error:", err);
-          });
-      } catch (err) {
-        console.log("Error:", err);
-      }
-     
-}
-const post_btn = document.getElementById("post-btn")
 
 
 post_btn.addEventListener('click', async function () {
@@ -234,12 +244,11 @@ post_btn.addEventListener('click', async function () {
     // test
     const message = document.getElementById("announcement-text").value;
 
-    const class_id = "21";
-    const teacher_id = "20";
+  
 
     let formdata = new FormData();
-    formdata.append("teacher_id", teacher_id);
-    formdata.append("class_id", class_id);
+    formdata.append("teacher_id", user_id);
+    formdata.append("class_code", class_code);
     formdata.append("message", message);
 
     let requestOptions = {
@@ -261,3 +270,12 @@ post_btn.addEventListener('click', async function () {
 
 
 // 
+function myFunction() {
+  // Get the text field
+  let copyText = document.getElementById("class-link");
+
+
+  navigator.clipboard.writeText(copyText.innerHTML);
+
+
+}

@@ -13,11 +13,7 @@ if(!localStorage.getItem("user_id")){
 // }
 
 
-function decrypt(encryptedData, secretKey) {
-  const encryptedString = atob(encryptedData);
-  const encryptedInt = parseInt(encryptedString, 10);
-  return encryptedInt ^ secretKey;
-}
+
 
 function displayClasses(classses_array) {
   const classes_wrapper = document.getElementById("classes-wrapper")

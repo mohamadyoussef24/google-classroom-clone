@@ -12,7 +12,9 @@
     <!-- navbar -->
     <header>
       <div class="nav flex width100">
+       
         <div class="nav-left flex gap10">
+          <a href="./classroom_view.html">
           <div>
             <svg
               width="24"
@@ -24,6 +26,8 @@
               <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
             </svg>
           </div>
+        </a>
+
           <div class="flex column">
             <!-- from database -->
             <a class="nav-links" href="#"
@@ -100,7 +104,13 @@
         <div class="stream-wrapper flex gap20 flex1">
           <!-- side cards -->
           <div class="side-cards flex column gap10">
-            <div class="card">Class code</div>
+            <div class="card">
+                &nbsp; &nbsp; Class code
+                <br>
+                <div id="class-link" style="display:none;"></div>
+                <button  onclick="myFunction()"class="btn bg-blue" style="cursor:pointer">Copy Link</button>
+              
+            </div>
             <div class="card">Upcoming</div>
           </div>
           <div class="stream flex column gap5">

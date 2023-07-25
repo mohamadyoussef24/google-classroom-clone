@@ -93,7 +93,7 @@ const register = () => {
                 
                 window.location.replace("../views/classroom_view.html");
             } else {
-                alert("Registration failed. " + res.status); //change alert
+                
             }
         });
 
