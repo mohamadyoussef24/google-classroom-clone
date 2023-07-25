@@ -13,8 +13,8 @@ $query->execute();
 
 $array = $query->get_result();
     $response = [];
-    while($assignment = $array->fetch_assoc()){
-        $response['title'] = $assignment;
+    while($post = $array->fetch_assoc()){
+        $response[] = $post;
     }
 
 echo json_encode($response);
