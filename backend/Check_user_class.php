@@ -4,9 +4,7 @@ $user_id = $_POST['user_id'];
 $code = $_POST['class_code'];
 
 
-$query = $mysqli->prepare('select id
-from classes 
-where class_code=?');
+$query = $mysqli->prepare('select id from classes where class_code=?');
 $query->bind_param('s', $code);
 $query->execute();
 
@@ -16,7 +14,7 @@ $query->fetch();
 $num_rows = $query->num_rows();
 
 if ($num_rows == 0) {
-    $response['status'] = "class not found";
+    $response['status'] = "classnotfound";
     echo json_encode($response);
 
 
@@ -25,9 +23,7 @@ if ($num_rows == 0) {
 
 
 
-    $query = $mysqli->prepare('select user_id
-    from teachers 
-    where class_id=? and user_id=?');
+    $query = $mysqli->prepare('select user_id from teachers where class_id=? and user_id=?');
     $query->bind_param('ii', $class_id, $user_id);
     $query->execute();
     $query->store_result();
@@ -50,10 +46,10 @@ if ($num_rows == 0) {
         $num_rows3 = $query->num_rows();
 
         if ($num_rows3 == 0) {
-            $response['status'] = "Not allowed in";
+            $response['status'] = "notallowed";
             echo json_encode($response);
         } else {
-            $response['status'] = "You are already  a student in this class";
+            $response['status'] = "student";
             echo json_encode($response);
         }
 
@@ -62,7 +58,7 @@ if ($num_rows == 0) {
 
 
     }else{
-        $response['status'] = "You are already a teacher in this class";
+        $response['status'] = "teacher";
         echo json_encode($response);
     }
 }

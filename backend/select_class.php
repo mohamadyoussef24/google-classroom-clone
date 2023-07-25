@@ -13,7 +13,7 @@ $array = $query->get_result();
 
 $response = [];
 while ($classes = $array->fetch_assoc()) {
-    $response['teacher'] = $classes;
+    $response[] = $classes;
 }
 
 
@@ -25,7 +25,7 @@ $array = $query->get_result();
 
 while ($classes = $array->fetch_assoc()) {
 
-    $response["student"] = $classes;
+    $response[] = $classes;
 }
 
 
