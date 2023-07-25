@@ -21,7 +21,7 @@ if ($flag == "onload") {
     $response['first_name'] = $first_name;
     $response['last_name'] = $last_name;
     $response['profile_pic'] = $profile_pic;
-    // $response['profile_pic'] = $profile_pic;
+    
     echo json_encode($response);
 } elseif ($flag == "not onload") {
     $email = $_POST['email'];

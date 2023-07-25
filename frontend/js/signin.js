@@ -4,6 +4,43 @@
   }
 
 
+
+
+
+
+
+
+
+
+///emcrpt/decrypt
+  function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const nextButton = document.getElementById("next");
 const infoDiv = document.querySelector(".info");
 
@@ -45,16 +82,13 @@ const signin = () => {
         console.log("Server Response:", data);
         if (data.status === 'logged in') {
           const user_id = data.user_id;
-          // Assuming you have an ID to encrypt (replace 'your_id_to_encrypt' with the actual ID)
-          const idToEncrypt = user_id;
+          const secretKey = 123;
+           // Replace with your desired secret key
 
-          // Encrypt the ID using a secret key (replace 'your_secret_key' with your own secret key)
-           const secretKey = 'secretKey';
-           const encryptedID = encrypt(idToEncrypt, secretKey);
-
-          // Store the encrypted ID in LocalStorage
-
+                
+          const encryptedID = encrypt(user_id, secretKey);
           localStorage.setItem("user_id", encryptedID);
+          localStorage.setItem('email', email)
          
           window.location.replace("../views/classroom_view.html");
         } else {
@@ -73,9 +107,7 @@ nextButton.addEventListener("click", function (e) {
   signin();
 });
 
-
 function toggleMenu() {
-  var menuItemsDiv = document.querySelector('.menu-icon');
-  menuItemsDiv.classList.toggle('show'); 
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
 }
-

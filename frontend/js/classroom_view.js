@@ -3,6 +3,66 @@ if(!localStorage.getItem("user_id")){
   window.location.replace("../views/signin.html")
 }
 
+
+
+// window.onload = async function () {
+
+
+ 
+
+// }
+
+
+
+
+function displayClasses(classses_array) {
+  const classes_wrapper = document.getElementById("classes-wrapper")
+
+  
+  classses_array.forEach((classs)=> {
+    let class_div = document.createElement("div");
+    console.log(classs)
+    class_div.innerHTML += `<a href="../views/stream.html?code=${classs.class_code}"><div class="class-card card column">
+      <div class="class-credits flex column">
+        <div class="class-title width100 color"> ${classs.name}</div>
+        <div class="class-subject color">${classs.subject}</div>
+      </div>
+      <div class="b-circle class-icon"></div>
+      <div class="class-assignments flex column">
+        <div class="due-date"></div>
+        <div class="assignment-title"></div>
+      </div>
+      <div class="student-work"></div>
+    </div></a>
+  `;
+    classes_wrapper.appendChild(class_div)
+    document.create
+  })
+}
+
+
+
+////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+  const encryptedData = id ^ secretKey;
+  const encryptedString = btoa(encryptedData.toString());
+  return encryptedString;
+}
+
+// Function to decrypt a base64 string and get back the integer ID
+function decrypt(encryptedData, secretKey) {
+  const encryptedString = atob(encryptedData);
+  const encryptedInt = parseInt(encryptedString, 10);
+  return encryptedInt ^ secretKey;
+}
+
+
+
+
+
+
+
 //this code is for animating the input 
 const inputs = document.querySelectorAll('.form-control input');
 const labels = document.querySelectorAll('.form-control label');
@@ -15,6 +75,9 @@ labels.forEach(label => {
       ">${letter}</span>`)
     .join('');
 });
+
+
+
 ////////////////////////////////////////////////
 
 
@@ -22,12 +85,12 @@ var hamburger = document.querySelector(".hamburger");
 var body = document.querySelector("body");
 var sidebar = document.querySelector(".sidebar");
 
-hamburger.addEventListener("click", function() {
+hamburger.addEventListener("click", function () {
   body.classList.toggle("active");
 });
 
-body.addEventListener("click", function(event) {
-  if  (hamburger.contains(event.target)){
+body.addEventListener("click", function (event) {
+  if (hamburger.contains(event.target)) {
     body.classList.remove("active");
   } else if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
     body.classList.add("active");
@@ -61,7 +124,7 @@ const submit_class_info = document.getElementById('submit_class_info')
 
 
 
-const createClass = ()=> {
+const createClass = () => {
   const name = document.getElementById('name').value
   const section = document.getElementById('section').value
   const subject = document.getElementById('subject').value
@@ -70,16 +133,14 @@ const createClass = ()=> {
 
 
 
-  // Retrieve the encrypted ID from LocalStorage
-const encryptedID = localStorage.getItem('user_id')
 
-// Decrypt the ID using the same secret key
-const secretKey = 'secretKey';
 
-// Now you can use the decrypted ID to interact with the database
-// For example, send it to the server to retrieve user data
+  const decryptid = localStorage.getItem('user_id')
 
-  const id = decrypt(encryptedID, secretKey);
+  const secretKey = 123; // Replace with your desired secret key
+
+
+  const id = decrypt(decryptid, secretKey);
 
 
   const create_class_form = new FormData()
@@ -91,37 +152,37 @@ const secretKey = 'secretKey';
   create_class_form.append("user_id", id)
 
 
-  fetch(base_url + "create_classroom.php",{
+  fetch(base_url + "create_classroom.php", {
     method: "POST",
     body: create_class_form
-})
-.then((res) => res.json())
-.then((data) => {
- if (data.status  == "success") {
-  console.log('success')
-  window.location.replace("../views/classroom_stream.html")
-    
-}else{
-    console.log('error')
-}
-}).catch((err) => {
-  console.log("Fetch error: " + err) 
-      });
-}
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status == "success") {
+        console.log('success')
+        
+        window.location.replace("../views/stream.html?code="+data.class_code)
 
+      } else {
+        console.log('error')
+      }
+    }).catch((err) => {
+      console.log("Fetch error: " + err)
+    });
+}
 
 
 submit_class_info.addEventListener('click', function(e){
   e.preventDefault()
-  createClass()})
+  createClass()
+})
 
 
-
-join_class.addEventListener('click', function(){
+join_class.addEventListener('click', function () {
   if (join_class_requirements.style.display == "flex") {
     if (create_class_requirements.style.display == "flex") {
-    create_class_requirements.style.display = "none";
-  }
+      create_class_requirements.style.display = "none";
+    }
     join_class_requirements.style.display = "none";
   } else {
     join_class_requirements.style.display = "flex";
@@ -134,12 +195,12 @@ join_class.addEventListener('click', function(){
 
 ////user presses the buttons at the same time....
 
-
-create_class.addEventListener('click', function(){
+create_class.addEventListener('click', function () {
   if (create_class_requirements.style.display == "flex") {
-    create_class_requirements.style.display = "none" ;
+    create_class_requirements.style.display = "none";
     if (join_class_requirements.style.display == "flex") {
-    join_class_requirements.style.display = "none" ;}
+      join_class_requirements.style.display = "none";
+    }
   } else {
     create_class_requirements.style.display = "flex";
     join_class_requirements.style.display = "none";
@@ -150,12 +211,22 @@ create_class.addEventListener('click', function(){
 
 ////cancelling the form
 
-let cancel_form = document.getElementById("cancel_form")
-create_class.addEventListener('click', function(e){
-  e.preventDefault();
 
+let cancel_form1 = document.getElementById("cancel_form1")
+cancel_form1.addEventListener('click', function (e) {
+  create_class_requirements.style.display = "none";
+  e.preventDefault();
 })
 
+
+let cancel_form2 = document.getElementById("cancel_form2")
+cancel_form2.addEventListener('click', function (e) {
+ 
+ 
+
+  join_class_requirements.style.display = "none";
+  e.preventDefault();
+})
 
 
 
@@ -163,17 +234,14 @@ create_class.addEventListener('click', function(e){
 
 const joinClass = () => {
   const join_class_code = document.getElementById("join_class_code").value
- 
-  // Retrieve the encrypted ID from LocalStorage
-const encryptedID = localStorage.getItem('user_id')
 
-// Decrypt the ID using the same secret key
-const secretKey = 'secretKey';
 
-// Now you can use the decrypted ID to interact with the database
-// For example, send it to the server to retrieve user data
+  const decryptid = localStorage.getItem('user_id')
 
-  const id = decrypt(encryptedID, secretKey);
+  const secretKey = 123; // Replace with your desired secret key
+
+
+  const id = decrypt(decryptid, secretKey);
 
   const join_code = new FormData();
   join_code.append('class_code', join_class_code)
@@ -185,25 +253,26 @@ const secretKey = 'secretKey';
   })
     .then((res) => res.json())
     .then((data) => {
-      
-      if (data.status == 'success') { 
+
+      if (data.status == 'success') {
         const class_id = data.class_id;
         console.log(class_id)
-        window.location.replace("../views/classroom_stream.html");
+        window.location.replace("../views/stream.html");
       } else {
-        console.log ("Class failed: " + data.status);
+        console.log("Class failed: " + data.status);
       }
     })
     .catch((err) => {
-      console.log("Fetch error: " + err) 
-          });
+      console.log("Fetch error: " + err)
+    });
 }
 
 const submit_code = document.getElementById('submit_code')
 
-submit_code.addEventListener('click', function(e){
+submit_code.addEventListener('click', function (e) {
   e.preventDefault()
-  joinClass()})
+  joinClass()
+})
 /* When the user clicks on the + button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -211,7 +280,7 @@ function myFunction() {
 }
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
@@ -226,9 +295,70 @@ window.onclick = function(event) {
 
 
 
+
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function () {
+  localStorage.removeItem("user_id")
+  localStorage.removeItem("email")
+  window.location.replace('../views/signin.html')
+})
+
+
+function toggleMenu() {
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
+}
+
+// =============================
+
 let profile = ""
 
-window.onload = function(){
+window.onload = async function () {
+
+  try {
+  const decryptid =  localStorage.getItem('user_id')
+  
+  const secretKey = 123;
+  let user_id = decrypt(decryptid, secretKey);
+
+  
+  let formdata = new FormData();
+  formdata.append("user_id", user_id)
+
+  fetch(base_url + 'select_class.php', {
+    method: "POST",
+    body: formdata
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const parsedData = data
+      const classIDs = []
+      for (const role in parsedData) {
+        if (parsedData.hasOwnProperty(role)) {
+          const classID = parsedData[role].class_id;
+          classIDs.push(classID);
+        }
+      }
+      for (let i = 0; i < classIDs.length; i++) {
+        const classID = classIDs[i];
+
+        let formdata_class_id = new FormData();
+      formdata_class_id.append("class_id", classID)
+      fetch(base_url + 'select_class_info.php', {
+        method: "POST",
+        body: formdata_class_id
+      }).then((res) => res.json())
+      .then((data) => {
+        
+        displayClasses(data)
+      }).catch((err) => {
+        console.log("Fetch error:", err);
+      });
+    }
+    })
+  }catch (e) {
+    console.log("failed to fetch", e)
+  }
 
   try {
     const email = window.localStorage.getItem("email")
@@ -239,17 +369,17 @@ window.onload = function(){
 
     fetch(base_url + 'edit_profile.php', {
       method: "POST",
-      body: profile_pic_form 
+      body: profile_pic_form
     })
-      .then((res) => res.json()) 
+      .then((res) => res.json())
       .then((data) => {
-        if (data.status === 'info found') { 
+        if (data.status === 'info found') {
           profile_info = data.profile_pic
-          
-          if (profile_info == "" || profile_info == " " || profile_info == null){
+
+          if (profile_info == "" || profile_info == " " || profile_info == null) {
             const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = `../../assets/images/usericon.png`; 
-          }else{
+            imagePreview.src = `../../assets/images/usericon.png`;
+          } else {
             const imagePreview = document.getElementById('imagePreview');
             imagePreview.src = `${base_url}/users/${profile_info}`;
           }
@@ -266,9 +396,3 @@ window.onload = function(){
   }
 
 }
-
-const logout = document.getElementById('logout')
-logout.addEventListener('click', function(){
-  localStorage.removeItem("user_id")
-  window.location.replace('../views/signin.html')
-})

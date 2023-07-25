@@ -1,9 +1,88 @@
 
-    if(!localStorage.getItem("user_id")){
-        window.location.replace("../views/signin.html")
-    }
+
+// function 
+if (!localStorage.getItem("user_id")) {
+    window.location.replace("../views/signin.html")
+}
+
+let user_type;
+
+
+let site_url = window.location.href
+console.log(site_url)
+let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+console.log(class_code)
+if (class_code == "" || class_code == " ") {
+    window.location.replace("../views/classroom_view.html")
+}
+
+
+try {
   
+  const decryptid = localStorage.getItem('user_id')
+
+  const secretKey = 123
+  const user_id = decrypt(decryptid,secretKey)
   
+  const checkclass_form = new FormData()
+  checkclass_form.append("user_id", user_id)
+  checkclass_form.append("class_code", class_code)
+  
+  fetch(base_url + 'Check_user_class.php', {
+      method: "POST",
+      body: checkclass_form
+  })
+      .then((res) => res.json())
+      .then((data) => {
+          result = data.status
+          console.log(data)
+          if (result == "teacher") {
+              user_type="teacher"
+             localStorage.setItem("class_code",class_code)
+          }
+          else if (result == "student") {
+              user_type="student"
+              
+              post_div.style.display= "none";
+              localStorage.setItem("class_code",class_code)
+          }
+          else if (result == "notallowed") {
+              window.location.replace("../views/classroom_view.html")
+              localStorage.removeItem("class_code")
+
+          }
+          else if (result == "classnotfound") {
+              window.location.replace("../views/classroom_view.html")
+              localStorage.removeItem("class_code")
+
+          }
+
+
+      })
+      .catch((err) => {
+          console.log("Fetch error:", err);
+      });
+} catch (err) {
+  console.log("Error:", err);
+}
+
+
+
+////////////////////Encrypt and decrypt
+// Function to encrypt an integer ID using XOR and convert to base64 string
+function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+}
+
+// Function to decrypt a base64 string and get back the integer ID
+function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+}
+
 const pages = {}
 
 // function to show dropdowns on assignment creation page
@@ -15,32 +94,32 @@ pages.showDropdowns = async () => {
     let date = document.getElementById("due")
 
     localStorage.setItem('user_id', 1)
-        let id = localStorage.getItem('user_id')
+    let id = localStorage.getItem('user_id')
 
-        let formdata = new FormData();
-        formdata.append("user_id", id)
+    let formdata = new FormData();
+    formdata.append("user_id", id)
 
-        let requestOptions = {
-            method: 'POST',
-            body: formdata,
-            // redirect: 'follow'
-        };
+    let requestOptions = {
+        method: 'POST',
+        body: formdata,
+        // redirect: 'follow'
+    };
 
-        try {
-            const response = await fetch('http://localhost/google-classroom-backend/get_teacher_classes.php', requestOptions)
-            let json = await response.json()
-            console.log(json)
-            // populating class list with class names
-            json.forEach((json) => {
+    try {
+        const response = await fetch('http://localhost/Assignments/google-classroom-clone/backend/get_teacher_classes.php', requestOptions)
+        let json = await response.json()
+        console.log(json)
+        // populating class list with class names
+        json.forEach((json) => {
             let listItem = document.createElement("li")
             listItem.innerHTML = `
             <input type="checkbox" name="class_name" value="${json.name}">
             <span>${json.name}</span>`;
-                class_ul.appendChild(listItem)
-            })
-        } catch (e) {
-            console.log("failed to fetch", e)
-        }
+            class_ul.appendChild(listItem)
+        })
+    } catch (e) {
+        console.log("failed to fetch", e)
+    }
 
     // add event listeners
     arrow2.addEventListener('click', async function () {
@@ -75,7 +154,7 @@ pages.createAssignment = () => {
         let instructions = document.getElementById("instructions").value;
         let class_name = getChecked();
         let due = document.getElementById("due").value;
-        
+
         localStorage.setItem('user_id', 3)
         let id = localStorage.getItem('user_id')
 
@@ -93,7 +172,7 @@ pages.createAssignment = () => {
         };
 
         try {
-            const response = await fetch('http://localhost/google-classroom-backend/create_assignment.php', requestOptions)
+            const response = await fetch('http://localhost/Assignments/google-classroom-clone/backend/create_assignment.php', requestOptions)
             const json = await response.json()
             console.log(json)
         } catch (e) {
@@ -141,7 +220,7 @@ pages.getAssignments = () => {
         };
 
         try {
-            const assignments = await fetch("http://localhost/google-classroom-backend/get_assignments.php", requestOptions)
+            const assignments = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_assignments.php", requestOptions)
             const json = await assignments.json()
             console.log(json)
             displayAssignments(json)
@@ -150,10 +229,65 @@ pages.getAssignments = () => {
             console.log("failed to fetch", e)
         }
     }
+
+    const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
+
+    let profile = ""
+    let flag;
+
+    window.onload = function () {
+
+        try {
+
+            const email = window.localStorage.getItem("email")
+            flag = "onload";
+            const profile_pic_form = new FormData()
+            profile_pic_form.append("email", email)
+            profile_pic_form.append("flag", flag)
+
+            fetch(base_url + 'edit_profile.php', {
+                method: "POST",
+                body: profile_pic_form
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.status === 'info found') {
+                        profile_info = data.profile_pic
+
+                        if (profile_info == "" || profile_info == " " || profile_info == null) {
+                            const imagePreview = document.getElementById('imagePreview');
+                            imagePreview.src = `../../assets/images/usericon.png`;
+                        } else {
+                            const imagePreview = document.getElementById('imagePreview');
+                            imagePreview.src = `${base_url}/users/${profile_info}`;
+                        }
+
+                    } else {
+                        console.log("image failed:", data.status);
+                    }
+                })
+                .catch((err) => {
+                    console.log("Fetch error:", err);
+                });
+        } catch (err) {
+            console.log("Error:", err);
+        }
+
+    }
 }
 
 //this will load the scripts of the mentioned page
 pages.loadFor = (func_name) => {
     eval("pages." + func_name + "();")
 }
+
+
+
+function toggleMenu() {
+    var menuItems = document.getElementById("menuItems");
+    menuItems.classList.toggle("show");
+}
+
+
+//   
 

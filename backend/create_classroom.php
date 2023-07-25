@@ -72,4 +72,5 @@ $query->execute();
 
 
 $response['status'] = "success";
+$response['class_code']=$code;
 echo json_encode($response);

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/css/utilities.css" />
+    <link rel="stylesheet" href="/frontend/css/stream.css" />
+    <title>Stream</title>
+  </head>
+
+  <body>
+    <!-- navbar -->
+    <header>
+      <div class="nav flex width100">
+       
+        <div class="nav-left flex gap10">
+          <a href="./classroom_view.html">
+          <div>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              focusable="false"
+              class="NMm5M svg-grey nav-svg"
+            >
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </div>
+        </a>
+
+          <div class="flex column">
+            <!-- from database -->
+            <a class="nav-links" href="#"
+              ><div id="classname">classname</div>
+              <br />
+              <div id="class_topic">topic</div>
+            </a>
+          </div>
+        </div>
+        <div class="nav-middle flex gap20">
+          <a class="nav-links" href="./stream.html">
+            <div class="nav-div flex center">Stream</div>
+          </a>
+          <a class="nav-links" href="./classwork.html">
+            <div class="nav-div flex center">Classwork</div>
+          </a>
+          <a class="nav-links" href="./people.html">
+            <div class="nav-div flex center">People</div>
+          </a>
+          <a class="nav-links" href="#">
+            <div class="nav-div flex center">Marks</div>
+          </a>
+        </div>
+        <div class="nav-right flex center gap10">
+          <div>
+            <svg
+              focusable="false"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              class="NMm5M svg-grey nav-svg"
+            >
+              <path
+                d="M13.85 22.25h-3.7c-.74 0-1.36-.54-1.45-1.27l-.27-1.89c-.27-.14-.53-.29-.79-.46l-1.8.72c-.7.26-1.47-.03-1.81-.65L2.2 15.53c-.35-.66-.2-1.44.36-1.88l1.53-1.19c-.01-.15-.02-.3-.02-.46 0-.15.01-.31.02-.46l-1.52-1.19c-.59-.45-.74-1.26-.37-1.88l1.85-3.19c.34-.62 1.11-.9 1.79-.63l1.81.73c.26-.17.52-.32.78-.46l.27-1.91c.09-.7.71-1.25 1.44-1.25h3.7c.74 0 1.36.54 1.45 1.27l.27 1.89c.27.14.53.29.79.46l1.8-.72c.71-.26 1.48.03 1.82.65l1.84 3.18c.36.66.2 1.44-.36 1.88l-1.52 1.19c.01.15.02.3.02.46s-.01.31-.02.46l1.52 1.19c.56.45.72 1.23.37 1.86l-1.86 3.22c-.34.62-1.11.9-1.8.63l-1.8-.72c-.26.17-.52.32-.78.46l-.27 1.91c-.1.68-.72 1.22-1.46 1.22zm-3.23-2h2.76l.37-2.55.53-.22c.44-.18.88-.44 1.34-.78l.45-.34 2.38.96 1.38-2.4-2.03-1.58.07-.56c.03-.26.06-.51.06-.78s-.03-.53-.06-.78l-.07-.56 2.03-1.58-1.39-2.4-2.39.96-.45-.35c-.42-.32-.87-.58-1.33-.77l-.52-.22-.37-2.55h-2.76l-.37 2.55-.53.21c-.44.19-.88.44-1.34.79l-.45.33-2.38-.95-1.39 2.39 2.03 1.58-.07.56a7 7 0 0 0-.06.79c0 .26.02.53.06.78l.07.56-2.03 1.58 1.38 2.4 2.39-.96.45.35c.43.33.86.58 1.33.77l.53.22.38 2.55z"
+              ></path>
+              <circle cx="12" cy="12" r="3.5"></circle>
+            </svg>
+          </div>
+          <div>
+            <svg
+              class="gb_h svg-grey nav-svg"
+              width="20"
+              height="20"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <a href="../views/edit_profile.html"
+              ><img
+                src="../../assets/images/usericon.png"
+                alt="usericon"
+                class="userimg"
+                id="imagePreview"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- content -->
+    <div class="wrapper flex column width100">
+      <div class="container flex column gap20">
+        <!-- cover image -->
+        <div class="cover-img card flex">
+          <div class="class-wrapper flex column">
+            <span class="class-name" id="class_name_cover">classname</span>
+            <span class="class-topic" id="class_topic_cover">topic</span>
+          </div>
+        </div>
+        <div class="stream-wrapper flex gap20 flex1">
+          <!-- side cards -->
+          <div class="side-cards flex column gap10">
+            <div class="card">
+                &nbsp; &nbsp; Class code
+                <br>
+                <div id="class-link" style="display:none;"></div>
+                <button  onclick="myFunction()"class="btn bg-blue" style="cursor:pointer">Copy Link</button>
+              
+            </div>
+            <div class="card">Upcoming</div>
+          </div>
+          <div class="stream flex column gap5">
+            <div class="card post-div flex just-btw" id="post-div">
+              <div class="flex center gap10">
+                <div class="b-circle flex center teacher-icon"></div>
+                <span class="announcement" id="announcement"
+                  >Announce something to your class</span
+                >
+              </div>
+            </div>
+            <div class="post-announcement card gap20 column" id="post-input">
+              <div class="flex gap10">
+                <div class="flex">
+                  <div
+                    class="assignment-option nav-assign bg-grey btn flex center"
+                  >
+                    Class name
+                  </div>
+                  <div class="nav-arrow bg-grey btn flex center" id="arrow2">
+                    <svg
+                      focusable="false"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      class="svg-grey NMm5M"
+                    >
+                      <path d="M7 10l5 5 5-5H7z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex">
+                  <div
+                    class="assignment-option nav-assign bg-grey btn flex center"
+                  >
+                    Students
+                  </div>
+                  <div class="nav-arrow bg-grey btn flex center" id="arrow2">
+                    <svg
+                      focusable="false"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      class="svg-grey NMm5M"
+                    >
+                      <path d="M7 10l5 5 5-5H7z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="input-div bg-grey">
+                <textarea
+                  id="announcement-text"
+                  class="textarea width100 bg-grey"
+                ></textarea>
+              </div>
+              <div class="flex just-btw">
+                <!-- <div class="file-icons flex">
+                                <div class="b-circle"></div>
+                                <div class="b-circle"></div>
+                                <div class="b-circle"></div>
+                                <div class="b-circle"></div>
+                            </div> -->
+                <div class="announcement-btns">
+                  <div class="flex">
+                    <div
+                      class="assignment-option nav-assign bg-grey btn flex center"
+                      id="cancel-btn"
+                    >
+                      Cancel
+                    </div>
+                    <button class="nav-assign bg-grey btn" id="post-btn">
+                      Post
+                    </button>
+                    <div class="nav-arrow bg-grey btn flex center">
+                      <svg
+                        focusable="false"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        class="NMm5M svg-grey"
+                      >
+                        <path d="M7 10l5 5 5-5H7z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stream-content flex column gap5" id="stream-container">
+              <!-- stream posts -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/frontend/js/stream.js"></script>
+  </body>
+</html>

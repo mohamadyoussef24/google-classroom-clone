@@ -1,3 +1,7 @@
+if(localStorage.getItem("user_id")){
+    window.location.replace("../views/classroom_view.html")
+}
+
 const submit = document.getElementById("submit");
 const proceed =document.getElementById("proceed");
 const infoDiv = document.querySelector(".info");
@@ -17,7 +21,7 @@ submit.addEventListener("click", function(event){
 
 
 function isValidEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     return emailPattern.test(email);
   }
   
@@ -114,3 +118,9 @@ checkEmail = () => {
         console.log("Error:", err);
       }
 }
+
+function toggleMenu() {
+    var menuItems = document.getElementById("menuItems");
+    menuItems.classList.toggle("show");
+  }
+  
