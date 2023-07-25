@@ -43,10 +43,15 @@ post_btn.addEventListener('click', async function () {
     const message = document.getElementById("announcement-text").value;
 
     const class_id = "21";
-    const teacher_id = "20";
+    const decryptid = localStorage.getItem('user_id')
+
+    const secretKey = 123; // Replace with your desired secret key
+
+
+    const id = decrypt(decryptid, secretKey);
 
     let formdata = new FormData();
-    formdata.append("teacher_id", teacher_id);
+    formdata.append("teacher_id", id);
     formdata.append("class_id", class_id);
     formdata.append("message", message);
 
@@ -146,9 +151,9 @@ window.onload = async function () {
 
 const logout = document.getElementById('logout')
 logout.addEventListener('click', function () {
-  localStorage.removeItem("user_id")
-  localStorage.removeItem("email")
-  window.location.replace('../views/signin.html')
+    localStorage.removeItem("user_id")
+    localStorage.removeItem("email")
+    window.location.replace('../views/signin.html')
 })
 
 

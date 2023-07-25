@@ -1,23 +1,23 @@
 
-    if(!localStorage.getItem("user_id")){
-        window.location.replace("../views/signin.html")
-    }
-  
-    ////////////////////Encrypt and decrypt
+// if(!localStorage.getItem("user_id")){
+//     window.location.replace("../views/signin.html")
+// }
+
+////////////////////Encrypt and decrypt
 // Function to encrypt an integer ID using XOR and convert to base64 string
 function encrypt(id, secretKey) {
     const encryptedData = id ^ secretKey;
     const encryptedString = btoa(encryptedData.toString());
     return encryptedString;
-  }
-  
-  // Function to decrypt a base64 string and get back the integer ID
-  function decrypt(encryptedData, secretKey) {
+}
+
+// Function to decrypt a base64 string and get back the integer ID
+function decrypt(encryptedData, secretKey) {
     const encryptedString = atob(encryptedData);
     const encryptedInt = parseInt(encryptedString, 10);
     return encryptedInt ^ secretKey;
-  }
-  
+}
+
 const pages = {}
 
 // function to show dropdowns on assignment creation page
@@ -29,33 +29,37 @@ pages.showDropdowns = async () => {
     let date = document.getElementById("due")
     let close_btn = document.getElementById("close")
 
-    localStorage.setItem('user_id', 1)
-        let id = localStorage.getItem('user_id')
+    const decryptid = localStorage.getItem('user_id')
 
-        let formdata = new FormData();
-        formdata.append("user_id", id)
+    const secretKey = 123; // Replace with your desired secret key
 
-        let requestOptions = {
-            method: 'POST',
-            body: formdata,
-            // redirect: 'follow'
-        };
 
-        try {
-            const response = await fetch('http://localhost/Assignments/google-classroom-clone/backend/get_teacher_classes.php', requestOptions)
-            let json = await response.json()
-            console.log(json)
-            // populating class list with class names
-            json.forEach((json) => {
+    const id = decrypt(decryptid, secretKey);
+
+    let formdata = new FormData();
+    formdata.append("user_id", id)
+
+    let requestOptions = {
+        method: 'POST',
+        body: formdata,
+        // redirect: 'follow'
+    };
+
+    try {
+        const response = await fetch('http://localhost/Assignments/google-classroom-clone/backend/get_teacher_classes.php', requestOptions)
+        let json = await response.json()
+        console.log(json)
+        // populating class list with class names
+        json.forEach((json) => {
             let listItem = document.createElement("li")
-            listItem.innerHTML = `
+            listItem.innerHTML += `
             <input type="checkbox" name="class_name" value="${json.name}">
             <span>${json.name}</span>`;
-                class_ul.appendChild(listItem)
-            })
-        } catch (e) {
-            console.log("failed to fetch", e)
-        }
+            class_ul.appendChild(listItem)
+        })
+    } catch (e) {
+        console.log("failed to fetch", e)
+    }
 
     // add event listeners
     arrow2.addEventListener('click', async function () {
@@ -66,7 +70,7 @@ pages.showDropdowns = async () => {
         date.classList.toggle("hidden")
     })
 
-    close_btn.addEventListener('click', function(){
+    close_btn.addEventListener('click', function () {
         window.location.replace('classwork.html')
     })
 }
@@ -92,9 +96,10 @@ pages.createAssignment = () => {
         let instructions = document.getElementById("instructions").value;
         let class_name = getChecked();
         let due = document.getElementById("due").value;
-        
-        localStorage.setItem('user_id', 3)
-        let id = localStorage.getItem('user_id')
+
+        const decryptid = localStorage.getItem('user_id')
+        const secretKey = 123; // Replace with your desired secret key
+        const id = decrypt(decryptid, secretKey);
 
         let formdata = new FormData();
         formdata.append("title", title);
@@ -147,7 +152,7 @@ function displayAssignments(assignments_array) {
 pages.getAssignments = () => {
 
     window.onload = async function () {
-        const class_id = "3";
+        const class_id = "20";
         let formdata = new FormData();
         formdata.append("class_id", class_id);
 
@@ -168,8 +173,15 @@ pages.getAssignments = () => {
     }
 
     const create_btn = document.getElementById('create')
-    create_btn.addEventListener('click', function(){
+    create_btn.addEventListener('click', function () {
         window.location.replace('assignments.html')
+    })
+
+    const logout = document.getElementById('logout')
+    logout.addEventListener('click', function () {
+        localStorage.removeItem("user_id")
+        localStorage.removeItem("email")
+        window.location.replace('../views/signin.html')
     })
 }
 
@@ -178,16 +190,8 @@ pages.loadFor = (func_name) => {
     eval("pages." + func_name + "();")
 }
 
-const logout = document.getElementById('logout')
-logout.addEventListener('click', function () {
-  localStorage.removeItem("user_id")
-  localStorage.removeItem("email")
-  window.location.replace('../views/signin.html')
-})
-
 
 function toggleMenu() {
     var menuItems = document.getElementById("menuItems");
     menuItems.classList.toggle("show");
-  }
-  
+}
