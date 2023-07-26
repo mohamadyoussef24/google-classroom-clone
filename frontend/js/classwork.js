@@ -99,10 +99,13 @@ function displayAssignments(assignments_array) {
 
     assignments_list.innerHTML += "";
     assignments_array.forEach((assignment) => {
+        let anchor = document.createElement("a");
+        anchor.setAttribute("href",`../views/assignments.html?assignment_id=${assignment.id}`)
+        anchor.setAttribute("style","text-decoration: none; color: black;")
         let assignment_li = document.createElement("li");
-
+        
         assignment_li.innerHTML = `
-        <div class="li-title" id="li-title"><svg focusable="false" width="24" height="24"
+      <div class="li-title" id="li-title"><svg focusable="false" width="24" height="24"
                     viewBox="0 0 24 24" class=" NMm5M hhikbc svg-blue">
                     <path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7z"></path>
                     <path
@@ -110,8 +113,9 @@ function displayAssignments(assignments_array) {
                     </path>
                 </svg><span>${assignment.title}</span></div>
                 <div class="due-date">Due ${assignment.due}</div>
-    `;
-        assignments_list.appendChild(assignment_li)
+    `;  
+        anchor.appendChild(assignment_li)
+        assignments_list.appendChild(anchor)
         assignment_li.classList.add("assignment-li")
     })
 }
