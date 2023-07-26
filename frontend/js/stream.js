@@ -77,7 +77,7 @@ function displayPosts(posts_array,type) {
     class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
     console.log(class_code)
     if (class_code == "" || class_code == " ") {
-  
+      
       window.location.replace("../views/classroom_view.html")
     }
     
@@ -414,20 +414,3 @@ function myFunction() {
 
 
 }
-
-
-const logout = document.getElementById('logout')
-logout.addEventListener('click', function () {
-  localStorage.removeItem("user_id")
-  localStorage.removeItem("email")
-  localStorage.removeItem("class_code")
-  window.location.replace('../views/signin.html')
-})
-
-
-
-const burger_menu_clear = document.getElementById("burger_menu_clear")
-burger_menu_clear.addEventListener('click', function(){
-  localStorage.removeItem("class_code")
-
-})

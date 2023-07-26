@@ -160,7 +160,7 @@ function displayAssignments(assignments_array) {
             const new_class_name = data.name
             const new_class_topic = data.subject
             console.log(new_class_name)
-            classname.innerHTML = `${new_class_name}`
+            classname.innerHTML = `<b>${new_class_name}</b>`
             class_topic.innerHTML = `${new_class_topic}`
 
           }else{

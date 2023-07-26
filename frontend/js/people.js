@@ -5,6 +5,8 @@ if(!localStorage.getItem("user_id")){
 
 const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
+const classname = document.getElementById("classname")
+const class_topic = document.getElementById("class_topic")
 
 class_code=localStorage.getItem('class_code')
 try {
@@ -28,11 +30,14 @@ try {
           console.log(data)
           if (result == "teacher") {
               user_type="teacher"
+              document.getElementById("invite_icon").style.display= "none";
+             
              localStorage.setItem("class_code",class_code)
           }
           else if (result == "student") {
               user_type="student"
-              
+              document.getElementById("invite_icon").style.display= "none";
+              document.getElementById("invite_icon2").style.display= "none";
               post_div.style.display= "none";
               localStorage.setItem("class_code",class_code)
           }
@@ -157,8 +162,6 @@ window.onload = async function () {
     } catch (err) {
       console.log("Error:", err);
     }
-    const classname = document.getElementById("classname")
-    const class_topic = document.getElementById("class_topic")
 
     
   

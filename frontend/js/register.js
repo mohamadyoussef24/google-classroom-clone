@@ -56,8 +56,10 @@ const validateForm = () => {
     }
 
     if(confirm_password != password){
-        text_from_js.innerHTML = "The Passwords do not match"
-        return false
+        
+        infoDiv.textContent = "The Passwords do not match.";
+        infoDiv.style= 'color: red;font-weight:bold;font-size:14px;';
+        return false;
     }
 
     return true;
@@ -101,7 +103,8 @@ const register = () => {
                 
                 window.location.replace("../views/classroom_view.html");
             } else {
-                
+                infoDiv.textContent = "Email already exists.";
+                infoDiv.style= 'color: red;font-weight:bold;font-size:14px;';
             }
         });
 
