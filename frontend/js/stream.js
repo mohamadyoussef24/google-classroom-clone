@@ -35,12 +35,14 @@ function displayPosts(posts_array,type) {
       if (type == "assignment") {
         post_prefix = "Posted a new assignment:"
         message = post.title
+        anchor_href="../views/assignments.html?assignment_id="+post.id
     } else {
         post_prefix = "Added new material:"
         message = post.message
-        
+        anchor_href="#"
     }
       announcement_div.innerHTML += `
+      <a href="${anchor_href}" style="text-decoration: none; color:black; ">
       <div class="card post-div flex just-btw">
       <div class="flex center gap10">
                               <div class="b-circle bg-blue flex center" id="assignment-icon"><svg focusable="false"
@@ -63,10 +65,12 @@ function displayPosts(posts_array,type) {
                               </svg></div>
                               </div>
                               </div>
+                              </a>
   `;
       stream_container.appendChild(announcement_div)
   })
 }
+
 
 
   let class_code;

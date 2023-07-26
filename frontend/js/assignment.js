@@ -49,8 +49,6 @@ try {
           }
           else if (result == "student") {
               user_type="student"
-              
-              post_div.style.display= "none";
               localStorage.setItem("class_code",class_code)
           }
           else if (result == "notallowed") {
