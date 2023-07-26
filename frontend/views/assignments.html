@@ -86,7 +86,13 @@
         <!-- assignment attachments -->
         <div class="assignment-attach flex flex1 column card">
           <div>Attach</div>
-          <div class="flex attach-icons">
+         
+          <div id="fileList">
+            <!-- Selected files will be displayed here -->
+          </div>
+          <button id="fileButton">Select File(s)</button>
+          <button id="sendButton">Send Files</button>
+          <!-- <div class="flex attach-icons">
             <div class="flex center column">
               <div class="b-circle flex center">
                 <img
@@ -152,7 +158,7 @@
               </div>
               Link
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- assignment options -->
@@ -245,6 +251,7 @@
       </div>
     </div>
     <script src="/frontend/js/assignment.js"></script>
+    <script src="/frontend/js/teacher_upload.js"></script>
 
   </body>
 </html>

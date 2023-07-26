@@ -1,3 +1,6 @@
+const user_id = localStorage.getItem("user_id")
+const class_code = localStorage.getItem("class_code")
+
 // Helper function to create a FileList from an array of File objects
 function createFileList(files) {
     const dataTransfer = new DataTransfer();

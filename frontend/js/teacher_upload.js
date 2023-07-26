@@ -1,3 +1,6 @@
+const user_id = localStorage.getItem("user_id")
+const class_code = localStorage.getItem("class_code")
+
 // Helper function to create a FileList from an array of File objects
 function createFileList(files) {
   const dataTransfer = new DataTransfer();
@@ -84,7 +87,8 @@ sendButton.addEventListener('click', function () {
       formData.append('uploadedFiles[]', file, file.name);
     }
   }
-
+  formData.append('class_code',class_code)
+  formData.append('user_id',user_id)
   // Send the FormData to PHP using Fetch API
   fetch('http://localhost/Assignments/google-classroom-clone/backend/teacher_upload.php', {
     method: 'POST',
