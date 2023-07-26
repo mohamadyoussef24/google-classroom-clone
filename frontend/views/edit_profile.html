@@ -4,36 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Profile</title>
-    <link rel="stylesheet" href="../css/edit_profile.css"> 
+    <link rel="stylesheet" href="../css/edit_profile.css" />
+    <link rel="shortcut icon" href="/assets/images/google_tab_icon.png" />
   </head>
   <body>
-  <div class="edit_profile_data">
-    <div class="profile">
-      <!-- <label for="profile_pic"><h3>Profile Picture</h3></label>
+    <div class="edit_profile_data">
+      <div class="profile">
+        <!-- <label for="profile_pic"><h3>Profile Picture</h3></label>
 
       <input type="file" id="profile_pic" /> -->
-      <label for="imageInput" id="imagePreviewLabel" class="b-circle">
-        <div id="imagePreview"></div>
-    </label>
-    <!-- Hidden input element -->
-    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+        <label for="imageInput" id="imagePreviewLabel" class="b-circle">
+          <div id="imagePreview"></div>
+        </label>
+        <!-- Hidden input element -->
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+          style="display: none"
+        />
 
-      <div class="btn-for-profile">
-        <button id="save_picture" class="profile-btn button1">Save</button>
+        <div class="btn-for-profile">
+          <button id="save_picture" class="profile-btn button1">Save</button>
+        </div>
       </div>
-      
+      <div class="form-data">
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" placeholder="first name" value="" />
+        <!--  -->
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" placeholder="last name" value="" />
+        <input type="submit" id="submit" value="Submit" />
+      </div>
+      <input type="submit" id="modify_password" value="Password" />
     </div>
-    <div class="form-data">
-       <label for="first_name">First Name</label>
-       <input type="text" id="first_name" placeholder="first name" value="" />
-       <!--  -->
-       <label for="last_name">Last Name</label>
-       <input type="text" id="last_name" placeholder="last name" value="" />
-       <input type="submit" id="submit" value="Submit">
-     </div>
-    <input type="submit" id="modify_password" value="Password">
-  </div>
 
     <script src="../js/edit_profile.js"></script>
-</body>
+  </body>
 </html>

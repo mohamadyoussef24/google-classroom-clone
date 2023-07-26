@@ -436,3 +436,10 @@ logout.addEventListener('click', function () {
   localStorage.removeItem("class_code")
   window.location.replace('../views/signin.html')
 })
+
+
+const burger_menu_clear = document.getElementById("burger_menu_clear")
+burger_menu_clear.addEventListener('click', function(){
+  localStorage.removeItem("class_code")
+
+})

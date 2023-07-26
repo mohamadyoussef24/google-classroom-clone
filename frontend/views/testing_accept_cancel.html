@@ -3,12 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TESTING</title>
+    <title>Google Meet</title>
+    <link rel="stylesheet" href="../css/utilities.css" />
+    <link rel="stylesheet" href="../css/people.css" />
+    <link rel="shortcut icon" href="/assets/images/google_tab_icon.png" />
   </head>
   <body>
-    <button id="cancel">Cancel</button>
+    <div class="overlay" id="overlay" style="display: flex">
+      <div class="card flex column">
+        <h1 class="flex center">Google Classroom</h1>
+        <div class="cancel-invite flex gap10 cancel_invite_2">
+          <span class="modal-links" id="cancel">Cancel</span>
+          <span class="modal-links" id="confirm1">Confirm</span>
+        </div>
+      </div>
+    </div>
 
-    <button id="confirm1">Confirm</button>
     <script src="../js/testing_accept_cancel.js"></script>
   </body>
 </html>

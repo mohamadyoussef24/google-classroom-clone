@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/frontend/css/classwork.css">
     <link rel="stylesheet" href="/frontend/css/utilities.css">
     <link rel="stylesheet" href="/frontend/css/people.css">
+    <link rel="shortcut icon" href="/assets/images/google_tab_icon.png" />
+
     <title>Classwork</title>
 </head>
 
@@ -16,15 +18,13 @@
         <div class="card flex column just-btw">
             <div class="input-div-upper flex column gap10">
                 <span><b>invite</b> </span>
-                <label for="title">Type a name or email address</label>
-                <input type="text" id="invite" class="email-input"></textarea>
+                <label for="title">Type an email address</label>
+                <input type="text" id="invite_email" class="email-input"></textarea>
             </div>
-            <div class="input-div-lower">
-                Teachers added by you can do everything that you can except delete the class.
-            </div>
+
             <div class="cancel-invite flex gap10">
                 <span class="modal-links" id="cancel_icon">cancel</span>
-                <span class="modal-links">invite</span>
+                <span class="modal-links" id="invite_btn">invite</span>
             </div>
         </div>
     </div>

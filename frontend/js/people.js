@@ -235,3 +235,76 @@ burger_menu_clear.addEventListener('click', function(){
 
 })
 
+
+
+
+
+sendEmail = () => {
+  const invite_email = document.getElementById("invite_email").value
+  
+  const site_email = "noreply.classroom.noreply@gmail.com";
+  let invite = `<html>
+  <a href="http://127.0.0.1:5500/frontend/views/testing_accept_cancel.html?code=${class_code}&email_sent=${invite_email}"> <button>See Details </button></a> </html> `
+    
+    console.log("invited")
+    emailjs.init("ua6aWzLhhQq3fLfQO");
+
+
+    var templateParams = {
+    to_name:  invite_email,
+    from_name: site_email ,
+    message: invite
+    };
+
+emailjs.send('service_nkade5d', 'template_j5e1zsh', templateParams)
+.then(function(response) {
+console.log('SUCCESS!', response.status, response.text);
+
+}, function(error) {
+console.log('FAILED...', error);
+});
+
+};
+
+
+
+const checkForUser = () => {
+  const invite = document.getElementById("invite_email").value
+  const class_code = window.localStorage.getItem("class_code")
+  try{
+    const check_user_exists = new FormData()
+    check_user_exists.append("email", invite)
+    check_user_exists.append("class_code", class_code)
+
+
+    fetch(base_url + "checking_user_exists.php",{
+        method: "POST",
+        body: check_user_exists
+    })
+.then((res) => res.json())
+.then((data) => {
+    console.log(data.status)
+
+    if (data.status  == "email sent") {
+        sendEmail()
+    }else{
+        console.log('user does not exist')
+    }
+})
+}catch (err) {
+    console.log("Error:", err);
+  }
+
+
+
+  window.location.replace('/people.html')
+}
+
+
+
+
+
+
+
+invite_btn.addEventListener("click", checkForUser)
+

@@ -1,10 +1,8 @@
 ///////////////////////// testing accept email
+window.onload = function() {
 
-const confirm1 = document.getElementById('confirm1')
 
-confirm1.addEventListener("click", function(event){
-    event.preventDefault()
-    var url = "http://127.0.0.1:5500/frontend/views/stream.html?code=asdsad&email=aaa@gmail.com";
+    var url = window.location.href
     let get_code, email_sent, arraypair=[];
     
  
@@ -20,7 +18,17 @@ confirm1.addEventListener("click", function(event){
     email_sent=arraypair[1]
     console.log(get_code)
     console.log(email_sent)
+
+    if (get_code.trim() == ""||email_sent.trim()==""){
+        window.location.replace('/index.html')
+    }else{
+
+    }
     //// join class as student////
     
-    // window.location.replace(url + "?code=" + get_code)
-});
+    // window.location.replace(url + "?code=" + get_code);
+
+
+
+}
+

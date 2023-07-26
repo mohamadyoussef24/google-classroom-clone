@@ -24,19 +24,20 @@ html {
 
 .card {
     width: 400px;
-    height: 450px;
+    height: 200px;
     font-family: "Google Sans",'Roboto',Arial,sans-serif;
     color: #5f6368;
 }
 
 .input-div-upper {
     border-bottom: 1px solid #babec4;
+
 }
 
-.input-div-lower {
+/* .input-div-lower {
     padding-top: 5px;
     border-top: 1px solid #babec4;
-}
+} */
 
 .email-input {
     border: none;
@@ -117,3 +118,26 @@ html {
 
 }
 
+.cancel_invite_2{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+#cancel:hover{
+    background-color: #1967d2;
+    padding: 0.5rem;
+    color: white;
+    cursor: pointer;
+
+}
+
+#confirm1:hover{
+    background-color: #1967d2;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+
+}

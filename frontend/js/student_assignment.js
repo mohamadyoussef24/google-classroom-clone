@@ -269,7 +269,7 @@ window.onload = async() => {
 
 
 
-                document.getElementById("files_div").innerHTML+=`<a href="${filePath}" download><button class="btn" style="background-color: RoyalBlue;color: white; cursor: pointer; width:100%"><i class="fa fa-download" >${modifiedFilePath}</i> Download</button></a><br>`;
+                document.getElementById("files_div").innerHTML+=`<a href="${filePath}" download><button class="btn" style="background-color: RoyalBlue;color: white; cursor: pointer; width:100%"><i class="fa fa-download" >${modifiedFilePath}</i></button></a><br>`;
             })
             console.log(json.one)
             json.two.forEach((json) => {
@@ -296,7 +296,7 @@ window.onload = async() => {
                 const modifiedFilePath = substringAfterLastSlash.substring(underscoreIndex + 1);
                 
 
-                document.getElementById("files_div_student").innerHTML+=`<a href="${filePath}" download><button class="btn" style="background-color: RoyalBlue;color: white; cursor: pointer; width:100%"><i class="fa fa-download" >${modifiedFilePath}</i> Download</button></a><br>`;
+                document.getElementById("files_div_student").innerHTML+=`<a href="${filePath}" download><button class="btn" style="background-color: RoyalBlue;color: white; cursor: pointer; width:100%"><i class="fa fa-download" >${modifiedFilePath}</i></button></a><br>`;
             })
             console.log(json.two)
         }
