@@ -134,8 +134,46 @@ window.onload = async() => {
         try {
             const assignment = await fetch("http://localhost/Assignments/google-classroom-clone/backend/get_teacher_assignment.php", requestOptions)
             const json = await assignment.json()
-            renderAssignment(json)
-            console.log(json)
+            renderAssignment(json.zero)
+            json.one.forEach((json) => {
+                const filePath = json.file_path;
+
+                // Get the last index of "/"
+                const lastSlashIndex = filePath.lastIndexOf("/");
+                
+                // Get the substring starting after the last "/"
+                const substringAfterLastSlash = filePath.substring(lastSlashIndex + 1);
+                
+                // Get the index of the first underscore ("_") after the last "/"
+                const underscoreIndex = substringAfterLastSlash.indexOf("_");
+                
+                // Get the substring starting from the character after the first underscore
+                const modifiedFilePath = substringAfterLastSlash.substring(underscoreIndex + 1);
+
+
+
+                document.getElementById("files_div").innerHTML+=modifiedFilePath+"<br>";
+            })
+            console.log(json.one)
+            json.two.forEach((json) => {
+                const filePath = json.file_path;
+
+                // Get the last index of "/"
+                const lastSlashIndex = filePath.lastIndexOf("/");
+                
+                // Get the substring starting after the last "/"
+                const substringAfterLastSlash = filePath.substring(lastSlashIndex + 1);
+                
+                // Get the index of the first underscore ("_") after the last "/"
+                const underscoreIndex = substringAfterLastSlash.indexOf("_");
+                
+                // Get the substring starting from the character after the first underscore
+                const modifiedFilePath = substringAfterLastSlash.substring(underscoreIndex + 1);
+                
+
+                document.getElementById("files_div_student").innerHTML+=modifiedFilePath+"<br>";
+            })
+            console.log(json.two)
         }
         catch (e) {
             console.log("failed to fetch", e)

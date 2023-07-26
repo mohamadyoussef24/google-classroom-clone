@@ -299,7 +299,7 @@ function createFileList(files) {
        
      
        
-        // // // window.location.replace('./classwork.html')
+        window.location.replace('./classwork.html')
     
     
     }
