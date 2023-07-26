@@ -69,12 +69,12 @@ function displayPosts(posts_array,type) {
 }
 
 
-
+  let class_code;
  
   if(!localStorage.getItem('class_code')){
     let site_url = window.location.href
     console.log(site_url)
-    let class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
+    class_code = site_url.substring(site_url.lastIndexOf('=') + 1);
     console.log(class_code)
     if (class_code == "" || class_code == " ") {
   
@@ -118,14 +118,15 @@ function displayPosts(posts_array,type) {
                 localStorage.setItem("class_code",class_code)
             }
             else if (result == "notallowed") {
-              
+              localStorage.removeItem("class_code")
                 window.location.replace("../views/classroom_view.html")
-                localStorage.removeItem("class_code")
+               
 
             }
             else if (result == "classnotfound") {
+              localStorage.removeItem("class_code")
                 window.location.replace("../views/classroom_view.html")
-                localStorage.removeItem("class_code")
+                
 
             }
 
