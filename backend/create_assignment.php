@@ -25,20 +25,6 @@ $query->store_result();
 $query->bind_result($teacher_id);
 $query->fetch();
 
-// $class_names = $mysqli->prepare('SELECT classes.id FROM classes JOIN teachers ON teachers.class_id = classes.id WHERE teachers.user_id =?;');
-// $class_names->bind_param('i', $id);
-// $class_names->execute();
-// $class_names->store_result();
-// $class_names->bind_result($result);
-// $class_names->fetch();
-
-// $num_rows = $class_names->num_rows();
-// if ($num_rows == 0) {
-// echo "empty";
-// } else {
-//     $response['result']= $result;
-//     echo json_encode($response);
-// }
 
 $title = $_POST['title'];
 $instructions = $_POST['instructions'];
@@ -49,4 +35,128 @@ $query = $mysqli->prepare('insert into assignments(title,instructions,class_id,t
 $query->bind_param('ssiis',  $title, $instructions, $class_id, $teacher_id ,$due);
 $query->execute();
 
-echo "Assignment Added";
+
+
+
+
+
+    if (isset($_FILES['uploadedFiles'])) {
+            
+           
+
+        $id = $_POST['id']; 
+            $class_code = $_POST['class_code']; 
+
+
+            $query = $mysqli->prepare('select id
+    from classes 
+    where class_code=?');
+    $query->bind_param('s', $code);
+    $query->execute();
+
+    $query->store_result();
+    $query->bind_result($class_id);
+    $query->fetch();
+
+         
+
+
+
+            $dir = "./classes/class_$class_id/teacher_$id/";
+
+            if (!file_exists($dir)) {
+                if (mkdir($dir, 0755, true)) {
+                    echo "Directory created successfully.";
+                    
+                } else {
+                    echo "Failed to create the directory.";
+                   
+                }
+            } else {
+                echo "Directory already exists.";
+               
+            }
+            
+            
+
+        // Loop through each uploaded file
+        foreach ($_FILES['uploadedFiles']['name'] as $index => $fileName) {
+            $tempFilePath = $_FILES['uploadedFiles']['tmp_name'][$index];
+
+            // Check if the file was uploaded successfully
+            if ($_FILES['uploadedFiles']['error'][$index] === UPLOAD_ERR_OK) {
+                $fileName = uniqid() . '_' . $fileName;
+                $destination = $dir . $fileName;
+                // Move the file to the desired path on the server
+                if (move_uploaded_file($tempFilePath, $destination)) {
+                    
+                    
+                        $query = $mysqli->prepare('select MAX(id)
+                        from assignments 
+                        where teacher_id=? and class_id=?');
+                        $query->bind_param('ii', $teacher_id,$class_id);
+                        $query->execute();
+
+                        $query->store_result();
+                        $query->bind_result($assignment_id);
+                        $query->fetch();
+
+
+                        
+
+                        $query = $mysqli->prepare('insert into teacher_files (assignment_id,teacher_id,file_path) values(?,?,?)');
+                        $query->bind_param('iis',  $assignment_id, $teacher_id, $destination);
+                        $query->execute();
+                        
+
+
+
+
+                        echo "File was uploaded successfully.";
+                
+
+                } else {
+                    echo "Error moving file";
+                   
+                }
+            } else {
+                echo "Error uploading file";
+              
+            }
+        }
+
+    } else {
+
+
+        $destination="";
+        $query = $mysqli->prepare('select id
+        from assignments 
+        where teacher_id=? and class_id=? ORDER BY id DESC LIMIT 0, 1');
+        $query->bind_param('ii', $teacher_id,$class_id);
+        $query->execute();
+
+        $query->store_result();
+        $query->bind_result($assignment_id);
+        $query->fetch();
+
+
+        
+
+        $query = $mysqli->prepare('insert into teacher_files (assignment_id,teacher_id,file_path) values(?,?,?)');
+        $query->bind_param('iis',  $assignment_id, $teacher_id, $destination);
+        $query->execute();
+
+
+      echo "No files were uploaded.";
+       
+    }
+
+
+
+
+
+
+
+   
+    
+    

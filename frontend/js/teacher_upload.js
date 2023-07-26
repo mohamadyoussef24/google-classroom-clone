@@ -75,30 +75,30 @@ fileInput.addEventListener('change', function (event) {
 });
 
 // Add an event listener to the send button
-const sendButton = document.getElementById('sendButton');
-sendButton.addEventListener('click', function () {
-  // Create a FormData object and append the selected files to it
-  const formData = new FormData();
-  const fileItems = fileList.getElementsByClassName('file-item');
-  for (const fileItem of fileItems) {
-    const fileInputClone = fileItem.querySelector('input[type=file]');
-    if (fileInputClone && fileInputClone.files.length > 0) {
-      const file = fileInputClone.files[0];
-      formData.append('uploadedFiles[]', file, file.name);
-    }
-  }
-  formData.append('class_code',class_code)
-  formData.append('user_id',user_id)
-  // Send the FormData to PHP using Fetch API
-  fetch('http://localhost/Assignments/google-classroom-clone/backend/teacher_upload.php', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.text())
-  .then(responseText => {
-    console.log(responseText); // Response from PHP (you can handle it as needed)
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
+// const sendButton = document.getElementById('sendButton');
+// sendButton.addEventListener('click', function () {
+//   // Create a FormData object and append the selected files to it
+//   const formData = new FormData();
+//   const fileItems = fileList.getElementsByClassName('file-item');
+//   for (const fileItem of fileItems) {
+//     const fileInputClone = fileItem.querySelector('input[type=file]');
+//     if (fileInputClone && fileInputClone.files.length > 0) {
+//       const file = fileInputClone.files[0];
+//       formData.append('uploadedFiles[]', file, file.name);
+//     }
+//   }
+//   formData.append('class_code',class_code)
+//   formData.append('user_id',user_id)
+//   // Send the FormData to PHP using Fetch API
+//   fetch('http://localhost/Assignments/google-classroom-clone/backend/create_assignment.php', {
+//     method: 'POST',
+//     body: formData
+//   })
+//   .then(response => response.text())
+//   .then(responseText => {
+//     console.log(responseText); // Response from PHP (you can handle it as needed)
+//   })
+//   .catch(error => {
+//     console.error('Error:', error);
+//   });
+// });
