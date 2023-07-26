@@ -157,6 +157,39 @@ window.onload = async function () {
     } catch (err) {
       console.log("Error:", err);
     }
+    const classname = document.getElementById("classname")
+    const class_topic = document.getElementById("class_topic")
+
+    
+  
+    
+  
+    try{
+      const class_name = new FormData()
+      class_name.append("class_code", class_code)
+  
+      fetch(base_url + "displaying_classes.php",{
+          method: "POST",
+          body: class_name
+      })
+  .then((res) => res.json())
+  .then((data) => {
+      console.log(data.status)
+  
+      if (data.status  == "class found") {
+        const new_class_name = data.name
+        const new_class_topic = data.subject
+        console.log(new_class_name)
+        classname.innerHTML = `${new_class_name}`
+        class_topic.innerHTML = `${new_class_topic}`
+
+      }else{
+          console.log('class does not exist')
+      }
+  })
+  }catch (err) {
+      console.log("Error:", err);
+    }
 }
 
 const invite_btn_teacher = document.getElementById("invite_icon")
@@ -183,6 +216,19 @@ cancel_btn.addEventListener('click', function(){
 // 
 
 
+const logout = document.getElementById('logout')
+logout.addEventListener('click', function () {
+  localStorage.removeItem("user_id")
+  localStorage.removeItem("email")
+  localStorage.removeItem("class_code")
+  window.location.replace('../views/signin.html')
+})
 
 
+
+const burger_menu_clear = document.getElementById("burger_menu_clear")
+burger_menu_clear.addEventListener('click', function(){
+  localStorage.removeItem("class_code")
+
+})
 
