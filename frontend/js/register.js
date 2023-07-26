@@ -29,6 +29,9 @@ const validateForm = () => {
     const last_name = document.getElementById("last_name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const confirm_password = document.getElementById("confirm_password").value;
+    const text_from_js = document.getElementById("text_from_js")
+
 
     if (!first_name || !last_name || !email || !password) {
         infoDiv.textContent = "All fields are required.";
@@ -50,6 +53,11 @@ const validateForm = () => {
         infoDiv.textContent = "Password must be at least 8 characters long and contain letters and numbers.";
         infoDiv.style= 'color: red;font-weight:bold;font-size:14px;';
         return false;
+    }
+
+    if(confirm_password != password){
+        text_from_js.innerHTML = "The Passwords do not match"
+        return false
     }
 
     return true;

@@ -13,27 +13,55 @@
       </div>
       <h1 class="heading">
         <div class="h_main">Register</div>
-      </h1> 
+      </h1>
       <div class="slide-content">
         <div class="content1">
           <form id="register_form">
-            <div  class="input-group">
-              <input type="text" id="first_name" placeholder="First Name" class="field" />
-              <input type="text" id="last_name" placeholder="Last Name" class="field" />
+            <div class="input-group">
+              <input
+                type="text"
+                id="first_name"
+                placeholder="First Name"
+                class="field"
+              />
+              <input
+                type="text"
+                id="last_name"
+                placeholder="Last Name"
+                class="field"
+              />
             </div>
             <div class="input-group">
-              <input type="text" id="email" placeholder="'User name'@gmail.com" class="field"/><br />
-              <span>you can use letters,numbers&periods</span> <br>
-              
+              <input
+                type="text"
+                id="email"
+                placeholder="'User name'@gmail.com"
+                class="field"
+              /><br />
+               <br />
             </div>
-            <br>
+            <p>you can use letters,numbers&periods</p>
+            <br />
             <div class="input-group">
-              <input type="password" id="password" placeholder="Password" class="field" />
-              <br>
-              
-              <span class="info">Use 8 or more characters with mix of letters ,numbers & symbols</span>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                class="field"
+              />
+              <br />
+              <input
+                type="password"
+                id="confirm_password"
+                placeholder=" Confirm Password"
+                class="field"
+              />
+              <br />
             </div>
-            <br>
+            <p class="info" id="text_from_js"></p>
+              Use 8 or more characters with mix of letters ,numbers & symbols
+            </p>
+            <br />
             <div class="input-group last-row">
               <span><a href="signin.html">Signin instead</a></span>
               <button type="submit" id="submit" class="btn">Register</button>

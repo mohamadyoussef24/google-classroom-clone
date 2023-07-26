@@ -116,3 +116,8 @@ html {
 	color: white;
 
 }
+
+
+#adjusting_margin {
+    margin-right: 20% !important;
+}
