@@ -136,8 +136,15 @@ window.onload = async() => {
             const json = await assignment.json()
             renderAssignment(json.zero)
             json.one.forEach((json) => {
-                const filePath = json.file_path;
+                const string = json.file_path;
+             
+                const substringToRemove = ".";
 
+                // Find the index of the first occurrence of the substring
+                const indexToRemove = string.indexOf(substringToRemove);
+
+                // Remove the first occurrence of the substring
+                const filePath = base_url+string.replace(substringToRemove, "");
                 // Get the last index of "/"
                 const lastSlashIndex = filePath.lastIndexOf("/");
                 
@@ -152,11 +159,19 @@ window.onload = async() => {
 
 
 
-                document.getElementById("files_div").innerHTML+=modifiedFilePath+"<br>";
+                document.getElementById("files_div").innerHTML+=`<a href="${filePath}" download><button class="btn" style="background-color: RoyalBlue;color: white; cursor: pointer; width:100%"><i class="fa fa-download" >${modifiedFilePath}</i> Download</button></a><br>`;
             })
             console.log(json.one)
             json.two.forEach((json) => {
-                const filePath = json.file_path;
+                const string = json.file_path;
+             
+                const substringToRemove = ".";
+
+                // Find the index of the first occurrence of the substring
+                const indexToRemove = string.indexOf(substringToRemove);
+
+                // Remove the first occurrence of the substring
+                const filePath = base_url+string.replace(substringToRemove, "");
 
                 // Get the last index of "/"
                 const lastSlashIndex = filePath.lastIndexOf("/");
@@ -171,7 +186,7 @@ window.onload = async() => {
                 const modifiedFilePath = substringAfterLastSlash.substring(underscoreIndex + 1);
                 
 
-                document.getElementById("files_div_student").innerHTML+=modifiedFilePath+"<br>";
+                document.getElementById("files_div_student").innerHTML+=`<a href="${filePath}" download><button class="btn" style="background-color: RoyalBlue;color: white; cursor: pointer; width:100%"><i class="fa fa-download" >${modifiedFilePath}</i> Download</button></a><br>`;
             })
             console.log(json.two)
         }
