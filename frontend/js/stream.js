@@ -382,7 +382,7 @@ post_btn.addEventListener('click', async function () {
     formdata.append("teacher_id", user_id);
     formdata.append("class_code", class_code);
     formdata.append("message", message);
- 
+  
     let requestOptions = {
         method: 'POST',
         body: formdata
@@ -396,7 +396,7 @@ post_btn.addEventListener('click', async function () {
     catch (e) {
         console.log("failed to fetch", e)
     }
-    // window.location.reload()
+    window.location.reload()
 })
 
 

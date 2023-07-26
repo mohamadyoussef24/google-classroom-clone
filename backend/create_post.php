@@ -3,7 +3,7 @@
 include('connection.php');
 
 $class_code = $_POST['class_code'];
-$teacher_id = $_POST['teacher_id'];
+$id = $_POST['teacher_id'];
 $message = $_POST['message'];
 
 
@@ -25,6 +25,16 @@ $query->fetch();
 
 
 
+
+$query = $mysqli->prepare('select id
+from teachers 
+where user_id=?');
+$query->bind_param('s', $id);
+$query->execute();
+
+$query->store_result();
+$query->bind_result($teacher_id);
+$query->fetch();
 
 
 

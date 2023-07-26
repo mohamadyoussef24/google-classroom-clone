@@ -81,23 +81,23 @@ function displayParticipants(people_array, person) {
     people_array.forEach((participant) => {
         let participant_li = document.createElement("li");
 
-        participant_li.innerHTML = `
+        participant_li.innerHTML += `
         <li class="participant-li">
                 <div class="flex gap10 center">
                 <span><img class="icon b-circle" src="/assets/svgs/unnamed.png" alt=""></span>
                 <span>${participant.first_name} ${participant.last_name}</span></div>
-                <div class="flex center"><svg class="svg-grey" focusable="false" width="24" height="24" viewBox="0 0 24 24" class=" NMm5M"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg></div>
+                <div class="flex center"></div>
             </li>
     `;
         people_list.appendChild(participant_li)
     })
 }
-
+let profile = ""
 window.onload = async function () {
 
-    const class_id = "5";
+
     let formdata = new FormData();
-    formdata.append("class_id", class_id);
+    formdata.append("class_code", class_code);
 
     let requestOptions = {
         method: 'POST',
@@ -122,6 +122,40 @@ window.onload = async function () {
     }
     catch (e) {
         console.log("failed to fetch", e)
+    }
+    try {
+      const email = window.localStorage.getItem("email")
+      flag = "onload";
+      const profile_pic_form = new FormData()
+      profile_pic_form.append("email", email)
+      profile_pic_form.append("flag", flag)
+  
+      fetch(base_url + 'edit_profile.php', {
+        method: "POST",
+        body: profile_pic_form
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 'info found') {
+            profile_info = data.profile_pic
+  
+            if (profile_info == "" || profile_info == " " || profile_info == null) {
+              const imagePreview = document.getElementById('imagePreview');
+              imagePreview.src = `../../assets/images/usericon.png`;
+            } else {
+              const imagePreview = document.getElementById('imagePreview');
+              imagePreview.src = `${base_url}/users/${profile_info}`;
+            }
+  
+          } else {
+            console.log("image failed:", data.status);
+          }
+        })
+        .catch((err) => {
+          console.log("Fetch error:", err);
+        });
+    } catch (err) {
+      console.log("Error:", err);
     }
 }
 
@@ -150,43 +184,5 @@ cancel_btn.addEventListener('click', function(){
 
 
 
-let profile = ""
 
-window.onload = function () {
 
-  try {
-    const email = window.localStorage.getItem("email")
-    flag = "onload";
-    const profile_pic_form = new FormData()
-    profile_pic_form.append("email", email)
-    profile_pic_form.append("flag", flag)
-
-    fetch(base_url + 'edit_profile.php', {
-      method: "POST",
-      body: profile_pic_form
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 'info found') {
-          profile_info = data.profile_pic
-
-          if (profile_info == "" || profile_info == " " || profile_info == null) {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = `../../assets/images/usericon.png`;
-          } else {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = `${base_url}/users/${profile_info}`;
-          }
-
-        } else {
-          console.log("image failed:", data.status);
-        }
-      })
-      .catch((err) => {
-        console.log("Fetch error:", err);
-      });
-  } catch (err) {
-    console.log("Error:", err);
-  }
-
-}
