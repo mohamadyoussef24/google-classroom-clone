@@ -102,3 +102,22 @@ html {
     height: 45px;
     border-radius: 50%;
 }
+
+#logout {
+	background-color: transparent;
+	border: none;
+	font-weight: bolder;
+}
+
+#logout:hover {
+	cursor: pointer;
+	background-color: #ababab;
+	padding: 0.5rem;
+	color: white;
+
+}
+
+
+#adjusting_margin {
+    margin-right: 20% !important;
+}

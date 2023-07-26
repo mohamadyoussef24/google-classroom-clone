@@ -12,21 +12,20 @@
     <!-- navbar -->
     <header>
       <div class="nav flex width100">
-       
         <div class="nav-left flex gap10">
           <a href="./classroom_view.html">
-          <div>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              focusable="false"
-              class="NMm5M svg-grey nav-svg"
-            >
-              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-            </svg>
-          </div>
-        </a>
+            <div id="burger_menu_clear">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                focusable="false"
+                class="NMm5M svg-grey nav-svg"
+              >
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+              </svg>
+            </div>
+          </a>
 
           <div class="flex column">
             <!-- from database -->
@@ -46,9 +45,6 @@
           </a>
           <a class="nav-links" href="./people.html">
             <div class="nav-div flex center">People</div>
-          </a>
-          <a class="nav-links" href="#">
-            <div class="nav-div flex center">Marks</div>
           </a>
         </div>
         <div class="nav-right flex center gap10">
@@ -79,6 +75,7 @@
               ></path>
             </svg>
           </div>
+          <button id="logout">Logout</button>
           <div>
             <a href="../views/edit_profile.html"
               ><img
@@ -105,11 +102,15 @@
           <!-- side cards -->
           <div class="side-cards flex column gap10">
             <div class="card">
-                &nbsp; &nbsp; Class code
-                <br>
-                <div id="class-link" style="display:none;"></div>
-                <button  onclick="myFunction()"class="btn bg-blue" style="cursor:pointer">Copy Link</button>
-              
+              <br />
+              <div id="class-link" style="display: none"></div>
+              <button
+                onclick="myFunction()"
+                class="btn bg-blue"
+                style="cursor: pointer"
+              >
+                Copy Code
+              </button>
             </div>
             <div class="card">Upcoming</div>
           </div>

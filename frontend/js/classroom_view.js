@@ -36,7 +36,7 @@ function displayClasses(classses_array) {
     </div></a>
   `;
     classes_wrapper.appendChild(class_div)
-    document.create
+   
   })
 }
 
@@ -300,6 +300,7 @@ const logout = document.getElementById('logout')
 logout.addEventListener('click', function () {
   localStorage.removeItem("user_id")
   localStorage.removeItem("email")
+  localStorage.removeItem("class_code")
   window.location.replace('../views/signin.html')
 })
 

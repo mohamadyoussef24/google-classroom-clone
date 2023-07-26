@@ -14,26 +14,29 @@
         <div class="nav flex">
           <div class="nav-left flex gap10">
             <a href="./classroom_view.html">
-            <div>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                focusable="false"
-                class="NMm5M svg-grey nav-svg"
-              >
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-              </svg>
-            </div>
-          </a>
+              <div id="burger_menu_clear">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  class="NMm5M svg-grey nav-svg"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  ></path>
+                </svg>
+              </div>
+            </a>
             <div class="flex column">
               <!-- from database -->
               <a class="nav-links" href="#"
-                ><span><b>classname</b> <br />topic </span></a
-              >
+                ><div id="classname">classname</div>
+              
+              <div id="class_topic">topic</div>
             </div>
           </div>
-          <div class="nav-middle flex gap20">
+          <div class="nav-middle flex gap20" id="adjusting_margin">
             <a class="nav-links" href="./stream.html">
               <div class="nav-div flex center">Stream</div>
             </a>
@@ -42,9 +45,6 @@
             </a>
             <a class="nav-links" href="./people.html">
               <div class="nav-div flex center">People</div>
-            </a>
-            <a class="nav-links" href="#">
-              <div class="nav-div flex center">Marks</div>
             </a>
           </div>
           <div class="nav-right flex center gap10">
@@ -75,6 +75,7 @@
                 ></path>
               </svg>
             </div>
+            <button id="logout">Logout</button>
             <div>
               <a href="../views/edit_profile.html"
                 ><img
@@ -90,17 +91,23 @@
 
       <div class="container width50 flex column">
         <div class="width100 flex just-btw">
-          <a href="./assignments.html"><button class="btn create flex center">
-            <svg
-              class="svg-white"
-              focusable="false"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              class="NMm5M"
+          <a href="./assignments.html"
+            ><button
+              class="btn create flex center"
+              style="cursor: pointer"
+              id="create_button"
             >
-              <path d="M20 13h-7v7h-2v-7H4v-2h7V4h2v7h7v2z"></path></svg>Create
-          </button>
+              <svg
+                class="svg-white"
+                focusable="false"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="NMm5M"
+              >
+                <path d="M20 13h-7v7h-2v-7H4v-2h7V4h2v7h7v2z"></path></svg
+              >Create
+            </button>
           </a>
           <div class="lower-nav flex gap10">
             <div class="flex center gap5">
@@ -131,16 +138,14 @@
                 <rect fill="none" height="24" width="24"></rect>
                 <path
                   d="M14.35,2.5h-4.7c-0.71,0-1.37,0.38-1.73,0.99L1.58,14.4c-0.36,0.62-0.36,1.38-0.01,2l2.35,4.09c0.36,0.62,1.02,1,1.73,1 h12.68c0.72,0,1.38-0.38,1.73-1l2.35-4.09c0.36-0.62,0.35-1.38-0.01-2L16.08,3.49C15.72,2.88,15.06,2.5,14.35,2.5z M18.34,19.5H5.66 l-2.35-4.09L9.65,4.5h4.7l6.34,10.91L18.34,19.5z M12.9,7.75h-1.8l-4.58,7.98L7.25,17h9.5l0.73-1.27L12.9,7.75z M9.25,15L12,10.2 l2.75,4.8H9.25z"
-                ></path></svg>Class Drive Folder
+                ></path></svg
+              >Class Drive Folder
             </div>
           </div>
         </div>
         <ul class="assignments-ul width100" id="assignments-ul"></ul>
       </div>
     </div>
-    <script src="/frontend/js/assignment.js"></script>
-    <script>
-      pages.loadFor("getAssignments");
-    </script>
+    <script src="/frontend/js/classwork.js"></script>
   </body>
 </html>

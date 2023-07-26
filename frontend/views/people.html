@@ -10,7 +10,7 @@
     <title>Classwork</title>
 </head>
 
-<body class="container flex column width100">
+<body class="container flex column width100" style="width:100%">
     <!-- Modal -->
     <div class="overlay" id="overlay">
         <div class="card flex column just-btw">
@@ -34,13 +34,13 @@
         <div class="nav flex width100">
            <div class="nav-left flex gap10">
             <a href="./classroom_view.html">
-                <div><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class=" NMm5M svg-grey nav-svg">
+                <div id="burger_menu_clear"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class=" NMm5M svg-grey nav-svg">
                         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
                     </svg></div>
                 <div class="flex column">
                     <!-- from database -->
-                    <a class="nav-links" ><span><b>classname</b>
-                            <br>topic
+                    <a class="nav-links" ><span><b id="classname">classname</b>
+                            <br><label id="class_topic">topic</label>
                         </span></a>
                 </div>
             </a>
@@ -55,9 +55,7 @@
                 <a class="nav-links" href="./people.html">
                     <div class="nav-div flex center">People</div>
                 </a>
-                <a class="nav-links" href="#">
-                    <div class="nav-div flex center">Marks</div>
-                </a>
+
             </div>
             <div class="nav-right flex center gap10">
                 <div><svg focusable="false" width="20" height="20" viewBox="0 0 24 24" class=" NMm5M svg-grey nav-svg">
@@ -71,6 +69,7 @@
                             d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z">
                         </path>
                     </svg></div>
+                    <button id="logout">Logout</button>
                     <div class="b-circle">
                         <a href="../views/edit_profile.html"
                           ><img
