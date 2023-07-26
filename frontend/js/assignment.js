@@ -50,6 +50,7 @@ try {
           else if (result == "student") {
               user_type="student"
               localStorage.setItem("class_code",class_code)
+              location.window.replace("../views/student_assignment.html?assignment_id=")
           }
           else if (result == "notallowed") {
               window.location.replace("../views/classroom_view.html")
