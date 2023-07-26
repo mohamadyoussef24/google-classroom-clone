@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/css/utilities.css">
+    <link rel="stylesheet" href="/frontend/css/student_assignment.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="flex column width100">
+        <a href="./classwork.html">
+        <div class="close" id="close"><svg focusable="false" width="24" height="24" viewBox="0 0 24 24"
+            class=" NMm5M svg-grey">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
+            </path>
+        </svg></div>
+        </a>
+
+        <div class="content flex gap20">
+            <div class="body flex column width100 gap20">
+                <div class="header flex column gap10">
+                    <div class="s_title" id="assignment_title">Assignment Title</div>
+                    <div id="teacher_name">Teacher name</div>
+                    <div class="flex just-btw width100">
+                        <div>points</div>
+                        <div id="due_date">due date</div>
+                    </div>
+                </div>
+                <div class="instructions" id="instructions">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, blanditiis. Vel ullam cupiditate, voluptas, voluptate, natus optio distinctio magni consequuntur nam quo sunt excepturi culpa architecto minima at cum reprehenderit!</div>
+            </div>
+            <div class="work flex column gap20">
+                <div class="card flex column gap10">
+                    <div class="flex just-btw">
+                        <div>Your Work</div>
+                        
+                    </div>
+                    <div><input id="file_input" type="file" placeholder="add or create"></div>
+                    <button id="submit_btn" class="btn bg-blue">Mark as Done</button>
+                </div>
+                <div class="card">Private Comments</div>
+            </div>
+        </div>
+        <script src="/frontend/js/student_assignment.js"></script>
+</body>
+
+</html>

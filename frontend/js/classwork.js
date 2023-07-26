@@ -100,7 +100,7 @@ function displayAssignments(assignments_array) {
     assignments_list.innerHTML += "";
     assignments_array.forEach((assignment) => {
         let anchor = document.createElement("a");
-        anchor.setAttribute("href",`../views/assignments.html?assignment_id=${assignment.id}`)
+        anchor.setAttribute("href",`../views/student_assignment.html?assignment_id=${assignment.id}`)
         anchor.setAttribute("style","text-decoration: none; color: black;")
         let assignment_li = document.createElement("li");
         

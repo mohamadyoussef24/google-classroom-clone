@@ -35,7 +35,7 @@ function displayPosts(posts_array,type) {
       if (type == "assignment") {
         post_prefix = "Posted a new assignment:"
         message = post.title
-        anchor_href="../views/assignments.html?assignment_id="+post.id
+        anchor_href="../views/student_assignment.html?assignment_id="+post.id
     } else {
         post_prefix = "Added new material:"
         message = post.message
