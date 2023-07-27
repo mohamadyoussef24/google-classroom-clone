@@ -203,6 +203,7 @@ function createFileList(files) {
     })
     .then(response => response.text())
     .then(responseText => {
+      document.getElementById('resultdone').innerHTML="upload done"
       console.log(responseText); // Response from PHP (you can handle it as needed)
     })
     .catch(error => {
