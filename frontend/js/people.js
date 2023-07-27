@@ -203,13 +203,13 @@ const email_input = document.getElementById("invite")
 invite_btn_teacher.addEventListener('click', function(){
         let overlay = document.getElementById('overlay');
         overlay.style.display = "flex";
-        email_input.setAttribute('name', "teacher-email")
+        // email_input.setAttribute('name', "teacher-email")
 })
 
 invite_btn_student.addEventListener('click', function(){
         let overlay = document.getElementById('overlay');
         overlay.style.display = "flex";
-        email_input.setAttribute('name', "student-email")
+        // email_input.setAttribute('name', "student-email")
 })
 
 cancel_btn.addEventListener('click', function(){
@@ -244,7 +244,7 @@ sendEmail = () => {
   
   const site_email = "noreply.classroom.noreply@gmail.com";
   let invite = `<html>
-  <a href="http://127.0.0.1:5500/frontend/views/testing_accept_cancel.html?code=${class_code}&email_sent=${invite_email}"> <button>See Details </button></a> </html> `
+  <a href="http://127.0.0.1:5500/frontend/views/testing_accept_cancel.html?code=${class_code}&email_sent=${invite_email}"> <button>Accept Invite </button></a> </html> `
     
     console.log("invited")
     emailjs.init("ua6aWzLhhQq3fLfQO");
@@ -287,8 +287,12 @@ const checkForUser = () => {
 
     if (data.status  == "email sent") {
         sendEmail()
+        const email_result = document.getElementById('email_result')
+        email_result.innerHTML= data.status
+        
     }else{
-        console.log('user does not exist')
+        const email_result = document.getElementById('email_result')
+        email_result.innerHTML= data.status
     }
 })
 }catch (err) {
@@ -297,7 +301,7 @@ const checkForUser = () => {
 
 
 
-  window.location.replace('/people.html')
+ 
 }
 
 

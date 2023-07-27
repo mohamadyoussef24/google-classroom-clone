@@ -18,10 +18,7 @@ $num_rows = $query->num_rows();
 if ($num_rows == 0) {
     $response['status'] = "classnotfound";
     echo json_encode($response);
-
-
-
-}else{
+} else {
 
 
 
@@ -38,7 +35,7 @@ if ($num_rows == 0) {
 
 
 
-    if ($num_rows2 == 0){
+    if ($num_rows2 == 0) {
         $query = $mysqli->prepare('select user_id
         from students 
         where class_id=? and user_id=?');
@@ -56,12 +53,7 @@ if ($num_rows == 0) {
             $response['status'] = "student";
             echo json_encode($response);
         }
-
-
-
-
-
-    }else{
+    } else {
         $response['status'] = "teacher";
         echo json_encode($response);
     }

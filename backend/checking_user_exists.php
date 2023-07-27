@@ -27,7 +27,7 @@ if ($user_exists != 0) {
     $check_if_student->execute();
     $check_if_student->store_result();
     $check_if_student->bind_result($student_id);
-    $already_student = $query->num_rows();
+    $already_student = $check_if_student->num_rows();
 
     if ($already_student == 0) {
 
@@ -36,7 +36,7 @@ if ($user_exists != 0) {
         $check_if_teacher->execute();
         $check_if_teacher->store_result();
         $check_if_teacher->bind_result($teacher_id);
-        $already_teacher = $query->num_rows();
+        $already_teacher = $check_if_teacher->num_rows();
 
         if ($already_teacher == 0) {
             $response['status'] = "email sent";
@@ -49,3 +49,6 @@ if ($user_exists != 0) {
 } else {
     $response['status'] = "user does not exist";
 }
+
+
+echo json_encode($response);

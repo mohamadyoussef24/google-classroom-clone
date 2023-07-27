@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="/frontend/css/utilities.css">
     <link rel="stylesheet" href="/frontend/css/people.css">
     <link rel="shortcut icon" href="/assets/images/google_tab_icon.png" />
-
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
     <title>Classwork</title>
 </head>
 
@@ -21,7 +24,7 @@
                 <label for="title">Type an email address</label>
                 <input type="text" id="invite_email" class="email-input"></textarea>
             </div>
-
+            <div id="email_result"></div>
             <div class="cancel-invite flex gap10">
                 <span class="modal-links" id="cancel_icon">cancel</span>
                 <span class="modal-links" id="invite_btn">invite</span>

@@ -1,5 +1,24 @@
 ///////////////////////// testing accept email
+
+function encrypt(id, secretKey) {
+    const encryptedData = id ^ secretKey;
+    const encryptedString = btoa(encryptedData.toString());
+    return encryptedString;
+  }
+  
+  // Function to decrypt a base64 string and get back the integer ID
+  function decrypt(encryptedData, secretKey) {
+    const encryptedString = atob(encryptedData);
+    const encryptedInt = parseInt(encryptedString, 10);
+    return encryptedInt ^ secretKey;
+  }
+
+  
+
 window.onload = function() {
+    
+    
+    const base_url = "http://localhost/Assignments/google-classroom-clone/backend/";
 
 
     var url = window.location.href
@@ -32,27 +51,35 @@ window.onload = function() {
     checkclass_form.append("email", email_sent)
     checkclass_form.append("class_code", get_code)
 
-        fetch(base_url + 'Check_user_class.php', {
+        fetch(base_url + 'join_email_class.php', {
             method: "POST",
             body: checkclass_form
         })
         .then((res) => res.json())
         .then((data) => {
             result = data.status
+    
             console.log(result)
-        
-            localStorage.setItem("user_id", data.user_id)
+            secretKey=123
+            id = encrypt(data.user_id, secretKey)
             
-        
-            window.location.replace(url + "?code=" + get_code);
+            localStorage.setItem("user_id", id)
+            
+            const url2 = "./stream.html"
+            localStorage.setItem('email', email_sent)
+            
+            window.location.replace(url2 + "?code=" + get_code);
         })
         
 
     .catch((err) => {
         console.log("Fetch error:", err);
+        // window.location.replace("/index.html");
+
     });
  } catch (err) {
     console.log("Error:", err);
+    // window.location.replace("/index.html");
 
   }
   
